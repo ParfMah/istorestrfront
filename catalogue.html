@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="description" content="Parcourez notre catalogue d'iPhones 13 à 17, neufs et reconditionnés. Filtrez par modèle, état, prix. Paiement en crédit disponible."/>
+  <meta name="keywords"    content="catalogue iPhone, iPhone 14, iPhone 15, iPhone 16, iPhone reconditionné pas cher"/>
+  <meta name="robots"      content="index,follow"/>
+  <meta property="og:type"        content="website"/>
+  <meta property="og:site_name"   content="iStore Pro"/>
+  <meta property="og:title"       content="Catalogue iPhone — iStore Pro"/>
+  <meta property="og:description" content="Parcourez notre catalogue d'iPhones 13 à 17, neufs et reconditionnés. Filtrez par modèle, état, prix. Paiement en crédit disponible."/>
+  <meta property="og:image"       content="https://istore-pro-frontend.onrender.com/assets/images/logo.svg"/>
+  <meta property="og:url"         content="https://istore-pro-frontend.onrender.com/catalogue.html"/>
+  <meta name="twitter:card"        content="summary_large_image"/>
+  <meta name="twitter:title"       content="Catalogue iPhone — iStore Pro"/>
+  <meta name="twitter:description" content="Parcourez notre catalogue d'iPhones 13 à 17, neufs et reconditionnés. Filtrez par modèle, état, prix. Paiement en crédit disponible."/>
+  <meta name="twitter:image"       content="https://istore-pro-frontend.onrender.com/assets/images/logo.svg"/>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+  <link rel="shortcut icon" href="/favicon.svg"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<script src="assets/js/page-loader.js"></script>
+<title>Catalogue — iStore Pro</title>
+  <link rel="stylesheet" href="assets/css/global.css"/>
+  <link rel="stylesheet" href="assets/css/components.css"/>
+  <link rel="stylesheet" href="assets/css/pages/catalogue.css"/>
+  <link rel="stylesheet" href="assets/css/responsive-fixes.css"/>
+
+  <style>
+  #coldStartBanner{
+    display:none;position:fixed;bottom:var(--space-4);left:50%;transform:translateX(-50%);
+    background:#1a1a1a;border:1px solid var(--gold);border-radius:var(--radius-md);
+    padding:var(--space-3) var(--space-5);font-size:var(--text-sm);color:var(--text-secondary);
+    z-index:9999;box-shadow:var(--shadow-gold);max-width:90vw;text-align:center;
+    animation:slideUp .3s ease;
+  }
+  #coldStartBanner span{color:var(--gold);}
+  @keyframes slideUp{from{opacity:0;transform:translateX(-50%) translateY(20px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+  </style>
+  <link rel="manifest" href="/manifest.json"/>
+  <meta name="theme-color" content="#C9A84C"/>
+  <meta name="mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <meta name="apple-mobile-web-app-title" content="iStore Pro"/>
+  <link rel="apple-touch-icon" href="/assets/images/icons/icon-192.svg"/>
+  <link rel="canonical" href="https://istore-pro-frontend.onrender.com/catalogue.html"/>
+</head>
+<body>
+<header class="header">
+  <div class="container header__inner">
+    <a href="index.html" class="header__logo"><img src="assets/images/logo-header.svg" alt="iStore Pro" style="height:38px;width:auto;display:block;" /></a>
+    <nav class="header__nav" id="mainNav">
+      <a href="index.html"      class="nav-link">Accueil</a>
+      <a href="catalogue.html"  class="nav-link active">Catalogue</a>
+      <a href="simulation.html" class="nav-link">Simuler un crédit</a>
+      <a href="comparateur.html" class="nav-link">Comparer</a>
+      <a href="faq.html"         class="nav-link">FAQ</a>
+      <a href="a-propos.html"   class="nav-link">À propos</a>
+      <a href="contact.html"    class="nav-link">Contact</a>
+    </nav>
+    <div class="header__actions" style="display:flex;gap:var(--space-3);align-items:center;">
+      <a href="favoris.html" title="Mes favoris" id="wishlistBtn" style="font-size:1.2rem;line-height:1;color:var(--text-muted);transition:color .2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-muted)'">🤍</a><a href="connexion.html" class="btn btn--outline" id="authBtn">Connexion</a></div>
+    <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+  </div>
+</header>
+
+<div class="page-hero"><div class="container"><h1>Catalogue <span>iPhone</span></h1><p>Tous nos modèles neuf et reconditionné — iPhone 13 à 17</p></div></div>
+
+<main class="catalogue-layout container">
+  <!-- Barre de recherche -->
+  <div style="grid-column:1/-1;margin-bottom:var(--space-4);position:relative;max-width:520px;">
+    <input type="text" id="catalogSearch" class="form-input"
+      placeholder="🔍 Rechercher un modèle, un grade…"
+      style="padding-right:40px;"
+      oninput="filterCatalog()"/>
+    <button onclick="document.getElementById('catalogSearch').value='';filterCatalog();"
+      style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--text-muted);cursor:pointer;font-size:1rem;">✕</button>
+  </div>
+  <aside class="filters" id="filtersPanel">
+    <h3 class="filters__title">Filtrer</h3>
+    <div class="filter-group">
+      <label class="filter-group__label">Modèle</label>
+      <div class="filter-checkboxes" id="filterModel">
+        <label><input type="checkbox" value="iPhone 13"> iPhone 13</label>
+        <label><input type="checkbox" value="iPhone 14"> iPhone 14</label>
+        <label><input type="checkbox" value="iPhone 15"> iPhone 15</label>
+        <label><input type="checkbox" value="iPhone 16"> iPhone 16</label>
+        <label><input type="checkbox" value="iPhone 17"> iPhone 17</label>
+      </div>
+    </div>
+    <div class="filter-group">
+      <label class="filter-group__label">Variante</label>
+      <div class="filter-checkboxes" id="filterVariant">
+        <label><input type="checkbox" value="standard"> Standard</label>
+        <label><input type="checkbox" value="pro"> Pro</label>
+        <label><input type="checkbox" value="pro-max"> Pro Max</label>
+      </div>
+    </div>
+    <div class="filter-group">
+      <label class="filter-group__label">État</label>
+      <div class="filter-checkboxes" id="filterCondition">
+        <label><input type="checkbox" value="neuf"> Neuf</label>
+        <label><input type="checkbox" value="grade-a"> Occasion Grade A</label>
+        <label><input type="checkbox" value="grade-b"> Occasion Grade B</label>
+        <label><input type="checkbox" value="grade-c"> Occasion Grade C</label>
+      </div>
+    </div>
+    <div class="filter-group">
+      <label class="filter-group__label">Prix max : <span id="priceVal">2 000 €</span></label>
+      <input type="range" id="priceRange" min="100" max="2000" value="2000" step="50"/>
+    </div>
+    <button class="btn btn--primary btn--full" id="applyFilters">Appliquer</button>
+    <button class="btn btn--ghost btn--full" id="resetFilters" style="margin-top:.5rem">Réinitialiser</button>
+  </aside>
+
+  <section class="catalogue-main">
+    <div class="catalogue-toolbar">
+      <p id="resultCount" class="result-count">Chargement…</p>
+      <div class="toolbar-right">
+        <select id="sortSelect" class="select-input">
+          <option value="price-asc">Prix croissant</option>
+          <option value="price-desc">Prix décroissant</option>
+          <option value="newest">Plus récents</option>
+        </select>
+        <button class="btn btn--ghost btn--icon" id="toggleFilters">Filtres ☰</button>
+      </div>
+    </div>
+    <div class="products-grid" id="productGrid">
+      <div class="skeleton-card"></div><div class="skeleton-card"></div>
+      <div class="skeleton-card"></div><div class="skeleton-card"></div>
+      <div class="skeleton-card"></div><div class="skeleton-card"></div>
+    </div>
+    <div class="pagination" id="pagination"></div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <span class="logo-icon">&#63743;</span>
+      <strong>iStore Pro</strong>
+      <p>Votre spécialiste iPhone depuis 2020.</p>
+    </div>
+    <div class="footer__col">
+      <div class="footer__links">
+        <h4>Navigation</h4>
+        <a href="catalogue.html">Catalogue</a>
+        <a href="simulation.html">Simulateur crédit</a>
+        <a href="comparateur.html">Comparer</a>
+        <a href="faq.html">FAQ</a>
+        <a href="suivi.html">Suivi commande</a>
+        <a href="a-propos.html">À propos</a>
+      </div>
+      <div class="footer__contact">
+        <h4>Contact</h4>
+        <p>📧 contact@istorepro.com</p>
+        <p>📞 +33 1 23 45 67 89</p>
+        <p>📍 Paris, France</p>
+      </div>
+    </div>
+    <div class="footer__col">
+      <div class="footer__links">
+        <h4>Mon compte</h4>
+        <a href="connexion.html">Connexion</a>
+        <a href="connexion.html#register">Créer un compte</a>
+        <a href="espace-client.html">Mon espace</a>
+        <a href="favoris.html">Mes favoris</a>
+      </div>
+      <div class="footer__links" style="margin-top:var(--space-6);">
+        <h4>Légal</h4>
+        <a href="mentions-legales.html">Mentions légales</a>
+        <a href="politique-confidentialite.html">Confidentialité</a>
+        <a href="cgu.html">CGU</a>
+        <a href="cgv.html">CGV</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer__bottom"><p>© 2025 iStore Pro. Tous droits réservés. &nbsp;·&nbsp;
+      <a href="mentions-legales.html" style="color:inherit">Mentions légales</a> &nbsp;·&nbsp;
+      <a href="politique-confidentialite.html" style="color:inherit">Confidentialité</a> &nbsp;·&nbsp;
+      <a href="cgu.html" style="color:inherit">CGU</a> &nbsp;·&nbsp;
+      <a href="cgv.html" style="color:inherit">CGV</a>
+    </p></div>
+</footer>
+
+<script src="assets/js/utils.js"></script>
+<script src="assets/js/auth.js"></script>
+<script src="assets/js/api.js"></script>
+<script src="assets/js/products.data.js"></script>
+<script src="assets/js/catalogue.js"></script>
+
+  <div id="coldStartBanner">⏳ <span>Démarrage du serveur…</span> Merci de patienter quelques secondes.</div>
+  <script>
+  // Affiche le banner si le backend met du temps à répondre (Render free cold start)
+  (function(){
+    const start = Date.now();
+    const banner = document.getElementById('coldStartBanner');
+    let shown = false;
+    const check = setInterval(async () => {
+      if (Date.now() - start > 3000 && !shown) {
+        shown = true; banner.style.display = 'block';
+      }
+      try {
+        const r = await fetch(window.API_URL_CHECK || '/api/health', { signal: AbortSignal.timeout(2000) });
+        if (r.ok) { clearInterval(check); banner.style.display = 'none'; }
+      } catch {}
+    }, 1500);
+    setTimeout(() => { clearInterval(check); banner.style.display = 'none'; }, 60000);
+  })();
+  </script>
+
+  <script src="assets/js/cookies.js"></script>
+  <script src="assets/js/ui-utils.js"></script>
+  <script src="assets/js/wishlist.js"></script>
+</body>
+</html>

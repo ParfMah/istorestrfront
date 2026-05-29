@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="description" content="Achetez votre iPhone neuf ou reconditionné (Grade A, B, C) chez iStore Pro. Paiement comptant ou crédit flexible dès 40% d'apport. Livraison rapide, garantie iStore."/>
+  <meta name="keywords"    content="iPhone reconditionné, iPhone neuf, acheter iPhone, crédit iPhone, iStore Pro"/>
+  <meta name="robots"      content="index,follow"/>
+  <meta property="og:type"        content="website"/>
+  <meta property="og:site_name"   content="iStore Pro"/>
+  <meta property="og:title"       content="iStore Pro — iPhones neufs & reconditionnés | Paiement en 3x"/>
+  <meta property="og:description" content="Achetez votre iPhone neuf ou reconditionné (Grade A, B, C) chez iStore Pro. Paiement comptant ou crédit flexible dès 40% d'apport. Livraison rapide, garantie iStore."/>
+  <meta property="og:image"       content="https://istore-pro-frontend.onrender.com/assets/images/logo.svg"/>
+  <meta property="og:url"         content="https://istore-pro-frontend.onrender.com/index.html"/>
+  <meta name="twitter:card"        content="summary_large_image"/>
+  <meta name="twitter:title"       content="iStore Pro — iPhones neufs & reconditionnés | Paiement en 3x"/>
+  <meta name="twitter:description" content="Achetez votre iPhone neuf ou reconditionné (Grade A, B, C) chez iStore Pro. Paiement comptant ou crédit flexible dès 40% d'apport. Livraison rapide, garantie iStore."/>
+  <meta name="twitter:image"       content="https://istore-pro-frontend.onrender.com/assets/images/logo.svg"/>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+  <link rel="shortcut icon" href="/favicon.svg"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<script src="assets/js/page-loader.js"></script>
+<title>iStore Pro — Vente d'iPhone Neuf &amp; Occasion</title>
+  <link rel="stylesheet" href="assets/css/global.css"/>
+  <link rel="stylesheet" href="assets/css/components.css"/>
+  <link rel="stylesheet" href="assets/css/pages/home.css"/>
+  <link rel="stylesheet" href="assets/css/responsive-fixes.css"/>
+
+  <style>
+  #coldStartBanner{
+    display:none;position:fixed;bottom:var(--space-4);left:50%;transform:translateX(-50%);
+    background:#1a1a1a;border:1px solid var(--gold);border-radius:var(--radius-md);
+    padding:var(--space-3) var(--space-5);font-size:var(--text-sm);color:var(--text-secondary);
+    z-index:9999;box-shadow:var(--shadow-gold);max-width:90vw;text-align:center;
+    animation:slideUp .3s ease;
+  }
+  #coldStartBanner span{color:var(--gold);}
+  @keyframes slideUp{from{opacity:0;transform:translateX(-50%) translateY(20px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+  </style>
+  <link rel="manifest" href="/manifest.json"/>
+  <meta name="theme-color" content="#C9A84C"/>
+  <meta name="mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <meta name="apple-mobile-web-app-title" content="iStore Pro"/>
+  <link rel="apple-touch-icon" href="/assets/images/icons/icon-192.svg"/>
+  <link rel="canonical" href="https://istore-pro-frontend.onrender.com/index.html"/>
+</head>
+<body>
+
+<header class="header">
+  <div class="container header__inner">
+    <a href="index.html" class="header__logo"><img src="assets/images/logo-header.svg" alt="iStore Pro" style="height:38px;width:auto;display:block;" /></a>
+    <nav class="header__nav" id="mainNav">
+      <a href="index.html"      class="nav-link active">Accueil</a>
+      <a href="catalogue.html"  class="nav-link">Catalogue</a>
+      <a href="simulation.html" class="nav-link">Simuler un crédit</a>
+      <a href="comparateur.html" class="nav-link">Comparer</a>
+      <a href="faq.html"       class="nav-link">FAQ</a>
+      <a href="a-propos.html"   class="nav-link">À propos</a>
+      <a href="contact.html"    class="nav-link">Contact</a>
+    </nav>
+    <div class="header__actions" style="display:flex;gap:var(--space-3);align-items:center;">
+      <a href="favoris.html" title="Mes favoris" id="wishlistBtn" style="font-size:1.2rem;line-height:1;color:var(--text-muted);transition:color .2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-muted)'">🤍</a>
+      <a href="connexion.html" class="btn btn--outline" id="authBtn">Connexion</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container hero__inner">
+    <div class="hero__text">
+      <span class="hero__badge">Nouveau — iPhone 17 disponible</span>
+      <h1 class="hero__title">L'iPhone<br><span>que vous voulez.</span></h1>
+      <p class="hero__subtitle">Neuf ou reconditionné, payez en plusieurs fois. Livraison rapide · Garantie incluse · Crédit flexible dès 40% d'apport.</p>
+      <div class="hero__cta">
+        <a href="catalogue.html"  class="btn btn--primary btn--lg">Consulter le catalogue</a>
+        <a href="simulation.html" class="btn btn--outline-white btn--lg">Simuler un crédit</a>
+      </div>
+    </div>
+    <div class="hero__image">
+      <img src="assets/images/hero-banner.svg" alt="iPhone 17 Pro Max"/>
+    </div>
+  </div>
+</section>
+
+<section class="features">
+  <div class="container">
+    <div class="features__grid">
+      <div class="feature-card"><span class="feature-card__icon">📦</span><h3>Livraison rapide</h3><p>Livraison sous 24 à 48h partout sur le territoire.</p></div>
+      <div class="feature-card"><span class="feature-card__icon">🛡️</span><h3>Garantie incluse</h3><p>Tous nos appareils sont garantis 6 à 12 mois.</p></div>
+      <div class="feature-card"><span class="feature-card__icon">💳</span><h3>Crédit flexible</h3><p>Apport dès 40%, taux dès 1.5%. Simulation gratuite.</p></div>
+      <div class="feature-card"><span class="feature-card__icon">🔒</span><h3>Paiement sécurisé</h3><p>Mobile Money, virement bancaire, paiement en main propre.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="featured">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Nos <span>best-sellers</span></h2>
+      <a href="catalogue.html" class="btn btn--outline">Voir tout</a>
+    </div>
+    <div class="products-grid" id="featuredProducts">
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════ TOUS NOS PRODUITS ═══════════════ -->
+<section style="padding:var(--space-20) 0;background:var(--bg-card2);border-top:1px solid var(--border);">
+  <div class="container">
+
+    <!-- Header -->
+    <div class="section-header" style="margin-bottom:var(--space-10);">
+      <div>
+        <h2 class="section-title">Toute notre <span>sélection</span></h2>
+        <p class="section-sub">iPhone 13 à 17 — neufs & reconditionnés</p>
+      </div>
+      <a href="catalogue.html" class="btn btn--outline">Catalogue complet →</a>
+    </div>
+
+    <!-- Filtres rapides -->
+    <div style="display:flex;flex-wrap:wrap;gap:var(--space-3);margin-bottom:var(--space-8);" id="homeQuickFilters">
+      <button class="home-filter-btn active" data-filter="all">Tous</button>
+      <button class="home-filter-btn" data-filter="neuf">✨ Neufs</button>
+      <button class="home-filter-btn" data-filter="occasion">♻️ Reconditionnés</button>
+      <button class="home-filter-btn" data-filter="iPhone 13">iPhone 13</button>
+      <button class="home-filter-btn" data-filter="iPhone 14">iPhone 14</button>
+      <button class="home-filter-btn" data-filter="iPhone 15">iPhone 15</button>
+      <button class="home-filter-btn" data-filter="iPhone 16">iPhone 16</button>
+      <button class="home-filter-btn" data-filter="iPhone 17">iPhone 17</button>
+    </div>
+
+    <!-- Grille produits -->
+    <div class="products-grid" id="homeAllProducts">
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+    </div>
+
+    <!-- Voir plus -->
+    <div style="text-align:center;margin-top:var(--space-10);">
+      <div id="homeShowMore" style="display:none;">
+        <p style="font-size:var(--text-sm);color:var(--text-muted);margin-bottom:var(--space-4);" id="homeProductCount"></p>
+        <a href="catalogue.html" class="btn btn--primary btn--lg">Voir tous les produits →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="credit-banner">
+  <div class="container credit-banner__inner">
+    <div class="credit-banner__text">
+      <h2>Achetez maintenant,<br><span>payez à votre rythme.</span></h2>
+      <p>Simulez votre crédit en 30 secondes. Aucun engagement immédiat.</p>
+      <a href="simulation.html" class="btn btn--primary btn--lg">Simuler gratuitement</a>
+    </div>
+  </div>
+</section>
+
+
+  <!-- ═══════════════ AVIS CLIENTS ═══════════════ -->
+  <section class="section" style="background:var(--bg-card2);padding:var(--space-20) 0;">
+    <div class="container">
+      <div class="section-header" style="text-align:center;margin-bottom:var(--space-12);">
+        <h2 class="section-title">Ce que disent nos <span>clients</span></h2>
+        <p class="section-sub">Avis vérifiés, publiés après validation</p>
+      </div>
+      <div id="homeReviews" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--space-6);">
+        <div class="loading-spinner">Chargement…</div>
+      </div>
+      <div style="text-align:center;margin-top:var(--space-8);">
+        <a href="connexion.html" class="btn btn--outline">Laisser un avis →</a>
+      </div>
+    </div>
+  </section>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <span class="logo-icon">&#63743;</span>
+      <strong>iStore Pro</strong>
+      <p>Votre spécialiste iPhone depuis 2020.</p>
+    </div>
+    <div class="footer__col">
+      <div class="footer__links">
+        <h4>Navigation</h4>
+        <a href="catalogue.html">Catalogue</a>
+        <a href="simulation.html">Simulateur crédit</a>
+        <a href="comparateur.html">Comparer</a>
+        <a href="faq.html">FAQ</a>
+        <a href="suivi.html">Suivi commande</a>
+        <a href="a-propos.html">À propos</a>
+      </div>
+      <div class="footer__contact">
+        <h4>Contact</h4>
+        <p>📧 contact@istorepro.com</p>
+        <p>📞 +33 1 23 45 67 89</p>
+        <p>📍 Paris, France</p>
+      </div>
+    </div>
+    <div class="footer__col">
+      <div class="footer__links">
+        <h4>Mon compte</h4>
+        <a href="connexion.html">Connexion</a>
+        <a href="connexion.html#register">Créer un compte</a>
+        <a href="espace-client.html">Mon espace</a>
+        <a href="favoris.html">Mes favoris</a>
+      </div>
+      <div class="footer__links" style="margin-top:var(--space-6);">
+        <h4>Légal</h4>
+        <a href="mentions-legales.html">Mentions légales</a>
+        <a href="politique-confidentialite.html">Confidentialité</a>
+        <a href="cgu.html">CGU</a>
+        <a href="cgv.html">CGV</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer__bottom"><p>© 2025 iStore Pro. Tous droits réservés. &nbsp;·&nbsp;
+      <a href="mentions-legales.html" style="color:inherit">Mentions légales</a> &nbsp;·&nbsp;
+      <a href="politique-confidentialite.html" style="color:inherit">Confidentialité</a> &nbsp;·&nbsp;
+      <a href="cgu.html" style="color:inherit">CGU</a> &nbsp;·&nbsp;
+      <a href="cgv.html" style="color:inherit">CGV</a>
+    </p></div>
+</footer>
+
+<script src="assets/js/utils.js"></script>
+<script src="assets/js/auth.js"></script>
+<script src="assets/js/api.js"></script>
+<script src="assets/js/products.data.js"></script>
+<script src="assets/js/ui-utils.js"></script>
+<script src="assets/js/wishlist.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    const products = await API.get('/products?limit=8&featured=true', false);
+    const grid = document.getElementById('featuredProducts');
+    grid.innerHTML = '';
+    if (products.length) products.forEach(p => grid.insertAdjacentHTML('beforeend', renderProductCard(p)));
+    else grid.innerHTML = '<p class="text-muted">Chargement des produits…</p>';
+  } catch(e) {
+    document.getElementById('featuredProducts').innerHTML = '<p class="text-muted">Impossible de charger les produits.</p>';
+  }
+});
+</script>
+
+  <div id="coldStartBanner">⏳ <span>Démarrage du serveur…</span> Merci de patienter quelques secondes.</div>
+  <script>
+  // Affiche le banner si le backend met du temps à répondre (Render free cold start)
+  (function(){
+    const start = Date.now();
+    const banner = document.getElementById('coldStartBanner');
+    let shown = false;
+    const check = setInterval(async () => {
+      if (Date.now() - start > 3000 && !shown) {
+        shown = true; banner.style.display = 'block';
+      }
+      try {
+        const r = await fetch(window.API_URL_CHECK || '/api/health', { signal: AbortSignal.timeout(2000) });
+        if (r.ok) { clearInterval(check); banner.style.display = 'none'; }
+      } catch {}
+    }, 1500);
+    setTimeout(() => { clearInterval(check); banner.style.display = 'none'; }, 60000);
+  })();
+  </script>
+
+
+<script>
+// ── Avis clients sur la homepage ──────────────────────────────
+(async function loadHomeReviews() {
+  const c = document.getElementById('homeReviews');
+  if (!c) return;
+  try {
+    const reviews = await Promise.race([
+      API.get('/reviews?limit=6', false),
+      new Promise((_,r) => setTimeout(() => r(new Error('timeout')), 3000))
+    ]);
+    if (!reviews.length) {
+      c.innerHTML = '<p style="color:var(--text-muted);text-align:center;grid-column:1/-1;">Les premiers avis arrivent bientôt !</p>';
+      return;
+    }
+    c.innerHTML = reviews.map(r => {
+      const stars = '★'.repeat(r.rating) + '☆'.repeat(5-r.rating);
+      const name  = r.client ? `${r.client.firstname} ${r.client.lastname[0]}.` : 'Client';
+      const date  = new Date(r.approvedAt || r.createdAt).toLocaleDateString('fr-FR', {month:'short', year:'numeric'});
+      return `<div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:var(--space-6);">
+        <div style="color:var(--gold);font-size:1.1rem;letter-spacing:2px;margin-bottom:var(--space-3);">${stars}</div>
+        ${r.title ? `<p style="font-weight:700;color:#fff;margin:0 0 var(--space-2);font-size:var(--text-sm);">${r.title}</p>` : ''}
+        <p style="font-size:var(--text-sm);color:rgba(255,255,255,.6);line-height:1.7;margin:0 0 var(--space-4);">"${r.body}"</p>
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <span style="font-size:var(--text-xs);color:var(--text-muted);">— ${name}</span>
+          <span style="font-size:var(--text-xs);color:var(--gold);">✓ Vérifié · ${date}</span>
+        </div>
+      </div>`;
+    }).join('');
+  } catch {
+    c.innerHTML = '<p style="color:var(--text-muted);text-align:center;grid-column:1/-1;">Avis temporairement indisponibles.</p>';
+  }
+})();
+</script>
+
+  <script src="assets/js/cookies.js"></script>
+  <script src="assets/js/ui-utils.js"></script>
+  <script src="assets/js/wishlist.js"></script>
+
+<script>
+// ── Section "Toute notre sélection" ────────────────────────
+let allHomeProducts = [];
+let homeFilter      = 'all';
+
+async function loadHomeAllProducts() {
+  try {
+    const res = await Promise.race([
+      API.get('/products?limit=100', false),
+      new Promise((_,r) => setTimeout(() => r(), 3000))
+    ]);
+    allHomeProducts = Array.isArray(res) && res.length ? res : (typeof PRODUCTS_DATA !== 'undefined' ? PRODUCTS_DATA : []);
+  } catch {
+    allHomeProducts = typeof PRODUCTS_DATA !== 'undefined' ? PRODUCTS_DATA : [];
+  }
+  renderHomeProducts();
+}
+
+function renderHomeProducts() {
+  const grid = document.getElementById('homeAllProducts');
+  if (!grid) return;
+
+  let filtered = allHomeProducts;
+  if (homeFilter !== 'all') {
+    filtered = allHomeProducts.filter(p =>
+      p.condition === homeFilter ||
+      p.model     === homeFilter
+    );
+  }
+
+  // Afficher 8 produits max sur la homepage
+  const LIMIT   = 8;
+  const visible = filtered.slice(0, LIMIT);
+
+  if (!visible.length) {
+    grid.innerHTML = `<p style="grid-column:1/-1;text-align:center;color:var(--text-muted);padding:var(--space-12);">Aucun produit pour ce filtre.</p>`;
+    document.getElementById('homeShowMore').style.display = 'none';
+    return;
+  }
+
+  grid.innerHTML = visible.map(p => renderProductCard(p)).join('');
+
+  // Wishlist
+  if (typeof Wishlist !== 'undefined') Wishlist.initButtons();
+
+  // Compteur + lien vers catalogue
+  const total = filtered.length;
+  const showMore = document.getElementById('homeShowMore');
+  const countEl  = document.getElementById('homeProductCount');
+  if (total > LIMIT) {
+    countEl.textContent  = `${LIMIT} produits affichés sur ${total} disponibles`;
+    showMore.style.display = 'block';
+  } else {
+    showMore.style.display = 'none';
+  }
+}
+
+// Filtres rapides
+document.addEventListener('DOMContentLoaded', () => {
+  loadHomeAllProducts();
+
+  document.querySelectorAll('.home-filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.home-filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      homeFilter = btn.dataset.filter;
+      renderHomeProducts();
+    });
+  });
+});
+</script>
+
+</body>
+</html>

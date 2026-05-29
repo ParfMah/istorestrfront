@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+  <link rel="shortcut icon" href="/favicon.svg"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<script src="assets/js/page-loader.js"></script>
+<title>Connexion — iStore Pro</title>
+  <link rel="stylesheet" href="assets/css/global.css"/>
+  <link rel="stylesheet" href="assets/css/components.css"/>
+  <link rel="stylesheet" href="assets/css/pages/auth.css"/>
+  <link rel="stylesheet" href="assets/css/responsive-fixes.css"/>
+  <link rel="manifest" href="/manifest.json"/>
+  <meta name="theme-color" content="#C9A84C"/>
+  <meta name="mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <meta name="apple-mobile-web-app-title" content="iStore Pro"/>
+  <link rel="apple-touch-icon" href="/assets/images/icons/icon-192.svg"/>
+  <link rel="canonical" href="https://istore-pro-frontend.onrender.com/connexion.html"/>
+</head>
+<body class="auth-page">
+<a href="index.html" class="auth-logo"><img src="assets/images/logo.svg" alt="iStore Pro" style="height:52px;width:auto;filter:drop-shadow(0 2px 8px rgba(201,168,76,0.3))"/></a>
+<div class="auth-card" style="overflow:visible;height:auto;">
+  <div class="auth-tabs">
+    <button class="auth-tab active" id="tabLogin"    onclick="switchTab('login')">Connexion</button>
+    <button class="auth-tab"        id="tabRegister" onclick="switchTab('register')">Créer un compte</button>
+  </div>
+  <div id="authAlert" class="alert" style="display:none"></div>
+
+  <!-- LOGIN -->
+  <div id="loginPanel">
+    <div class="form-group"><label>Email</label><input type="email" id="loginEmail" class="form-input" placeholder="votre@email.com"/></div>
+    <div class="form-group">
+      <label>Mot de passe</label>
+      <div class="input-password-wrap">
+        <input type="password" id="loginPassword" class="form-input" placeholder="••••••••"/>
+        <button class="btn-eye" onclick="togglePwd('loginPassword')">👁</button>
+      </div>
+    </div>
+    <button class="btn btn--primary btn--full" id="loginBtn">Se connecter</button>
+    <p class="auth-footer-link" style="text-align:right;margin-top:var(--space-2);">
+      <a href="mot-de-passe-oublie.html" style="color:var(--text-muted);font-size:var(--text-xs);">Mot de passe oublié ?</a>
+    </p>
+    <p class="auth-footer-link">Pas encore de compte ? <a href="#" onclick="switchTab('register')">Créer un compte</a></p>
+  </div>
+
+  <!-- REGISTER -->
+  <div id="registerPanel" style="display:none">
+    <div class="form-row">
+      <div class="form-group"><label>Prénom</label><input type="text" id="regFirstname" class="form-input" placeholder="Jean"/></div>
+      <div class="form-group"><label>Nom</label><input type="text" id="regLastname" class="form-input" placeholder="Dupont"/></div>
+    </div>
+    <div class="form-group"><label>Email</label><input type="email" id="regEmail" class="form-input" placeholder="votre@email.com"/></div>
+    <div class="form-group"><label>Téléphone</label><input type="tel" id="regPhone" class="form-input" placeholder="+33 6 00 00 00 00"/></div>
+    <div class="form-group">
+      <label>Mot de passe</label>
+      <div class="input-password-wrap">
+        <input type="password" id="regPassword" class="form-input" placeholder="Min. 8 caractères"/>
+        <button class="btn-eye" onclick="togglePwd('regPassword')">👁</button>
+      </div>
+    </div>
+    <div class="form-group"><label>Confirmer</label><input type="password" id="regConfirm" class="form-input" placeholder="••••••••"/></div>
+    <div style="background:var(--bg-card2);border:1px solid var(--border);border-radius:var(--radius);padding:var(--space-3) var(--space-4);margin-bottom:var(--space-4);">
+      <label style="display:flex;align-items:flex-start;gap:var(--space-3);cursor:pointer;">
+        <input type="checkbox" id="regCguCheckbox" style="width:16px;height:16px;min-width:16px;margin-top:3px;accent-color:var(--gold);cursor:pointer;"/>
+        <span style="font-size:var(--text-xs);color:var(--text-secondary);line-height:1.7;">
+          J'accepte les <a href="cgu.html" target="_blank" style="color:var(--gold);">CGU</a>,
+          les <a href="cgv.html" target="_blank" style="color:var(--gold);">CGV</a>
+          et la <a href="politique-confidentialite.html" target="_blank" style="color:var(--gold);">Politique de confidentialité</a> *
+        </span>
+      </label>
+    </div>
+    <button class="btn btn--primary btn--full" id="registerBtn">Créer mon compte</button>
+    <p class="auth-footer-link">Déjà un compte ? <a href="#" onclick="switchTab('login')">Se connecter</a></p>
+  </div>
+</div>
+
+<script src="assets/js/utils.js"></script>
+<script src="assets/js/api.js"></script>
+<script src="assets/js/auth.js"></script>
+<script>
+if (window.location.hash === '#register') switchTab('register');
+
+function switchTab(tab) {
+  document.getElementById('loginPanel').style.display    = tab==='login'    ? 'block' : 'none';
+  document.getElementById('registerPanel').style.display = tab==='register' ? 'block' : 'none';
+  document.getElementById('tabLogin').classList.toggle('active',    tab==='login');
+  document.getElementById('tabRegister').classList.toggle('active', tab==='register');
+}
+function togglePwd(id) {
+  const el = document.getElementById(id);
+  el.type = el.type === 'password' ? 'text' : 'password';
+}
+
+document.getElementById('loginBtn').addEventListener('click', async () => {
+  const email    = document.getElementById('loginEmail').value.trim();
+  const password = document.getElementById('loginPassword').value;
+  const alertEl  = document.getElementById('authAlert');
+  if (!email || !password) { showAlert(alertEl,'error','Veuillez remplir tous les champs.'); return; }
+  try {
+    const res = await API.post('/auth/login', { email, password }, false);
+    localStorage.setItem('token', res.token);
+    localStorage.setItem('user', JSON.stringify(res.user));
+    const redirect = new URLSearchParams(window.location.search).get('redirect');
+        window.location.href = res.user.role === 'admin' ? 'admin/index.html' : (redirect || 'espace-client.html');
+  } catch(e) {
+    if (e.unverified || (e.message && e.message.toLowerCase().includes('vérifier votre adresse email'))) {
+      alertEl.style.display = 'block';
+      alertEl.className     = 'alert alert--error';
+      alertEl.innerHTML     = '⚠️ Email non vérifié. Vérifiez votre boîte email ou <a href="verify-email.html" style="color:var(--gold);text-decoration:underline;">renvoyez un lien ici</a>.';
+    } else {
+      showAlert(alertEl, 'error', e.message || 'Email ou mot de passe incorrect.');
+    }
+  }
+});
+
+document.getElementById('registerBtn').addEventListener('click', async () => {
+  const firstname = document.getElementById('regFirstname').value.trim();
+  const lastname  = document.getElementById('regLastname').value.trim();
+  const email     = document.getElementById('regEmail').value.trim();
+  const phone     = document.getElementById('regPhone').value.trim();
+  const password  = document.getElementById('regPassword').value;
+  const confirm   = document.getElementById('regConfirm').value;
+  const alertEl   = document.getElementById('authAlert');
+  if (!document.getElementById('regCguCheckbox').checked) { showAlert(alertEl,'error','Veuillez accepter les CGU, CGV et la Politique de confidentialité.'); return; }
+  if (!firstname || !lastname || !email || !password) { showAlert(alertEl,'error','Champs obligatoires manquants.'); return; }
+  if (password !== confirm) { showAlert(alertEl,'error','Les mots de passe ne correspondent pas.'); return; }
+  if (password.length < 8) { showAlert(alertEl,'error','Mot de passe trop court (min. 8 caractères).'); return; }
+  try {
+    await API.post('/auth/register', { firstname, lastname, email, phone, password }, false);
+    // Rediriger vers la page d'attente de vérification email
+    window.location.href = 'verify-email.html';
+  } catch(e) { showAlert(alertEl,'error', e.message || 'Erreur lors de la création du compte.'); }
+});
+</script>
+
+<footer class="footer footer--slim">
+  <div class="footer__bottom"><p>© 2025 iStore Pro. Tous droits réservés. &nbsp;·&nbsp;
+      <a href="mentions-legales.html" style="color:inherit">Mentions légales</a> &nbsp;·&nbsp;
+      <a href="politique-confidentialite.html" style="color:inherit">Confidentialité</a> &nbsp;·&nbsp;
+      <a href="cgu.html" style="color:inherit">CGU</a> &nbsp;·&nbsp;
+      <a href="cgv.html" style="color:inherit">CGV</a> &nbsp;·&nbsp;
+      <a href="contact.html" style="color:inherit">Contact</a>
+    </p></div>
+</footer>
+  <script src="assets/js/cookies.js"></script>
+  <script src="assets/js/ui-utils.js"></script>
+  <script src="assets/js/wishlist.js"></script>
+  <script src="assets/js/password-strength.js"></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="robots" content="noindex,nofollow"/>
+  <title>Maintenance — iStore Pro</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{background:#0f0f0f;color:#fff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;text-align:center;}
+    .logo{color:#C9A84C;font-size:2rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase;margin-bottom:2.5rem;}
+    .icon{font-size:4.5rem;margin-bottom:1.5rem;animation:pulse 2s ease-in-out infinite;}
+    @keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.08);}}
+    h1{font-size:clamp(1.5rem,5vw,2.5rem);font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin-bottom:1rem;}
+    h1 span{color:#C9A84C;}
+    p{color:rgba(255,255,255,.55);font-size:1rem;line-height:1.8;max-width:480px;margin-bottom:2rem;}
+    .progress-wrap{width:100%;max-width:360px;background:rgba(255,255,255,.08);border-radius:99px;height:6px;overflow:hidden;margin-bottom:2.5rem;}
+    .progress-bar{height:6px;border-radius:99px;background:linear-gradient(90deg,#C9A84C,#F0C040);animation:progress 3s ease-in-out infinite;}
+    @keyframes progress{0%{width:10%;}50%{width:80%;}100%{width:10%;}}
+    .contact{font-size:.85rem;color:rgba(255,255,255,.35);}
+    .contact a{color:#C9A84C;text-decoration:none;}
+    .retry-btn{margin-top:2rem;padding:12px 28px;border-radius:8px;background:linear-gradient(135deg,#C9A84C,#F0C040);color:#000;font-weight:800;font-size:.9rem;border:none;cursor:pointer;text-transform:uppercase;letter-spacing:.06em;}
+    .retry-btn:hover{opacity:.85;}
+  </style>
+  <link rel="canonical" href="https://istore-pro-frontend.onrender.com/maintenance.html"/>
+</head>
+<body>
+  <div class="logo">&#63743; iStore Pro</div>
+  <div class="icon">🛠️</div>
+  <h1>Maintenance<br/><span>en cours</span></h1>
+  <p>Le site est temporairement indisponible pour des opérations de maintenance. Nous serons de retour très bientôt.</p>
+  <div class="progress-wrap"><div class="progress-bar"></div></div>
+  <p class="contact">
+    Des questions urgentes ? Contactez-nous :<br/>
+    <a href="mailto:contact@istorepro.com">contact@istorepro.com</a>
+  </p>
+  <button class="retry-btn" onclick="window.location.reload()">↺ Réessayer</button>
+
+  <script>
+  // Auto-retry toutes les 30s — redirige vers index si le backend répond
+  let attempts = 0;
+  const BASE = 'https://istore-pro-backend.onrender.com/api';
+  setInterval(async () => {
+    attempts++;
+    try {
+      const r = await fetch(`${BASE}/health`, { signal: AbortSignal.timeout(4000) });
+      if (r.ok) window.location.href = 'index.html';
+    } catch {}
+  }, 30000);
+  </script>
+</body>
+</html>

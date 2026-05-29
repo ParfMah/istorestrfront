@@ -1,0 +1,217 @@
+/* ============================================================
+   responsive-fixes.css — iStore Pro
+   Corrections exclusives de mise en page (aucune logique JS)
+   ============================================================ */
+
+/* ── 1. CENTRAGE GLOBAL DES SECTIONS PRINCIPALES ─────────── */
+
+/* Toutes les sections qui utilisent .container sont
+   déjà centrées via margin-inline:auto.
+   On s'assure qu'aucun overflow horizontal ne survient.     */
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* Centrage vertical des pages à 1 colonne (hors hero)       */
+.page-hero .container,
+.catalogue-layout,
+.simulation-layout,
+.product-detail,
+.commande-layout {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+/* ── 2. CONNEXION / INSCRIPTION : formulaire non tronqué ─── */
+
+/* Supprime tout overflow caché sur la carte auth            */
+.auth-card {
+  overflow: visible !important;
+  height: auto !important;
+  max-height: none !important;
+}
+
+/* Panel register : jamais tronqué                          */
+#registerPanel,
+#loginPanel {
+  overflow: visible !important;
+  height: auto !important;
+  max-height: none !important;
+}
+
+/* Bouton validation toujours visible et dans le flux        */
+#loginBtn,
+#registerBtn {
+  position: static !important;
+  display: block !important;
+  width: 100% !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  margin-top: var(--space-4);
+}
+
+/* form-row : 1 colonne dès 520px (pas seulement 768px)     */
+@media (max-width: 520px) {
+  .form-row {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ── 3. SIMULATEUR : résultats lisibles sur mobile ────────── */
+
+/* La grille des résultats s'adapte à l'écran               */
+@media (max-width: 520px) {
+  .sim-result__grid {
+    grid-template-columns: 1fr !important;
+  }
+  .sim-result__item.highlight {
+    grid-column: span 1 !important;
+  }
+  .sim-result-card {
+    padding: var(--space-4) !important;
+  }
+}
+
+/* Scroll fluide vers les résultats (hint visuel)            */
+#simResult {
+  scroll-margin-top: calc(var(--header-h) + var(--space-4));
+}
+
+/* ── 4. PRODUIT DETAIL : centrage correct ──────────────────── */
+
+/* Sur tablette le layout 2 colonnes passe en 1 colonne     */
+@media (max-width: 860px) {
+  .product-detail__layout {
+    grid-template-columns: 1fr !important;
+    gap: var(--space-8) !important;
+  }
+  /* Galerie au-dessus des infos                             */
+  .product-gallery { order: 1; }
+  .product-info    { order: 2; }
+
+  /* Limiter la hauteur de la galerie sur tablette           */
+  .gallery-main {
+    max-height: 340px;
+  }
+}
+
+/* ── 5. CATALOGUE : centrage desktop ──────────────────────── */
+.catalogue-main {
+  min-width: 0;     /* évite le débordement dans CSS Grid    */
+}
+
+/* Sur mobile la grille produits passe à 2 cols minimum      */
+@media (max-width: 440px) {
+  .products-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ── 6. COMMANDE : formulaire non tronqué ─────────────────── */
+.commande-layout {
+  align-items: start;
+}
+
+@media (max-width: 860px) {
+  .commande-layout {
+    grid-template-columns: 1fr !important;
+    gap: var(--space-6) !important;
+  }
+  /* Récap passe après le formulaire                         */
+  .commande-layout > div:first-child { order: 1; }
+  .order-summary                     { order: 2; position: static !important; }
+}
+
+/* ── 7. PAGE HERO : texte ne déborde pas sur mobile ──────── */
+@media (max-width: 480px) {
+  .page-hero h1 {
+    font-size: clamp(1.6rem, 7vw, 2.4rem) !important;
+    word-break: break-word;
+  }
+  .page-hero p {
+    font-size: var(--text-sm) !important;
+    padding-inline: var(--space-2);
+  }
+}
+
+/* ── 8. HERO ACCUEIL : image ne déborde pas ─────────────── */
+@media (max-width: 480px) {
+  .hero__image img {
+    max-width: 220px !important;
+  }
+  .hero__title {
+    font-size: clamp(2rem, 9vw, 3rem) !important;
+  }
+  .hero__subtitle {
+    font-size: var(--text-sm) !important;
+  }
+}
+
+/* ── 9. ESPACE CLIENT : layout 2 colonnes → 1 colonne ────── */
+@media (max-width: 860px) {
+  .client-layout {
+    grid-template-columns: 1fr !important;
+  }
+  .client-sidebar {
+    position: static !important;
+  }
+}
+
+/* ── 10. ADMIN SIDEBAR sur mobile ─────────────────────────── */
+@media (max-width: 768px) {
+  .admin-main {
+    margin-left: 0 !important;
+  }
+  .stats-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  .admin-content {
+    padding: var(--space-4) !important;
+  }
+}
+
+/* ── 11. FOOTER responsive ─────────────────────────────────── */
+@media (max-width: 600px) {
+  .footer__inner {
+    grid-template-columns: 1fr !important;
+    gap: var(--space-6) !important;
+    padding-block: var(--space-8) !important;
+  }
+}
+
+/* ── 12. HEADER : logo + nav + bouton ne débordent pas ─── */
+@media (max-width: 380px) {
+  .header__inner {
+    gap: var(--space-3) !important;
+  }
+  .header__logo img {
+    height: 28px !important;
+  }
+  .header__actions .btn {
+    padding: .4em .8em !important;
+    font-size: var(--text-xs) !important;
+  }
+}
+
+/* ── 13. INPUTS : taille minimum pour éviter zoom iOS ─────── */
+@media (max-width: 768px) {
+  .form-input,
+  .select-input {
+    font-size: 16px !important;  /* évite le zoom auto sur iOS   */
+  }
+}
+
+/* ── 14. MODALS : pleine largeur sur mobile ────────────────── */
+@media (max-width: 560px) {
+  .modal-overlay {
+    align-items: flex-end !important;  /* slide-up depuis le bas    */
+    padding: 0 !important;
+  }
+  .modal {
+    max-width: 100% !important;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0 !important;
+    max-height: 90vh !important;
+    overflow-y: auto !important;
+  }
+}

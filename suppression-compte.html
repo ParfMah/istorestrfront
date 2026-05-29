@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+  <meta name="robots" content="noindex,nofollow"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Suppression de compte — iStore Pro</title>
+  <link rel="stylesheet" href="assets/css/global.css"/>
+  <link rel="stylesheet" href="assets/css/components.css"/>
+  <script src="assets/js/page-loader.js"></script>
+</head>
+<body>
+<header class="header">
+  <div class="container header__inner">
+    <a href="index.html" class="header__logo">
+      <img src="assets/images/logo-header.svg" alt="iStore Pro" style="height:38px;width:auto;display:block;"/>
+    </a>
+    <div class="header__actions"><a href="espace-client.html" class="btn btn--outline">Mon espace</a></div>
+  </div>
+</header>
+
+<div class="page-hero" style="padding:var(--space-10) 0;">
+  <div class="container">
+    <h1>Suppression <span>de compte</span></h1>
+    <p>Exercer votre droit à l'effacement — RGPD Art. 17</p>
+  </div>
+</div>
+
+<main class="container" style="max-width:580px;padding:var(--space-10) var(--space-6) var(--space-20);">
+
+  <div id="stepInfo">
+    <div style="background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.25);border-radius:var(--radius-md);padding:var(--space-5) var(--space-6);margin-bottom:var(--space-6);">
+      <p style="font-size:var(--text-sm);color:#fca5a5;line-height:1.8;">
+        ⚠️ <strong>Cette action est irréversible.</strong> La suppression de votre compte entraîne :
+      </p>
+      <ul style="font-size:var(--text-sm);color:rgba(255,255,255,.6);padding-left:var(--space-5);margin-top:var(--space-3);line-height:1.8;">
+        <li>La suppression de vos données personnelles (profil, email, téléphone)</li>
+        <li>La suppression de votre historique de navigation sur le site</li>
+        <li>La fermeture de l'accès à votre espace client</li>
+      </ul>
+      <p style="font-size:var(--text-xs);color:rgba(255,255,255,.35);margin-top:var(--space-3);">
+        Note : les données comptables et commandes sont conservées 10 ans par obligation légale (Art. L123-22 C. com.), mais anonymisées.
+      </p>
+    </div>
+
+    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-md);padding:var(--space-6);">
+      <div id="deleteAlert" class="alert" style="display:none;margin-bottom:var(--space-4);"></div>
+
+      <div class="form-group">
+        <label>Votre adresse email</label>
+        <input type="email" id="deleteEmail" class="form-input" placeholder="votre@email.com"/>
+      </div>
+      <div class="form-group">
+        <label>Mot de passe actuel (pour confirmer)</label>
+        <input type="password" id="deletePassword" class="form-input" placeholder="••••••••"/>
+      </div>
+      <div style="background:var(--bg-card2);border:1px solid var(--border);border-radius:var(--radius);padding:var(--space-3) var(--space-4);margin-bottom:var(--space-5);">
+        <label style="display:flex;align-items:flex-start;gap:var(--space-3);cursor:pointer;">
+          <input type="checkbox" id="deleteConfirm" style="width:16px;height:16px;min-width:16px;margin-top:3px;accent-color:#ef4444;"/>
+          <span style="font-size:var(--text-xs);color:rgba(255,255,255,.6);line-height:1.7;">
+            Je comprends que cette action est définitive et irréversible. Je souhaite supprimer mon compte iStore Pro.
+          </span>
+        </label>
+      </div>
+
+      <button id="deleteBtn" class="btn btn--full"
+        style="background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.4);color:#ef4444;font-weight:700;"
+        onclick="requestDeletion()">
+        🗑 Supprimer définitivement mon compte
+      </button>
+    </div>
+
+    <p style="font-size:var(--text-xs);color:var(--text-muted);text-align:center;margin-top:var(--space-5);line-height:1.7;">
+      Vous pouvez aussi envoyer votre demande par email à
+      <a href="mailto:privacy@istorepro.com" style="color:var(--gold);">privacy@istorepro.com</a><br/>
+      Délai de traitement : 30 jours maximum (RGPD Art. 12.3).
+    </p>
+  </div>
+
+  <div id="stepDone" style="display:none;text-align:center;padding:var(--space-10) 0;">
+    <div style="font-size:3rem;margin-bottom:var(--space-4);">📬</div>
+    <h2 style="font-family:var(--font-display);font-size:var(--text-xl);color:var(--gold);text-transform:uppercase;margin-bottom:var(--space-4);">Demande envoyée</h2>
+    <p style="font-size:var(--text-sm);color:var(--text-secondary);line-height:1.8;margin-bottom:var(--space-6);">
+      Votre demande de suppression a été transmise à notre équipe.<br/>
+      Vous recevrez une confirmation par email dans un délai de <strong style="color:#fff;">30 jours maximum</strong>.
+    </p>
+    <a href="index.html" class="btn btn--outline">Retour à l'accueil</a>
+  </div>
+
+</main>
+
+<footer class="footer footer--slim">
+  <div class="footer__bottom"><p>© 2025 iStore Pro. Tous droits réservés. &nbsp;·&nbsp;
+      <a href="mentions-legales.html" style="color:inherit">Mentions légales</a> &nbsp;·&nbsp;
+      <a href="politique-confidentialite.html" style="color:inherit">Confidentialité</a> &nbsp;·&nbsp;
+      <a href="cgu.html" style="color:inherit">CGU</a> &nbsp;·&nbsp;
+      <a href="cgv.html" style="color:inherit">CGV</a> &nbsp;·&nbsp;
+      <a href="contact.html" style="color:inherit">Contact</a>
+    </p></div>
+</footer>
+
+<script src="assets/js/utils.js"></script>
+<script src="assets/js/api.js"></script>
+<script src="assets/js/auth.js"></script>
+<script>
+async function requestDeletion() {
+  const email    = document.getElementById('deleteEmail').value.trim();
+  const password = document.getElementById('deletePassword').value;
+  const confirm  = document.getElementById('deleteConfirm').checked;
+  const alertEl  = document.getElementById('deleteAlert');
+  const btn      = document.getElementById('deleteBtn');
+
+  if (!email)    { showAlert(alertEl,'error','Veuillez saisir votre adresse email.'); return; }
+  if (!password) { showAlert(alertEl,'error','Veuillez saisir votre mot de passe.'); return; }
+  if (!confirm)  { showAlert(alertEl,'error','Veuillez cocher la case de confirmation.'); return; }
+
+  btn.disabled = true; btn.textContent = 'Traitement en cours…';
+
+  try {
+    // 1. Vérifier les identifiants
+    await API.post('/auth/login', { email, password }, false);
+
+    // 2. Envoyer la demande de suppression par email (via le formulaire de contact)
+    await API.post('/contact', {
+      name   : email,
+      email  : email,
+      subject: 'Demande de suppression de compte — RGPD',
+      message: `L'utilisateur ${email} demande la suppression de son compte conformément au RGPD Art. 17.\n\nDate de la demande : ${new Date().toLocaleString('fr-FR')}\n\nCette demande a été authentifiée par vérification du mot de passe.`
+    }, false);
+
+    // 3. Déconnecter
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+
+    document.getElementById('stepInfo').style.display = 'none';
+    document.getElementById('stepDone').style.display = 'block';
+  } catch(e) {
+    showAlert(alertEl, 'error', e.message || 'Erreur. Vérifiez vos identifiants.');
+    btn.disabled = false;
+    btn.textContent = '🗑 Supprimer définitivement mon compte';
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+  <link rel="shortcut icon" href="/favicon.svg"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Politique de confidentialité — iStore Pro</title>
+  <link rel="stylesheet" href="assets/css/global.css"/>
+  <link rel="stylesheet" href="assets/css/components.css"/>
+  <link rel="stylesheet" href="assets/css/responsive-fixes.css"/>
+  <script src="assets/js/page-loader.js"></script>
+  <style>
+    .legal-body{max-width:800px;margin:0 auto;padding:var(--space-12) var(--space-6) var(--space-20);}
+    .legal-section{margin-bottom:var(--space-10);}
+    .legal-section h2{font-family:var(--font-display);font-size:var(--text-lg);color:var(--gold);text-transform:uppercase;letter-spacing:.08em;margin-bottom:var(--space-4);padding-bottom:var(--space-3);border-bottom:1px solid var(--border);}
+    .legal-section h3{font-family:var(--font-display);font-size:var(--text-base);color:rgba(255,255,255,.85);text-transform:uppercase;letter-spacing:.06em;margin:var(--space-5) 0 var(--space-3);}
+    .legal-section p{font-size:var(--text-sm);color:rgba(255,255,255,.65);line-height:1.8;margin-bottom:var(--space-3);}
+    .legal-section ul{list-style:disc;padding-left:var(--space-6);margin-bottom:var(--space-3);}
+    .legal-section ul li{font-size:var(--text-sm);color:rgba(255,255,255,.65);line-height:1.8;margin-bottom:var(--space-2);}
+    .legal-info-box{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-md);padding:var(--space-5) var(--space-6);margin-bottom:var(--space-5);}
+    .legal-info-box p{margin-bottom:var(--space-2);font-size:var(--text-sm);color:rgba(255,255,255,.65);}
+    .legal-info-box p strong{color:rgba(255,255,255,.85);}
+    .legal-meta{font-size:var(--text-xs);color:var(--text-muted);padding:var(--space-4) var(--space-6);background:var(--bg-card2);border-radius:var(--radius-sm);border-left:3px solid var(--gold);margin-bottom:var(--space-8);}
+    .legal-nav{display:flex;flex-wrap:wrap;gap:var(--space-3);margin-bottom:var(--space-8);}
+    .legal-nav a{font-size:var(--text-xs);color:var(--text-muted);border:1px solid var(--border);border-radius:var(--radius-full);padding:var(--space-2) var(--space-4);transition:all var(--transition);text-transform:uppercase;letter-spacing:.06em;font-family:var(--font-display);}
+    .legal-nav a:hover,.legal-nav a.active{color:var(--gold);border-color:var(--gold);background:rgba(201,168,76,.05);}
+    .rights-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);margin-top:var(--space-4);}
+    .right-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-md);padding:var(--space-4) var(--space-5);}
+    .right-card .icon{font-size:1.4rem;margin-bottom:var(--space-2);}
+    .right-card h4{font-family:var(--font-display);font-size:var(--text-xs);color:var(--gold);text-transform:uppercase;letter-spacing:.08em;margin-bottom:var(--space-2);}
+    .right-card p{font-size:var(--text-xs);color:rgba(255,255,255,.55);line-height:1.7;}
+    @media(max-width:580px){.rights-grid{grid-template-columns:1fr;}}
+  </style>
+  <link rel="manifest" href="/manifest.json"/>
+  <meta name="theme-color" content="#C9A84C"/>
+  <meta name="mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <meta name="apple-mobile-web-app-title" content="iStore Pro"/>
+  <link rel="apple-touch-icon" href="/assets/images/icons/icon-192.svg"/>
+  <link rel="canonical" href="https://istore-pro-frontend.onrender.com/politique-confidentialite.html"/>
+</head>
+<body>
+
+<header class="header">
+  <div class="container header__inner">
+    <a href="index.html" class="header__logo">
+      <img src="assets/images/logo-header.svg" alt="iStore Pro" style="height:38px;width:auto;display:block;"/>
+    </a>
+    <nav class="header__nav" id="mainNav">
+      <a href="index.html"      class="nav-link">Accueil</a>
+      <a href="catalogue.html"  class="nav-link">Catalogue</a>
+      <a href="simulation.html" class="nav-link">Simuler un crédit</a>
+      <a href="comparateur.html" class="nav-link">Comparer</a>
+      <a href="faq.html"         class="nav-link">FAQ</a>
+      <a href="a-propos.html"   class="nav-link">À propos</a>
+      <a href="contact.html"    class="nav-link">Contact</a>
+    </nav>
+    <div class="header__actions" style="display:flex;gap:var(--space-3);align-items:center;">
+      <a href="favoris.html" title="Mes favoris" id="wishlistBtn" style="font-size:1.2rem;line-height:1;color:var(--text-muted);transition:color .2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-muted)'">🤍</a>
+      <a href="connexion.html" class="btn btn--outline" id="authBtn">Connexion</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </button>
+  </div>
+</header>
+
+<div class="page-hero">
+  <div class="container">
+    <h1>Politique de <span>confidentialité</span></h1>
+    <p>Comment iStore Pro collecte, utilise et protège vos données personnelles</p>
+  </div>
+</div>
+
+<main class="legal-body">
+
+  <div class="legal-nav">
+    <a href="mentions-legales.html">Mentions légales</a>
+    <a href="politique-confidentialite.html" class="active">Confidentialité</a>
+    <a href="cgu.html">CGU</a>
+    <a href="cgv.html">CGV</a>
+  </div>
+
+  <p class="legal-meta">Dernière mise à jour : mai 2025 · Conforme au Règlement Général sur la Protection des Données (RGPD — UE 2016/679)</p>
+
+  <!-- RESPONSABLE -->
+  <section class="legal-section">
+    <h2>1. Responsable du traitement</h2>
+    <div class="legal-info-box">
+      <p><strong>Responsable :</strong> iStore Pro</p>
+      <p><strong>Adresse :</strong> Paris, France</p>
+      <p><strong>Email de contact DPO :</strong> privacy@istorepro.com</p>
+    </div>
+    <p>iStore Pro, en tant que responsable du traitement au sens du RGPD, s'engage à protéger la vie privée de ses utilisateurs et à traiter leurs données personnelles conformément à la réglementation applicable.</p>
+  </section>
+
+  <!-- DONNÉES COLLECTÉES -->
+  <section class="legal-section">
+    <h2>2. Données collectées</h2>
+
+    <h3>2.1 Données fournies lors de l'inscription</h3>
+    <ul>
+      <li>Nom et prénom</li>
+      <li>Adresse email</li>
+      <li>Numéro de téléphone</li>
+      <li>Mot de passe (hashé — non lisible par iStore Pro)</li>
+    </ul>
+
+    <h3>2.2 Données collectées lors d'une commande</h3>
+    <ul>
+      <li>Adresse de livraison complète (nom, adresse, ville, code postal, pays)</li>
+      <li>Données de paiement (traitées exclusivement par Stripe — iStore Pro ne stocke aucune donnée bancaire)</li>
+      <li>Historique des commandes et statuts</li>
+    </ul>
+
+    <h3>2.3 Données relatives aux dossiers de crédit</h3>
+    <ul>
+      <li>Montant de l'apport, durée, mensualités calculées</li>
+      <li>Historique des remboursements</li>
+    </ul>
+
+    <h3>2.4 Données de navigation</h3>
+    <ul>
+      <li>Adresse IP (anonymisée après 13 mois)</li>
+      <li>Données de session (token JWT — durée limitée)</li>
+      <li>Pages visitées, durée de navigation (à des fins statistiques agrégées uniquement)</li>
+    </ul>
+  </section>
+
+  <!-- FINALITÉS -->
+  <section class="legal-section">
+    <h2>3. Finalités et bases légales du traitement</h2>
+    <div class="legal-info-box">
+      <p><strong>Exécution du contrat :</strong> Création de compte, traitement des commandes, gestion des livraisons, suivi des dossiers de crédit, émission de quittances PDF.</p>
+      <p><strong>Obligation légale :</strong> Conservation des factures et justificatifs comptables (10 ans — art. L123-22 Code de commerce).</p>
+      <p><strong>Intérêt légitime :</strong> Lutte contre la fraude, sécurité du site, amélioration des services, statistiques internes anonymisées.</p>
+      <p><strong>Consentement :</strong> Envoi d'emails promotionnels (désactivable à tout moment depuis votre espace client).</p>
+    </div>
+  </section>
+
+  <!-- CONSERVATION -->
+  <section class="legal-section">
+    <h2>4. Durée de conservation</h2>
+    <ul>
+      <li><strong>Données de compte actif :</strong> pendant toute la durée de la relation commerciale</li>
+      <li><strong>Données de compte inactif :</strong> 3 ans après le dernier contact, puis suppression ou anonymisation</li>
+      <li><strong>Données de commande / comptables :</strong> 10 ans (obligation légale)</li>
+      <li><strong>Données de dossier de crédit :</strong> 5 ans après clôture du dossier</li>
+      <li><strong>Logs de connexion :</strong> 12 mois</li>
+      <li><strong>Données de navigation :</strong> 13 mois maximum</li>
+    </ul>
+  </section>
+
+  <!-- PARTAGE -->
+  <section class="legal-section">
+    <h2>5. Partage et sous-traitants</h2>
+    <p>iStore Pro ne vend jamais vos données personnelles à des tiers. Les données peuvent être partagées avec les sous-traitants techniques strictement nécessaires :</p>
+    <ul>
+      <li><strong>Stripe, Inc.</strong> — traitement des paiements par carte bancaire (politique de confidentialité : stripe.com/privacy)</li>
+      <li><strong>MongoDB Atlas (MongoDB, Inc.)</strong> — hébergement de la base de données</li>
+      <li><strong>Render Services, Inc.</strong> — hébergement du serveur applicatif</li>
+      <li><strong>Prestataire email</strong> — envoi des emails transactionnels (confirmations de commande, quittances)</li>
+    </ul>
+    <p>Tous ces sous-traitants sont liés par des accords de traitement des données (DPA) conformes au RGPD et offrent des garanties suffisantes.</p>
+  </section>
+
+  <!-- VOS DROITS -->
+  <section class="legal-section">
+    <h2>6. Vos droits</h2>
+    <p>Conformément au RGPD (articles 15 à 22), vous disposez des droits suivants concernant vos données personnelles :</p>
+    <div class="rights-grid">
+      <div class="right-card">
+        <div class="icon">👁️</div>
+        <h4>Droit d'accès</h4>
+        <p>Obtenir une copie de toutes vos données personnelles que nous détenons.</p>
+      </div>
+      <div class="right-card">
+        <div class="icon">✏️</div>
+        <h4>Droit de rectification</h4>
+        <p>Corriger toute donnée inexacte ou incomplète vous concernant.</p>
+      </div>
+      <div class="right-card">
+        <div class="icon">🗑️</div>
+        <h4>Droit à l'effacement</h4>
+        <p>Demander la suppression de vos données (sous réserve des obligations légales).</p>
+      </div>
+      <div class="right-card">
+        <div class="icon">⏸️</div>
+        <h4>Droit à la limitation</h4>
+        <p>Demander la suspension temporaire du traitement de vos données.</p>
+      </div>
+      <div class="right-card">
+        <div class="icon">📦</div>
+        <h4>Portabilité</h4>
+        <p>Recevoir vos données dans un format structuré et lisible par machine.</p>
+      </div>
+      <div class="right-card">
+        <div class="icon">🚫</div>
+        <h4>Droit d'opposition</h4>
+        <p>Vous opposer au traitement de vos données à des fins commerciales.</p>
+      </div>
+    </div>
+    <p style="margin-top:var(--space-5);">Pour exercer ces droits, envoyez votre demande par email à <strong>privacy@istorepro.com</strong> en joignant une copie de votre pièce d'identité. Nous répondrons dans un délai d'un mois. Vous pouvez également <a href="suppression-compte.html" style="color:var(--gold);text-decoration:underline;">demander la suppression de votre compte</a> directement depuis notre site. Vous pouvez également adresser une réclamation à la <strong>CNIL</strong> (Commission Nationale de l'Informatique et des Libertés) : <strong>cnil.fr</strong></p>
+  </section>
+
+  <!-- SÉCURITÉ -->
+  <section class="legal-section">
+    <h2>7. Sécurité des données</h2>
+    <p>iStore Pro met en œuvre les mesures techniques et organisationnelles appropriées pour protéger vos données personnelles :</p>
+    <ul>
+      <li>Connexions chiffrées TLS/HTTPS sur l'ensemble du site</li>
+      <li>Mots de passe hashés via bcrypt (facteur de coût élevé)</li>
+      <li>Authentification par JSON Web Token (JWT) à durée limitée</li>
+      <li>Aucune donnée bancaire stockée sur nos serveurs (tout transit via Stripe)</li>
+      <li>Accès aux données limité aux seuls employés qui en ont besoin</li>
+      <li>Sauvegardes régulières avec chiffrement</li>
+    </ul>
+  </section>
+
+  <!-- COOKIES -->
+  <section class="legal-section">
+    <h2>8. Cookies et traceurs</h2>
+    <h3>Cookies strictement nécessaires (non paramétrables)</h3>
+    <ul>
+      <li><strong>Token d'authentification (JWT)</strong> — maintient votre session de connexion. Durée : selon paramétrage de connexion.</li>
+    </ul>
+    <h3>Cookies analytiques (avec consentement)</h3>
+    <p>iStore Pro peut utiliser des outils de mesure d'audience anonymisés pour améliorer ses services. Aucune donnée personnelle identifiable n'est transmise à des fins publicitaires. iStore Pro ne diffuse aucune publicité tierce.</p>
+  </section>
+
+  <!-- MODIFICATIONS -->
+  <section class="legal-section">
+    <h2>9. Modifications de la présente politique</h2>
+    <p>iStore Pro se réserve le droit de modifier la présente politique à tout moment, notamment pour se conformer aux évolutions législatives ou réglementaires. La date de mise à jour figurant en haut de page sera modifiée en conséquence. En cas de modification substantielle, les utilisateurs en seront informés par email.</p>
+  </section>
+
+</main>
+
+<footer class="footer footer--slim">
+  <div class="footer__bottom"><p>© 2025 iStore Pro. Tous droits réservés. &nbsp;·&nbsp;
+      <a href="mentions-legales.html" style="color:inherit">Mentions légales</a> &nbsp;·&nbsp;
+      <a href="politique-confidentialite.html" style="color:inherit">Confidentialité</a> &nbsp;·&nbsp;
+      <a href="cgu.html" style="color:inherit">CGU</a> &nbsp;·&nbsp;
+      <a href="cgv.html" style="color:inherit">CGV</a> &nbsp;·&nbsp;
+      <a href="contact.html" style="color:inherit">Contact</a>
+    </p></div>
+</footer>
+
+<script src="assets/js/utils.js"></script>
+<script src="assets/js/auth.js"></script>
+  <script src="assets/js/ui-utils.js"></script>
+  <script src="assets/js/wishlist.js"></script>
+</body>
+</html>

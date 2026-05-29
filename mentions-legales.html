@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+  <link rel="shortcut icon" href="/favicon.svg"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mentions légales — iStore Pro</title>
+  <link rel="stylesheet" href="assets/css/global.css"/>
+  <link rel="stylesheet" href="assets/css/components.css"/>
+  <link rel="stylesheet" href="assets/css/responsive-fixes.css"/>
+  <script src="assets/js/page-loader.js"></script>
+  <style>
+    .legal-body{max-width:800px;margin:0 auto;padding:var(--space-12) var(--space-6) var(--space-20);}
+    .legal-section{margin-bottom:var(--space-10);}
+    .legal-section h2{font-family:var(--font-display);font-size:var(--text-lg);color:var(--gold);text-transform:uppercase;letter-spacing:.08em;margin-bottom:var(--space-4);padding-bottom:var(--space-3);border-bottom:1px solid var(--border);}
+    .legal-section h3{font-family:var(--font-display);font-size:var(--text-base);color:rgba(255,255,255,.85);text-transform:uppercase;letter-spacing:.06em;margin:var(--space-5) 0 var(--space-3);}
+    .legal-section p{font-size:var(--text-sm);color:rgba(255,255,255,.65);line-height:1.8;margin-bottom:var(--space-3);}
+    .legal-section ul{list-style:disc;padding-left:var(--space-6);margin-bottom:var(--space-3);}
+    .legal-section ul li{font-size:var(--text-sm);color:rgba(255,255,255,.65);line-height:1.8;margin-bottom:var(--space-2);}
+    .legal-info-box{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-md);padding:var(--space-5) var(--space-6);margin-bottom:var(--space-5);}
+    .legal-info-box p{margin-bottom:var(--space-2);font-size:var(--text-sm);color:rgba(255,255,255,.65);}
+    .legal-info-box p strong{color:rgba(255,255,255,.85);}
+    .legal-meta{font-size:var(--text-xs);color:var(--text-muted);padding:var(--space-4) var(--space-6);background:var(--bg-card2);border-radius:var(--radius-sm);border-left:3px solid var(--gold);margin-bottom:var(--space-8);}
+    .legal-nav{display:flex;flex-wrap:wrap;gap:var(--space-3);margin-bottom:var(--space-8);}
+    .legal-nav a{font-size:var(--text-xs);color:var(--text-muted);border:1px solid var(--border);border-radius:var(--radius-full);padding:var(--space-2) var(--space-4);transition:all var(--transition);text-transform:uppercase;letter-spacing:.06em;font-family:var(--font-display);}
+    .legal-nav a:hover,.legal-nav a.active{color:var(--gold);border-color:var(--gold);background:rgba(201,168,76,.05);}
+  </style>
+  <link rel="manifest" href="/manifest.json"/>
+  <meta name="theme-color" content="#C9A84C"/>
+  <meta name="mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <meta name="apple-mobile-web-app-title" content="iStore Pro"/>
+  <link rel="apple-touch-icon" href="/assets/images/icons/icon-192.svg"/>
+  <link rel="canonical" href="https://istore-pro-frontend.onrender.com/mentions-legales.html"/>
+</head>
+<body>
+
+<header class="header">
+  <div class="container header__inner">
+    <a href="index.html" class="header__logo">
+      <img src="assets/images/logo-header.svg" alt="iStore Pro" style="height:38px;width:auto;display:block;"/>
+    </a>
+    <nav class="header__nav" id="mainNav">
+      <a href="index.html"      class="nav-link">Accueil</a>
+      <a href="catalogue.html"  class="nav-link">Catalogue</a>
+      <a href="simulation.html" class="nav-link">Simuler un crédit</a>
+      <a href="comparateur.html" class="nav-link">Comparer</a>
+      <a href="faq.html"         class="nav-link">FAQ</a>
+      <a href="a-propos.html"   class="nav-link">À propos</a>
+      <a href="contact.html"    class="nav-link">Contact</a>
+    </nav>
+    <div class="header__actions" style="display:flex;gap:var(--space-3);align-items:center;">
+      <a href="favoris.html" title="Mes favoris" id="wishlistBtn" style="font-size:1.2rem;line-height:1;color:var(--text-muted);transition:color .2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-muted)'">🤍</a>
+      <a href="connexion.html" class="btn btn--outline" id="authBtn">Connexion</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </button>
+  </div>
+</header>
+
+<div class="page-hero">
+  <div class="container">
+    <h1>Mentions <span>légales</span></h1>
+    <p>Informations légales relatives au site iStore Pro</p>
+  </div>
+</div>
+
+<main class="legal-body">
+
+  <div class="legal-nav">
+    <a href="mentions-legales.html" class="active">Mentions légales</a>
+    <a href="politique-confidentialite.html">Confidentialité</a>
+    <a href="cgu.html">CGU</a>
+    <a href="cgv.html">CGV</a>
+  </div>
+
+  <p class="legal-meta">Dernière mise à jour : mai 2025</p>
+
+  <!-- ÉDITEUR -->
+  <section class="legal-section">
+    <h2>1. Éditeur du site</h2>
+    <div class="legal-info-box">
+      <p><strong>Raison sociale :</strong> iStore Pro</p>
+      <p><strong>Forme juridique :</strong> Entreprise individuelle</p>
+      <p><strong>Siège social :</strong> Paris, France</p>
+      <p><strong>Email :</strong> contact@istorepro.com</p>
+      <p><strong>Téléphone :</strong> +33 1 23 45 67 89</p>
+      <p><strong>Directeur de la publication :</strong> Le gérant d'iStore Pro</p>
+      <p><strong>Activité :</strong> Vente de smartphones neufs et reconditionnés — iPhones série 13 à 17</p>
+    </div>
+    <p>Le site internet accessible à l'adresse <strong>istorepro.com</strong> (ainsi que ses sous-domaines) est édité par iStore Pro. Toute reproduction, même partielle, du contenu de ce site est soumise à l'autorisation préalable et écrite de l'éditeur.</p>
+  </section>
+
+  <!-- HÉBERGEUR -->
+  <section class="legal-section">
+    <h2>2. Hébergement</h2>
+    <div class="legal-info-box">
+      <p><strong>Hébergeur backend :</strong> Render Services, Inc.</p>
+      <p><strong>Adresse :</strong> 525 Brannan Street, Suite 300, San Francisco, CA 94107, USA</p>
+      <p><strong>Site web :</strong> render.com</p>
+    </div>
+    <div class="legal-info-box">
+      <p><strong>Hébergeur frontend :</strong> Render Static Sites / service équivalent</p>
+      <p><strong>Base de données :</strong> MongoDB Atlas — MongoDB, Inc., 1633 Broadway, 38th Floor, New York, NY 10019, USA</p>
+    </div>
+    <p>Les données transitant par le site sont traitées sur des serveurs situés en Europe ou aux États-Unis selon les services utilisés. Les transferts hors UE sont encadrés par des clauses contractuelles types conformes au RGPD.</p>
+  </section>
+
+  <!-- PROPRIÉTÉ INTELLECTUELLE -->
+  <section class="legal-section">
+    <h2>3. Propriété intellectuelle</h2>
+    <p>L'ensemble des éléments constituant le site iStore Pro (textes, graphismes, logotypes, images, icônes, sons, logiciels, structure, charte graphique) est la propriété exclusive d'iStore Pro ou de ses partenaires, et est protégé par les dispositions du Code de la propriété intellectuelle.</p>
+    <p>Toute reproduction, représentation, modification, publication, adaptation totale ou partielle des éléments du site, quel que soit le moyen ou le procédé utilisé, est interdite sauf autorisation écrite préalable d'iStore Pro.</p>
+    <p><strong>Apple®, iPhone®</strong> et les noms de produits associés sont des marques déposées d'Apple Inc., enregistrées aux États-Unis et dans d'autres pays. iStore Pro n'est pas affilié à Apple Inc. et n'agit pas en son nom.</p>
+  </section>
+
+  <!-- RESPONSABILITÉ -->
+  <section class="legal-section">
+    <h2>4. Limitation de responsabilité</h2>
+    <p>iStore Pro s'efforce d'assurer l'exactitude et la mise à jour des informations diffusées sur son site. Toutefois, iStore Pro ne peut garantir l'exactitude, la complétude ou l'actualité des informations diffusées sur le site. L'utilisateur est seul responsable de l'utilisation qu'il fait des informations et contenus du présent site.</p>
+    <p>iStore Pro se réserve le droit de modifier, à tout moment et sans préavis, les présentes mentions légales ainsi que toutes informations figurant sur son site. iStore Pro ne pourra être tenu responsable de tout dommage direct ou indirect résultant de l'accès au site ou de son utilisation.</p>
+    <p>iStore Pro ne saurait être responsable de l'interruption momentanée du service pour des raisons techniques indépendantes de sa volonté (maintenance, pannes réseau, etc.).</p>
+  </section>
+
+  <!-- DROIT APPLICABLE -->
+  <section class="legal-section">
+    <h2>5. Droit applicable et juridiction compétente</h2>
+    <p>Les présentes mentions légales sont soumises au droit français. En cas de litige, les tribunaux français seront seuls compétents, sauf dispositions légales d'ordre public contraires applicables au consommateur.</p>
+    <p>Pour toute réclamation ou demande d'information, vous pouvez contacter iStore Pro à l'adresse : <strong>contact@istorepro.com</strong></p>
+  </section>
+
+  <!-- MÉDIATION -->
+  <section class="legal-section">
+    <h2>6. Médiation de la consommation</h2>
+    <p>Conformément aux dispositions du Code de la consommation concernant le règlement amiable des litiges, iStore Pro adhère au service de médiation dont les coordonnées sont les suivantes :</p>
+    <p>En cas de litige non résolu avec notre service client, vous pouvez recourir gratuitement à la médiation de la consommation. La Commission européenne met également à disposition une plateforme de règlement en ligne des litiges (RLL) accessible à : <strong>ec.europa.eu/consumers/odr</strong></p>
+  </section>
+
+  <!-- COOKIES -->
+  <section class="legal-section">
+    <h2>7. Cookies</h2>
+    <p>Le site iStore Pro peut être amené à vous demander l'acceptation de cookies à des fins de fonctionnement du site et de statistiques de navigation. Un cookie ne permet pas de vous identifier ; en revanche, il enregistre des informations relatives à votre navigation.</p>
+    <p>Les cookies strictement nécessaires au fonctionnement du site (authentification, panier) ne peuvent être désactivés. Les cookies analytiques peuvent être refusés sans impact sur votre navigation. Pour en savoir plus, consultez notre <a href="politique-confidentialite.html" style="color:var(--gold)">Politique de confidentialité</a>.</p>
+  </section>
+
+</main>
+
+<footer class="footer footer--slim">
+  <div class="footer__bottom"><p>© 2025 iStore Pro. Tous droits réservés. &nbsp;·&nbsp;
+      <a href="mentions-legales.html" style="color:inherit">Mentions légales</a> &nbsp;·&nbsp;
+      <a href="politique-confidentialite.html" style="color:inherit">Confidentialité</a> &nbsp;·&nbsp;
+      <a href="cgu.html" style="color:inherit">CGU</a> &nbsp;·&nbsp;
+      <a href="cgv.html" style="color:inherit">CGV</a> &nbsp;·&nbsp;
+      <a href="contact.html" style="color:inherit">Contact</a>
+    </p></div>
+</footer>
+
+<script src="assets/js/utils.js"></script>
+<script src="assets/js/auth.js"></script>
+  <script src="assets/js/ui-utils.js"></script>
+  <script src="assets/js/wishlist.js"></script>
+</body>
+</html>

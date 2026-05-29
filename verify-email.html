@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vérification email — iStore Pro</title>
+  <link rel="stylesheet" href="assets/css/global.css"/>
+  <link rel="stylesheet" href="assets/css/components.css"/>
+  <script src="assets/js/page-loader.js"></script>
+  <style>
+    .verify-wrap{max-width:520px;margin:0 auto;padding:var(--space-12) var(--space-6) var(--space-20);text-align:center;}
+    .verify-icon{font-size:4rem;margin-bottom:var(--space-5);}
+    .verify-title{font-family:var(--font-display);font-size:var(--text-2xl);text-transform:uppercase;letter-spacing:.06em;margin-bottom:var(--space-4);}
+    .verify-title span{color:var(--gold);}
+    .verify-body{font-size:var(--text-sm);color:var(--text-secondary);line-height:1.8;margin-bottom:var(--space-8);}
+    .resend-form{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-md);padding:var(--space-6);text-align:left;margin-top:var(--space-8);}
+    .resend-form h3{font-family:var(--font-display);font-size:var(--text-base);color:rgba(255,255,255,.75);text-transform:uppercase;letter-spacing:.06em;margin-bottom:var(--space-4);}
+    #verifySpinner{display:flex;flex-direction:column;align-items:center;gap:var(--space-4);padding:var(--space-10) 0;}
+    .spinner{width:44px;height:44px;border:3px solid var(--border);border-top-color:var(--gold);border-radius:50%;animation:spin .8s linear infinite;}
+    @keyframes spin{to{transform:rotate(360deg)}}
+  </style>
+  <link rel="manifest" href="/manifest.json"/>
+  <meta name="theme-color" content="#C9A84C"/>
+  <meta name="mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <meta name="apple-mobile-web-app-title" content="iStore Pro"/>
+  <link rel="apple-touch-icon" href="/assets/images/icons/icon-192.svg"/>
+  <link rel="canonical" href="https://istore-pro-frontend.onrender.com/verify-email.html"/>
+</head>
+<body>
+<header class="header">
+  <div class="container header__inner">
+    <a href="index.html" class="header__logo">
+      <img src="assets/images/logo-header.svg" alt="iStore Pro" style="height:38px;width:auto;display:block;"/>
+    </a>
+    <nav class="header__nav" id="mainNav">
+      <a href="index.html"     class="nav-link">Accueil</a>
+      <a href="catalogue.html" class="nav-link">Catalogue</a>
+    </nav>
+    <div class="header__actions" style="display:flex;gap:var(--space-3);align-items:center;">
+      <a href="favoris.html" title="Mes favoris" id="wishlistBtn" style="font-size:1.2rem;line-height:1;color:var(--text-muted);transition:color .2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-muted)'">🤍</a><a href="connexion.html" class="btn btn--outline" id="authBtn">Connexion</a></div>
+    <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </button>
+  </div>
+</header>
+
+<div class="page-hero" style="padding:var(--space-10) 0;">
+  <div class="container">
+    <h1>Vérification <span>email</span></h1>
+    <p>Activation de votre compte iStore Pro</p>
+  </div>
+</div>
+
+<main class="container">
+  <div class="verify-wrap">
+
+    <!-- Spinner pendant la vérification -->
+    <div id="verifySpinner">
+      <div class="spinner"></div>
+      <p style="color:var(--text-muted);font-size:var(--text-sm);">Vérification en cours…</p>
+    </div>
+
+    <!-- Succès -->
+    <div id="stateSuccess" style="display:none;">
+      <div class="verify-icon">✅</div>
+      <h1 class="verify-title">Email <span>vérifié !</span></h1>
+      <p class="verify-body">
+        Votre adresse email a été confirmée avec succès.<br/>
+        Vous êtes maintenant connecté et pouvez accéder à votre espace client.
+      </p>
+      <a href="espace-client.html" class="btn btn--primary" style="margin-right:var(--space-3);">Mon espace client →</a>
+      <a href="catalogue.html"     class="btn btn--outline">Voir le catalogue</a>
+    </div>
+
+    <!-- Expiré / invalide -->
+    <div id="stateExpired" style="display:none;">
+      <div class="verify-icon">⛔</div>
+      <h1 class="verify-title">Lien <span style="color:var(--error);">expiré</span></h1>
+      <p class="verify-body">
+        Ce lien de vérification est invalide ou a expiré (validité 24h).<br/>
+        Demandez un nouvel email ci-dessous.
+      </p>
+      <div class="resend-form">
+        <h3>📬 Renvoyer l'email de vérification</h3>
+        <div id="resendAlert" class="alert" style="display:none;margin-bottom:var(--space-4);"></div>
+        <div class="form-group">
+          <label>Votre adresse email</label>
+          <input type="email" id="resendEmail" class="form-input" placeholder="votre@email.com"/>
+        </div>
+        <button class="btn btn--primary btn--full" id="resendBtn">Renvoyer le lien</button>
+      </div>
+    </div>
+
+    <!-- Déjà vérifié -->
+    <div id="stateAlready" style="display:none;">
+      <div class="verify-icon">👍</div>
+      <h1 class="verify-title">Compte déjà <span>actif</span></h1>
+      <p class="verify-body">
+        Votre adresse email est déjà vérifiée.<br/>
+        Vous pouvez vous connecter directement.
+      </p>
+      <a href="connexion.html" class="btn btn--primary">Se connecter →</a>
+    </div>
+
+    <!-- Pas de token (accès direct à la page) -->
+    <div id="stateNoToken" style="display:none;">
+      <div class="verify-icon">📧</div>
+      <h1 class="verify-title">Email en attente de <span>confirmation</span></h1>
+      <p class="verify-body">
+        Nous vous avons envoyé un email de confirmation lors de votre inscription.<br/>
+        Cliquez sur le lien dans cet email pour activer votre compte.<br/>
+        <strong style="color:rgba(255,255,255,.5);">Pensez à vérifier vos spams.</strong>
+      </p>
+      <div class="resend-form">
+        <h3>📬 Vous n'avez pas reçu l'email ?</h3>
+        <div id="resendAlert2" class="alert" style="display:none;margin-bottom:var(--space-4);"></div>
+        <div class="form-group">
+          <label>Votre adresse email</label>
+          <input type="email" id="resendEmail2" class="form-input" placeholder="votre@email.com"/>
+        </div>
+        <button class="btn btn--primary btn--full" id="resendBtn2">Renvoyer le lien de vérification</button>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer class="footer footer--slim">
+  <div class="footer__bottom"><p>© 2025 iStore Pro. Tous droits réservés. &nbsp;·&nbsp;
+      <a href="mentions-legales.html" style="color:inherit">Mentions légales</a> &nbsp;·&nbsp;
+      <a href="politique-confidentialite.html" style="color:inherit">Confidentialité</a> &nbsp;·&nbsp;
+      <a href="cgu.html" style="color:inherit">CGU</a> &nbsp;·&nbsp;
+      <a href="cgv.html" style="color:inherit">CGV</a> &nbsp;·&nbsp;
+      <a href="contact.html" style="color:inherit">Contact</a>
+    </p></div>
+</footer>
+
+<script src="assets/js/utils.js"></script>
+<script src="assets/js/api.js"></script>
+<script src="assets/js/auth.js"></script>
+<script>
+const token = new URLSearchParams(window.location.search).get('token');
+
+function show(id) {
+  ['verifySpinner','stateSuccess','stateExpired','stateAlready','stateNoToken']
+    .forEach(s => document.getElementById(s).style.display = 'none');
+  document.getElementById(id).style.display = 'block';
+}
+
+async function doResend(emailId, alertId, btn) {
+  const email   = document.getElementById(emailId).value.trim();
+  const alertEl = document.getElementById(alertId);
+  if (!email) { showAlert(alertEl, 'error', 'Veuillez saisir votre adresse email.'); return; }
+  btn.disabled = true; btn.textContent = 'Envoi en cours…';
+  try {
+    await API.post('/auth/resend-verify', { email }, false);
+    showAlert(alertEl, 'success', 'Si cet email est en attente, un nouveau lien a été envoyé. Vérifiez vos spams.');
+  } catch(e) {
+    showAlert(alertEl, 'error', e.message || 'Erreur serveur.');
+  } finally {
+    btn.disabled = false; btn.textContent = 'Renvoyer le lien de vérification';
+  }
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+  if (!token) { show('stateNoToken'); return; }
+
+  try {
+    const res = await API.post('/auth/verify-email', { token }, false);
+    // Connecter automatiquement l'utilisateur
+    localStorage.setItem('token', res.token);
+    localStorage.setItem('user',  JSON.stringify(res.user));
+    show('stateSuccess');
+  } catch(e) {
+    if (e.message?.includes('expiré') || e.message?.includes('invalide') || e.expired) {
+      show('stateExpired');
+    } else if (e.message?.includes('déjà')) {
+      show('stateAlready');
+    } else {
+      show('stateExpired');
+    }
+  }
+
+  // Boutons renvoyer
+  document.getElementById('resendBtn')?.addEventListener('click', function() {
+    doResend('resendEmail', 'resendAlert', this);
+  });
+  document.getElementById('resendBtn2')?.addEventListener('click', function() {
+    doResend('resendEmail2', 'resendAlert2', this);
+  });
+});
+</script>
+  <script src="assets/js/ui-utils.js"></script>
+  <script src="assets/js/wishlist.js"></script>
+</body>
+</html>

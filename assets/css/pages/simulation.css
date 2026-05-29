@@ -1,0 +1,155 @@
+/* ============================================================
+   simulation.css — iStore Pro
+   FIXES : résultat immédiatement visible sur mobile,
+   layout responsive sans scroll bizarre, centrage desktop
+   ============================================================ */
+
+/* ── Layout principal ────────────────────────────────────────
+   Desktop  : 2 colonnes côte à côte (formulaire | résultat)
+   Mobile   : 1 colonne empilée — formulaire PUIS résultat    */
+.simulation-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-10);
+  padding-top: var(--space-10);
+  padding-bottom: var(--space-16);
+  align-items: start;
+  max-width: var(--container-max);
+  margin-inline: auto;
+}
+
+/* ── Cartes ──────────────────────────────────────────────── */
+.sim-form-card,
+.sim-result-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-8);
+  /* PAS de height fixe, PAS de overflow caché               */
+  width: 100%;
+}
+.sim-form-card  { border-top: 2px solid var(--blue); }
+.sim-result-card { border-top: 2px solid var(--gold); }
+
+.sim-form-card h2,
+.sim-result-card h2 {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  margin-bottom: var(--space-6);
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+/* ── Disclaimer ──────────────────────────────────────────── */
+.sim-result__disclaimer {
+  background: rgba(201,168,76,.08);
+  color: var(--gold);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--text-sm);
+  margin-bottom: var(--space-6);
+  line-height: 1.6;
+}
+
+/* ── Grille résultats ────────────────────────────────────── */
+.sim-result__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+}
+
+.sim-result__item {
+  background: var(--bg-card2);
+  border-radius: var(--radius-sm);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  border: 1px solid var(--border-light);
+  transition: border-color var(--transition);
+}
+.sim-result__item:hover { border-color: var(--border); }
+
+.sim-result__item span {
+  font-family: var(--font-display);
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+.sim-result__item strong {
+  font-size: var(--text-md);
+  font-weight: 700;
+  color: #fff;
+}
+
+/* Mensualité mise en valeur */
+.sim-result__item.highlight {
+  background: linear-gradient(135deg, #0a0a0a, #111);
+  border-color: var(--gold);
+  grid-column: span 2;
+  box-shadow: var(--shadow-gold);
+  padding: var(--space-5);
+}
+.sim-result__item.highlight span  { color: var(--gold-muted); }
+.sim-result__item.highlight strong {
+  color: var(--gold);
+  font-size: var(--text-2xl);
+  font-family: var(--font-display);
+}
+
+/* ── Résultat : animation d'apparition ──────────────────────
+   Quand #simResult devient visible, il glisse depuis le bas  */
+#simResult {
+  animation: simSlideIn .35s cubic-bezier(0.4,0,0.2,1);
+}
+@keyframes simSlideIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Bouton commander après simulation ───────────────────── */
+#simResult .btn--primary,
+#simResult .btn--gold {
+  margin-top: var(--space-6);
+  width: 100%;
+}
+
+/* ══════════════════════════════════════════════════════════
+   RESPONSIVE — Tablette (≤ 900px)
+   Les 2 cartes passent en colonne unique                    */
+@media (max-width: 900px) {
+  .simulation-layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    padding-top: var(--space-6);
+  }
+
+  /* Sur mobile, formulaire puis résultat : ordre naturel    */
+  .sim-form-card  { order: 1; }
+  .sim-result-card { order: 2; }
+}
+
+/* ══════════════════════════════════════════════════════════
+   RESPONSIVE — Mobile (≤ 480px)                            */
+@media (max-width: 480px) {
+  .sim-form-card,
+  .sim-result-card {
+    padding: var(--space-5);
+  }
+
+  /* Grille résultats : 1 seule colonne sur très petit écran */
+  .sim-result__grid {
+    grid-template-columns: 1fr;
+  }
+  .sim-result__item.highlight {
+    grid-column: span 1;
+  }
+
+  .simulation-layout {
+    padding-bottom: var(--space-10);
+  }
+}

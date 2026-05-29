@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="description" content="Comparez deux iPhones côte à côte : prix, specs, état, garantie. Faites le bon choix en un coup d'œil."/>
+  <meta name="keywords"    content="comparer iPhone, différence iPhone 14 15, comparatif iPhone"/>
+  <meta name="robots"      content="index,follow"/>
+  <meta property="og:type"        content="website"/>
+  <meta property="og:site_name"   content="iStore Pro"/>
+  <meta property="og:title"       content="Comparer des iPhones — iStore Pro"/>
+  <meta property="og:description" content="Comparez deux iPhones côte à côte : prix, specs, état, garantie. Faites le bon choix en un coup d'œil."/>
+  <meta property="og:image"       content="https://istore-pro-frontend.onrender.com/assets/images/logo.svg"/>
+  <meta property="og:url"         content="https://istore-pro-frontend.onrender.com/comparateur.html"/>
+  <meta name="twitter:card"        content="summary_large_image"/>
+  <meta name="twitter:title"       content="Comparer des iPhones — iStore Pro"/>
+  <meta name="twitter:description" content="Comparez deux iPhones côte à côte : prix, specs, état, garantie. Faites le bon choix en un coup d'œil."/>
+  <meta name="twitter:image"       content="https://istore-pro-frontend.onrender.com/assets/images/logo.svg"/>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Comparateur iPhone — iStore Pro</title>
+  <link rel="stylesheet" href="assets/css/global.css"/>
+  <link rel="stylesheet" href="assets/css/components.css"/>
+  <link rel="stylesheet" href="assets/css/responsive-fixes.css"/>
+  <script src="assets/js/page-loader.js"></script>
+  <style>
+    /* ── Comparateur — responsive complet ── */
+    .comp-wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: var(--space-10) var(--space-6) var(--space-20);
+      box-sizing: border-box;
+    }
+
+    /* Sélecteurs */
+    .comp-selectors {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: var(--space-5);
+      align-items: center;
+      margin-bottom: var(--space-10);
+    }
+    .comp-vs {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      color: var(--gold);
+      font-weight: 700;
+      text-align: center;
+      padding: 0 var(--space-3);
+    }
+    .comp-select-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: var(--space-5);
+    }
+    .comp-select-box label {
+      display: block;
+      font-family: var(--font-display);
+      font-size: var(--text-xs);
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: var(--space-3);
+    }
+
+    /* Tableau responsive — wrapper scroll horizontal sur mobile */
+    .comp-table-wrap {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+    }
+    .comp-table {
+      width: 100%;
+      min-width: 480px;
+      border-collapse: collapse;
+      background: var(--bg-card);
+    }
+    .comp-table thead th {
+      background: var(--bg-card2);
+      padding: var(--space-5) var(--space-5);
+      font-family: var(--font-display);
+      font-size: var(--text-sm);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      text-align: left;
+      white-space: nowrap;
+    }
+    .comp-table thead th:first-child { color: var(--text-muted); font-size: var(--text-xs); width: 120px; min-width: 90px; }
+    .comp-table thead th.p1 { color: var(--gold); }
+    .comp-table thead th.p2 { color: #60a5fa; }
+    .comp-table tbody tr { border-top: 1px solid var(--border-light); }
+    .comp-table tbody tr:hover { background: rgba(255,255,255,.02); }
+    .comp-table td {
+      padding: var(--space-4) var(--space-5);
+      font-size: var(--text-sm);
+      vertical-align: middle;
+      word-break: break-word;
+    }
+    .comp-table td:first-child {
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      white-space: nowrap;
+      width: 120px;
+    }
+    .comp-table td.val    { color: rgba(255,255,255,.8); }
+    .comp-table td.winner { color: #22c55e; font-weight: 700; }
+    .comp-price { font-size: var(--text-xl); font-weight: 800; color: var(--gold); }
+    .comp-actions { display: flex; gap: var(--space-3); margin-top: var(--space-4); flex-wrap: wrap; }
+
+    /* Placeholder */
+    .comp-placeholder { text-align: center; padding: var(--space-16) var(--space-6); color: var(--text-muted); }
+    .comp-placeholder .icon { font-size: 3.5rem; margin-bottom: var(--space-4); }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .comp-wrap { padding: var(--space-6) var(--space-4) var(--space-16); }
+      .comp-selectors { grid-template-columns: 1fr; gap: var(--space-4); }
+      .comp-vs { display: none; }
+      .comp-table thead th { padding: var(--space-3) var(--space-3); font-size: 11px; }
+      .comp-table td { padding: var(--space-3) var(--space-3); font-size: 12px; }
+      .comp-table td:first-child { font-size: 10px; width: 80px; }
+      .comp-price { font-size: var(--text-lg); }
+    }
+    @media (max-width: 480px) {
+      .comp-table-wrap { border-radius: var(--radius); }
+      .comp-table { min-width: 360px; }
+      .comp-actions { flex-direction: column; }
+      .comp-actions .btn { text-align: center; }
+    }
+  </style>
+  <link rel="manifest" href="/manifest.json"/>
+  <meta name="theme-color" content="#C9A84C"/>
+  <meta name="mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <meta name="apple-mobile-web-app-title" content="iStore Pro"/>
+  <link rel="apple-touch-icon" href="/assets/images/icons/icon-192.svg"/>
+  <link rel="canonical" href="https://istore-pro-frontend.onrender.com/comparateur.html"/>
+</head>
+<body>
+<header class="header">
+  <div class="container header__inner">
+    <a href="index.html" class="header__logo"><img src="assets/images/logo-header.svg" alt="iStore Pro" style="height:38px;width:auto;display:block;"/></a>
+    <nav class="header__nav" id="mainNav">
+      <a href="index.html" class="nav-link">Accueil</a>
+      <a href="catalogue.html" class="nav-link">Catalogue</a>
+      <a href="simulation.html" class="nav-link">Simuler un crédit</a>
+      <a href="comparateur.html" class="nav-link">Comparer</a>
+      <a href="faq.html"     class="nav-link">FAQ</a>
+      <a href="a-propos.html" class="nav-link">À propos</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </nav>
+    <div class="header__actions" style="display:flex;gap:var(--space-3);align-items:center;">
+      <a href="favoris.html" title="Mes favoris" id="wishlistBtn" style="font-size:1.2rem;line-height:1;color:var(--text-muted);transition:color .2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-muted)'">🤍</a><a href="connexion.html" class="btn btn--outline" id="authBtn">Connexion</a></div>
+    <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+  </div>
+</header>
+
+<div class="page-hero"><div class="container"><h1>Comparateur <span>iPhone</span></h1><p>Comparez deux modèles côte à côte pour faire le bon choix</p></div></div>
+
+<main class="container">
+  <div class="comp-wrap">
+    <div class="comp-selectors">
+      <div class="comp-select-box">
+        <label>📱 iPhone 1</label>
+        <select id="sel1" class="form-input" onchange="compare()">
+          <option value="">— Choisir un modèle —</option>
+        </select>
+      </div>
+      <div class="comp-vs">VS</div>
+      <div class="comp-select-box">
+        <label style="color:#60a5fa;">📱 iPhone 2</label>
+        <select id="sel2" class="form-input" onchange="compare()">
+          <option value="">— Choisir un modèle —</option>
+        </select>
+      </div>
+    </div>
+
+    <div id="compResult">
+      <div class="comp-placeholder">
+        <div class="icon">⚖️</div>
+        <p>Sélectionnez deux iPhones pour lancer la comparaison</p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <span class="logo-icon">&#63743;</span>
+      <strong>iStore Pro</strong>
+      <p>Votre spécialiste iPhone depuis 2020.</p>
+    </div>
+    <div class="footer__col">
+      <div class="footer__links">
+        <h4>Navigation</h4>
+        <a href="catalogue.html">Catalogue</a>
+        <a href="simulation.html">Simulateur crédit</a>
+        <a href="comparateur.html">Comparer</a>
+        <a href="faq.html">FAQ</a>
+        <a href="suivi.html">Suivi commande</a>
+        <a href="a-propos.html">À propos</a>
+      </div>
+      <div class="footer__contact">
+        <h4>Contact</h4>
+        <p>📧 contact@istorepro.com</p>
+        <p>📞 +33 1 23 45 67 89</p>
+        <p>📍 Paris, France</p>
+      </div>
+    </div>
+    <div class="footer__col">
+      <div class="footer__links">
+        <h4>Mon compte</h4>
+        <a href="connexion.html">Connexion</a>
+        <a href="connexion.html#register">Créer un compte</a>
+        <a href="espace-client.html">Mon espace</a>
+        <a href="favoris.html">Mes favoris</a>
+      </div>
+      <div class="footer__links" style="margin-top:var(--space-6);">
+        <h4>Légal</h4>
+        <a href="mentions-legales.html">Mentions légales</a>
+        <a href="politique-confidentialite.html">Confidentialité</a>
+        <a href="cgu.html">CGU</a>
+        <a href="cgv.html">CGV</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer__bottom"><p>© 2025 iStore Pro. Tous droits réservés. &nbsp;·&nbsp;
+      <a href="mentions-legales.html" style="color:inherit">Mentions légales</a> &nbsp;·&nbsp;
+      <a href="politique-confidentialite.html" style="color:inherit">Confidentialité</a> &nbsp;·&nbsp;
+      <a href="cgu.html" style="color:inherit">CGU</a> &nbsp;·&nbsp;
+      <a href="cgv.html" style="color:inherit">CGV</a>
+    </p></div>
+</footer>
+
+<script src="assets/js/utils.js"></script>
+<script src="assets/js/api.js"></script>
+<script src="assets/js/auth.js"></script>
+<script src="assets/js/products.data.js"></script>
+<script>
+let products = [];
+
+function condLabel(p) {
+  if (p.condition === 'neuf') return '✨ Neuf';
+  return `♻️ Occasion Grade ${p.conditionGrade || ''}`;
+}
+
+async function loadProducts() {
+  try {
+    products = await Promise.race([
+      API.get('/products?limit=50', false),
+      new Promise((_,r) => setTimeout(() => r(), 2000))
+    ]) || PRODUCTS_DATA || [];
+  } catch {
+    products = typeof PRODUCTS_DATA !== 'undefined' ? PRODUCTS_DATA : [];
+  }
+
+  const opts = products.map((p,i) => {
+    const label = `${p.name} ${p.storage||''} — ${condLabel(p)} — ${formatPrice(p.priceReduced)}`;
+    return `<option value="${i}">${label}</option>`;
+  }).join('');
+
+  document.getElementById('sel1').innerHTML = '<option value="">— Choisir un modèle —</option>' + opts;
+  document.getElementById('sel2').innerHTML = '<option value="">— Choisir un modèle —</option>' + opts;
+
+  // Pré-remplir depuis URL
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('p1')) {
+    const idx = products.findIndex(p => (p._id||p.id) === params.get('p1'));
+    if (idx >= 0) document.getElementById('sel1').value = idx;
+  }
+  if (params.get('p2')) {
+    const idx = products.findIndex(p => (p._id||p.id) === params.get('p2'));
+    if (idx >= 0) document.getElementById('sel2').value = idx;
+  }
+  compare();
+}
+
+function compare() {
+  const i1 = document.getElementById('sel1').value;
+  const i2 = document.getElementById('sel2').value;
+  const c  = document.getElementById('compResult');
+
+  if (i1 === '' || i2 === '') {
+    c.innerHTML = '<div class="comp-placeholder"><div class="icon">⚖️</div><p>Sélectionnez deux iPhones pour lancer la comparaison</p></div>';
+    return;
+  }
+  if (i1 === i2) {
+    c.innerHTML = '<div class="comp-placeholder"><div class="icon">🙃</div><p>Choisissez deux modèles différents pour les comparer !</p></div>';
+    return;
+  }
+
+  const p1 = products[i1], p2 = products[i2];
+  const id1 = p1._id || p1.id || '';
+  const id2 = p2._id || p2.id || '';
+
+  function win(v1, v2, higher = true) {
+    if (v1 === v2) return ['val','val'];
+    return higher
+      ? (v1 > v2 ? ['winner','val'] : ['val','winner'])
+      : (v1 < v2 ? ['winner','val'] : ['val','winner']);
+  }
+
+  const [c1Price, c2Price] = win(p1.priceReduced, p2.priceReduced, false);
+  const img1 = p1.images?.[0] || 'assets/images/placeholder-phone.svg';
+  const img2 = p2.images?.[0] || 'assets/images/placeholder-phone.svg';
+
+  const rows = [
+    ['Prix TTC',         `<span class="comp-price">${formatPrice(p1.priceReduced)}</span>`, `<span class="comp-price">${formatPrice(p2.priceReduced)}</span>`, win(p1.priceReduced, p2.priceReduced, false)],
+    ['État',             condLabel(p1), condLabel(p2), ['val','val']],
+    ['Stockage',         p1.storage||'—', p2.storage||'—', ['val','val']],
+    ['Puce',             p1.specs?.puce||'—', p2.specs?.puce||'—', ['val','val']],
+    ['Écran',            p1.specs?.ecran||'—', p2.specs?.ecran||'—', ['val','val']],
+    ['Photo',            p1.specs?.appareilPhoto||'—', p2.specs?.appareilPhoto||'—', ['val','val']],
+    ['Batterie',         p1.specs?.batterie||'—', p2.specs?.batterie||'—', ['val','val']],
+    ['Connectivité',     p1.specs?.connectivite||'—', p2.specs?.connectivite||'—', ['val','val']],
+    ['Garantie',         p1.condition==='neuf' ? '1 an Apple' : (p1.conditionGrade==='C' ? '3 mois iStore' : '6 mois iStore'),
+                         p2.condition==='neuf' ? '1 an Apple' : (p2.conditionGrade==='C' ? '3 mois iStore' : '6 mois iStore'), ['val','val']],
+    ['Stock',            p1.stock > 0 ? `${p1.stock} dispo` : '⚠ Rupture', p2.stock > 0 ? `${p2.stock} dispo` : '⚠ Rupture', ['val','val']],
+  ];
+
+  c.innerHTML = `
+    <div class="comp-table-wrap"><table class="comp-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th class="p1">
+            <img src="${img1}" alt="${p1.name}" style="height:60px;width:auto;display:block;margin:0 auto var(--space-3);" onerror="this.src='assets/images/placeholder-phone.svg'"/>
+            ${p1.name} ${p1.storage||''}
+          </th>
+          <th class="p2">
+            <img src="${img2}" alt="${p2.name}" style="height:60px;width:auto;display:block;margin:0 auto var(--space-3);" onerror="this.src='assets/images/placeholder-phone.svg'"/>
+            ${p2.name} ${p2.storage||''}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        ${rows.map(([label, v1, v2, [cls1, cls2]]) => `
+          <tr>
+            <td>${label}</td>
+            <td class="${cls1}">${v1}</td>
+            <td class="${cls2}">${v2}</td>
+          </tr>`).join('')}
+        <tr>
+          <td>Action</td>
+          <td>${id1 ? `<div class="comp-actions"><a href="commande.html?id=${id1}" class="btn btn--primary btn--sm">Commander</a><a href="produit.html?id=${id1}" class="btn btn--ghost btn--sm">Voir</a></div>` : '—'}</td>
+          <td>${id2 ? `<div class="comp-actions"><a href="commande.html?id=${id2}" class="btn btn--outline btn--sm" style="border-color:#60a5fa;color:#60a5fa;">Commander</a><a href="produit.html?id=${id2}" class="btn btn--ghost btn--sm">Voir</a></div>` : '—'}</td>
+        </tr>
+      </tbody>
+    </table></div>`;
+}
+
+document.addEventListener('DOMContentLoaded', loadProducts);
+</script>
+  <script src="assets/js/cookies.js"></script>
+  <script src="assets/js/ui-utils.js"></script>
+  <script src="assets/js/wishlist.js"></script>
+</body>
+</html>

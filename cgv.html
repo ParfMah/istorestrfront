@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+  <link rel="shortcut icon" href="/favicon.svg"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Conditions Générales de Vente — iStore Pro</title>
+  <link rel="stylesheet" href="assets/css/global.css"/>
+  <link rel="stylesheet" href="assets/css/components.css"/>
+  <link rel="stylesheet" href="assets/css/responsive-fixes.css"/>
+  <script src="assets/js/page-loader.js"></script>
+  <style>
+    .legal-body{max-width:800px;margin:0 auto;padding:var(--space-12) var(--space-6) var(--space-20);}
+    .legal-section{margin-bottom:var(--space-10);}
+    .legal-section h2{font-family:var(--font-display);font-size:var(--text-lg);color:var(--gold);text-transform:uppercase;letter-spacing:.08em;margin-bottom:var(--space-4);padding-bottom:var(--space-3);border-bottom:1px solid var(--border);}
+    .legal-section h3{font-family:var(--font-display);font-size:var(--text-base);color:rgba(255,255,255,.85);text-transform:uppercase;letter-spacing:.06em;margin:var(--space-5) 0 var(--space-3);}
+    .legal-section p{font-size:var(--text-sm);color:rgba(255,255,255,.65);line-height:1.8;margin-bottom:var(--space-3);}
+    .legal-section ul{list-style:disc;padding-left:var(--space-6);margin-bottom:var(--space-3);}
+    .legal-section ul li{font-size:var(--text-sm);color:rgba(255,255,255,.65);line-height:1.8;margin-bottom:var(--space-2);}
+    .legal-info-box{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-md);padding:var(--space-5) var(--space-6);margin-bottom:var(--space-5);}
+    .legal-info-box p{margin-bottom:var(--space-2);font-size:var(--text-sm);color:rgba(255,255,255,.65);}
+    .legal-info-box p strong{color:rgba(255,255,255,.85);}
+    .legal-meta{font-size:var(--text-xs);color:var(--text-muted);padding:var(--space-4) var(--space-6);background:var(--bg-card2);border-radius:var(--radius-sm);border-left:3px solid var(--gold);margin-bottom:var(--space-8);}
+    .legal-nav{display:flex;flex-wrap:wrap;gap:var(--space-3);margin-bottom:var(--space-8);}
+    .legal-nav a{font-size:var(--text-xs);color:var(--text-muted);border:1px solid var(--border);border-radius:var(--radius-full);padding:var(--space-2) var(--space-4);transition:all var(--transition);text-transform:uppercase;letter-spacing:.06em;font-family:var(--font-display);}
+    .legal-nav a:hover,.legal-nav a.active{color:var(--gold);border-color:var(--gold);background:rgba(201,168,76,.05);}
+    .grade-table{width:100%;border-collapse:collapse;margin:var(--space-4) 0;}
+    .grade-table th{font-family:var(--font-display);font-size:var(--text-xs);color:var(--gold);text-transform:uppercase;letter-spacing:.06em;padding:var(--space-3) var(--space-4);border-bottom:2px solid var(--border);text-align:left;}
+    .grade-table td{font-size:var(--text-sm);color:rgba(255,255,255,.65);padding:var(--space-3) var(--space-4);border-bottom:1px solid var(--border-light);}
+    .grade-table tr:hover td{background:var(--bg-card2);}
+  </style>
+  <link rel="manifest" href="/manifest.json"/>
+  <meta name="theme-color" content="#C9A84C"/>
+  <meta name="mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <meta name="apple-mobile-web-app-title" content="iStore Pro"/>
+  <link rel="apple-touch-icon" href="/assets/images/icons/icon-192.svg"/>
+  <link rel="canonical" href="https://istore-pro-frontend.onrender.com/cgv.html"/>
+</head>
+<body>
+
+<header class="header">
+  <div class="container header__inner">
+    <a href="index.html" class="header__logo">
+      <img src="assets/images/logo-header.svg" alt="iStore Pro" style="height:38px;width:auto;display:block;"/>
+    </a>
+    <nav class="header__nav" id="mainNav">
+      <a href="index.html"      class="nav-link">Accueil</a>
+      <a href="catalogue.html"  class="nav-link">Catalogue</a>
+      <a href="simulation.html" class="nav-link">Simuler un crédit</a>
+      <a href="comparateur.html" class="nav-link">Comparer</a>
+      <a href="faq.html"         class="nav-link">FAQ</a>
+      <a href="a-propos.html"   class="nav-link">À propos</a>
+      <a href="contact.html"    class="nav-link">Contact</a>
+    </nav>
+    <div class="header__actions" style="display:flex;gap:var(--space-3);align-items:center;">
+      <a href="favoris.html" title="Mes favoris" id="wishlistBtn" style="font-size:1.2rem;line-height:1;color:var(--text-muted);transition:color .2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-muted)'">🤍</a>
+      <a href="connexion.html" class="btn btn--outline" id="authBtn">Connexion</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </button>
+  </div>
+</header>
+
+<div class="page-hero">
+  <div class="container">
+    <h1>Conditions Générales <span>de Vente</span></h1>
+    <p>Règles applicables à tout achat effectué sur iStore Pro</p>
+  </div>
+</div>
+
+<main class="legal-body">
+
+  <div class="legal-nav">
+    <a href="mentions-legales.html">Mentions légales</a>
+    <a href="politique-confidentialite.html">Confidentialité</a>
+    <a href="cgu.html">CGU</a>
+    <a href="cgv.html" class="active">CGV</a>
+  </div>
+
+  <p class="legal-meta">Dernière mise à jour : mai 2025 · Ces CGV s'appliquent à toute commande passée sur historepro.com et prévalent sur tout autre document, sauf accord écrit préalable.</p>
+
+  <!-- VENDEUR -->
+  <section class="legal-section">
+    <h2>1. Vendeur</h2>
+    <div class="legal-info-box">
+      <p><strong>Raison sociale :</strong> iStore Pro</p>
+      <p><strong>Adresse :</strong> Paris, France</p>
+      <p><strong>Email SAV :</strong> contact@istorepro.com</p>
+      <p><strong>Téléphone :</strong> +33 1 23 45 67 89</p>
+    </div>
+  </section>
+
+  <!-- PRODUITS -->
+  <section class="legal-section">
+    <h2>2. Produits</h2>
+    <h3>2.1 Description des produits</h3>
+    <p>iStore Pro propose deux catégories de produits :</p>
+    <ul>
+      <li><strong>iPhones neufs :</strong> appareils sous blister d'origine, jamais utilisés, livrés avec tous les accessoires Apple d'origine et une garantie constructeur Apple d'1 an.</li>
+      <li><strong>iPhones reconditionnés :</strong> appareils d'occasion testés, nettoyés et certifiés par les techniciens d'iStore Pro, classés selon les grades ci-dessous.</li>
+    </ul>
+
+    <h3>2.2 Grades des produits reconditionnés</h3>
+    <table class="grade-table">
+      <thead>
+        <tr>
+          <th>Grade</th>
+          <th>État cosmétique</th>
+          <th>Batterie</th>
+          <th>Garantie</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong style="color:var(--success)">Grade A</strong></td>
+          <td>Quasi-neuf — aucune trace visible, légères micro-traces invisibles à l'usage</td>
+          <td>≥ 85%</td>
+          <td>6 mois iStore</td>
+        </tr>
+        <tr>
+          <td><strong style="color:var(--gold)">Grade B</strong></td>
+          <td>Bon état — légères rayures sur la coque, écran parfait</td>
+          <td>≥ 80%</td>
+          <td>6 mois iStore</td>
+        </tr>
+        <tr>
+          <td><strong style="color:var(--warning)">Grade C</strong></td>
+          <td>État fonctionnel — rayures visibles sur coque, écran intact et fonctionnel</td>
+          <td>≥ 75%</td>
+          <td>3 mois iStore</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Tous les appareils reconditionnés ont été débloqués, remis à zéro, testés (appel, caméra, écran, WiFi, Bluetooth, Face/Touch ID, batterie) et sont livrés avec un câble de charge.</p>
+
+    <h3>2.3 Disponibilité et stocks</h3>
+    <p>Les offres sont proposées dans la limite des stocks disponibles. En cas d'indisponibilité après validation de la commande, iStore Pro s'engage à en informer le client dans les 48 heures et à proposer un remboursement intégral ou un produit de remplacement équivalent.</p>
+  </section>
+
+  <!-- PRIX -->
+  <section class="legal-section">
+    <h2>3. Prix</h2>
+    <p>Les prix affichés sur le site sont indiqués en euros (€), toutes taxes comprises (TTC). iStore Pro se réserve le droit de modifier ses prix à tout moment ; les produits sont facturés sur la base du tarif en vigueur au moment de la validation de la commande.</p>
+    <p>La livraison est offerte sur toutes les commandes, quels que soient le montant et la destination (France métropolitaine, DOM-TOM et pays listés à la commande).</p>
+  </section>
+
+  <!-- COMMANDE -->
+  <section class="legal-section">
+    <h2>4. Processus de commande</h2>
+    <p>La commande se déroule en trois étapes :</p>
+    <ul>
+      <li><strong>Étape 1 — Mode de paiement :</strong> Choix entre comptant (paiement intégral) et crédit (apport minimum 40% + mensualités).</li>
+      <li><strong>Étape 2 — Livraison :</strong> Saisie de l'adresse complète de livraison.</li>
+      <li><strong>Étape 3 — Paiement :</strong> Redirection vers la page de paiement sécurisée Stripe.</li>
+    </ul>
+    <p>La commande est définitivement validée après confirmation du paiement par Stripe. Un email de confirmation est automatiquement envoyé à l'adresse du compte client.</p>
+  </section>
+
+  <!-- PAIEMENT -->
+  <section class="legal-section">
+    <h2>5. Modalités de paiement</h2>
+
+    <h3>5.1 Paiement comptant</h3>
+    <p>Le règlement intégral du prix est effectué au moment de la commande via la plateforme de paiement sécurisée <strong>Stripe</strong>. Les moyens de paiement acceptés sont : Visa, Mastercard, Carte Bleue et tout moyen de paiement compatible Stripe.</p>
+    <p>Les données bancaires transitent directement chez Stripe et ne sont jamais stockées sur les serveurs d'iStore Pro.</p>
+
+    <h3>5.2 Paiement à crédit</h3>
+    <p>iStore Pro propose un financement interne flexible soumis aux conditions suivantes :</p>
+    <ul>
+      <li>Apport minimum de <strong>40%</strong> du prix du produit, réglé immédiatement via Stripe</li>
+      <li>Reste à financer remboursable en mensualités (3, 6, 9, 12, 18 ou 24 mois)</li>
+      <li>Taux d'intérêt selon la condition du produit : Neuf 3% · Grade A 1,5% · Grade B 2% · Grade C 2,5%</li>
+      <li>Mensualités réglées via l'espace client</li>
+    </ul>
+    <p>Le crédit proposé par iStore Pro est un crédit interne et non un crédit à la consommation au sens de la loi Lagarde. Il ne requiert pas d'agrément ACPR. En cas de défaut de paiement, iStore Pro se réserve le droit de suspendre l'accès au service.</p>
+
+    <h3>5.3 Confirmation et quittance</h3>
+    <p>À chaque paiement validé, une quittance PDF est générée et envoyée par email au client. Les quittances sont également disponibles depuis l'espace client.</p>
+  </section>
+
+  <!-- LIVRAISON -->
+  <section class="legal-section">
+    <h2>6. Livraison</h2>
+    <p>iStore Pro livre dans tous les pays disponibles à la commande. Le délai de livraison estimé est de <strong>2 à 5 jours ouvrés</strong> pour la France métropolitaine et de <strong>5 à 15 jours ouvrés</strong> pour les destinations internationales.</p>
+    <p>Ces délais sont indicatifs et peuvent être allongés en cas de force majeure, grève des transporteurs ou pendant les périodes de forte activité.</p>
+    <p>La livraison est réputée effectuée dès la remise du colis au transporteur. iStore Pro n'est pas responsable des retards causés par le transporteur ou les services douaniers. En cas de non-livraison dans un délai de 30 jours, le client peut annuler sa commande et être remboursé intégralement.</p>
+  </section>
+
+  <!-- RÉTRACTATION -->
+  <section class="legal-section">
+    <h2>7. Droit de rétractation</h2>
+    <p>Conformément à l'article L221-18 du Code de la consommation, le client dispose d'un délai de <strong>14 jours calendaires</strong> à compter de la réception du produit pour exercer son droit de rétractation, sans avoir à justifier de motifs.</p>
+    <p>Pour exercer ce droit, le client doit notifier sa décision par email à <strong>contact@istorepro.com</strong> avant l'expiration du délai. Le produit doit être retourné en parfait état d'origine (dans son emballage d'origine avec tous les accessoires) dans les 14 jours suivant la notification.</p>
+    <p>Les frais de retour sont à la charge du client. Le remboursement sera effectué dans un délai de 14 jours à compter de la réception du retour, via le même moyen de paiement que celui utilisé lors de la commande.</p>
+    <p><strong>Exceptions :</strong> Le droit de rétractation ne s'applique pas aux produits descellés (emballage d'origine ouvert pour les produits neufs) ni aux produits personnalisés.</p>
+  </section>
+
+  <!-- GARANTIES -->
+  <section class="legal-section">
+    <h2>8. Garanties</h2>
+    <h3>8.1 Garantie légale de conformité</h3>
+    <p>Conformément aux articles L217-4 et suivants du Code de la consommation, iStore Pro est tenu de livrer un bien conforme au contrat et répond des défauts de conformité existant lors de la délivrance. Le délai est de <strong>2 ans</strong> pour les produits neufs et de <strong>1 an</strong> pour les reconditionnés.</p>
+
+    <h3>8.2 Garantie iStore Pro</h3>
+    <p>En complément, iStore Pro offre sa propre garantie commerciale sur les produits reconditionnés :</p>
+    <ul>
+      <li><strong>Grade A et B :</strong> 6 mois — couvrant tout défaut de fonctionnement non imputable à l'usure normale ou à une manipulation incorrecte</li>
+      <li><strong>Grade C :</strong> 3 mois — mêmes conditions</li>
+    </ul>
+    <p>La garantie iStore couvre les pannes matérielles. Elle ne couvre pas : les dommages accidentels (chutes, eau), l'usure normale, les dommages causés par une réparation non autorisée.</p>
+
+    <h3>8.3 Garantie des vices cachés</h3>
+    <p>iStore Pro répond également des vices cachés conformément aux articles 1641 et suivants du Code civil. L'action doit être intentée dans les 2 ans suivant la découverte du vice.</p>
+  </section>
+
+  <!-- SAV -->
+  <section class="legal-section">
+    <h2>9. Service après-vente</h2>
+    <p>Pour toute réclamation, demande de retour ou mise en jeu de la garantie, le client doit contacter le SAV iStore Pro :</p>
+    <ul>
+      <li>📧 Email : <strong>contact@istorepro.com</strong></li>
+      <li>📞 Téléphone : <strong>+33 1 23 45 67 89</strong></li>
+      <li>Formulaire de contact disponible sur <a href="contact.html" style="color:var(--gold)">la page contact</a></li>
+    </ul>
+    <p>iStore Pro s'engage à répondre dans un délai de <strong>48 heures ouvrées</strong>.</p>
+  </section>
+
+  <!-- RESPONSABILITÉ -->
+  <section class="legal-section">
+    <h2>10. Limitation de responsabilité</h2>
+    <p>La responsabilité d'iStore Pro ne saurait être engagée pour tous les inconvénients ou dommages inhérents à l'utilisation du réseau internet, notamment une rupture de service, une intrusion extérieure ou la présence de virus informatiques.</p>
+    <p>iStore Pro n'est pas fabricant des produits Apple vendus sur son site et ne saurait être tenu responsable des dommages liés à un défaut de conception ou de fabrication des produits.</p>
+  </section>
+
+  <!-- DROIT APPLICABLE -->
+  <section class="legal-section">
+    <h2>11. Droit applicable et litiges</h2>
+    <p>Les présentes CGV sont soumises au droit français. En cas de litige, le client consommateur peut recourir gratuitement à la médiation de la consommation. La Commission européenne met à disposition une plateforme de résolution des litiges en ligne : <strong>ec.europa.eu/consumers/odr</strong></p>
+    <p>À défaut de résolution amiable, les tribunaux français sont seuls compétents.</p>
+  </section>
+
+</main>
+
+<footer class="footer footer--slim">
+  <div class="footer__bottom"><p>© 2025 iStore Pro. Tous droits réservés. &nbsp;·&nbsp;
+      <a href="mentions-legales.html" style="color:inherit">Mentions légales</a> &nbsp;·&nbsp;
+      <a href="politique-confidentialite.html" style="color:inherit">Confidentialité</a> &nbsp;·&nbsp;
+      <a href="cgu.html" style="color:inherit">CGU</a> &nbsp;·&nbsp;
+      <a href="cgv.html" style="color:inherit">CGV</a> &nbsp;·&nbsp;
+      <a href="contact.html" style="color:inherit">Contact</a>
+    </p></div>
+</footer>
+
+<script src="assets/js/utils.js"></script>
+<script src="assets/js/auth.js"></script>
+  <script src="assets/js/ui-utils.js"></script>
+  <script src="assets/js/wishlist.js"></script>
+</body>
+</html>

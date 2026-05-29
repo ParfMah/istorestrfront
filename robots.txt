@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+
+# Pages privées - ne pas indexer
+Disallow: /admin/
+Disallow: /espace-client.html
+Disallow: /commande.html
+Disallow: /paiement-succes.html
+Disallow: /connexion.html
+Disallow: /reset-password.html
+Disallow: /mot-de-passe-oublie.html
+
+# Sitemap
+Sitemap: https://istore-pro-frontend.onrender.com/sitemap.xml
+
+Disallow: /verify-email.html
+Disallow: /favoris.html
+Disallow: /maintenance.html
+Disallow: /suppression-compte.html

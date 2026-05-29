@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="description" content="Suivez votre commande iPhone en temps réel avec votre numéro de commande et votre email."/>
+  <meta name="keywords"    content="suivi commande iPhone, tracking iStore Pro"/>
+  <meta name="robots"      content="index,follow"/>
+  <meta property="og:type"        content="website"/>
+  <meta property="og:site_name"   content="iStore Pro"/>
+  <meta property="og:title"       content="Suivi de commande — iStore Pro"/>
+  <meta property="og:description" content="Suivez votre commande iPhone en temps réel avec votre numéro de commande et votre email."/>
+  <meta property="og:image"       content="https://istore-pro-frontend.onrender.com/assets/images/logo.svg"/>
+  <meta property="og:url"         content="https://istore-pro-frontend.onrender.com/suivi.html"/>
+  <meta name="twitter:card"        content="summary_large_image"/>
+  <meta name="twitter:title"       content="Suivi de commande — iStore Pro"/>
+  <meta name="twitter:description" content="Suivez votre commande iPhone en temps réel avec votre numéro de commande et votre email."/>
+  <meta name="twitter:image"       content="https://istore-pro-frontend.onrender.com/assets/images/logo.svg"/>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Suivi de commande — iStore Pro</title>
+  <link rel="stylesheet" href="assets/css/global.css"/>
+  <link rel="stylesheet" href="assets/css/components.css"/>
+  <script src="assets/js/page-loader.js"></script>
+  <style>
+    .suivi-wrap{max-width:640px;margin:0 auto;padding:var(--space-10) var(--space-6) var(--space-20);}
+    .suivi-form{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-md);padding:var(--space-8);}
+    .suivi-form h2{font-family:var(--font-display);font-size:var(--text-xl);color:#fff;text-transform:uppercase;letter-spacing:.06em;margin-bottom:var(--space-2);}
+    .suivi-form p{font-size:var(--text-sm);color:var(--text-secondary);margin-bottom:var(--space-6);}
+    .order-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-md);overflow:hidden;margin-top:var(--space-6);}
+    .order-card__head{background:var(--bg-card2);padding:var(--space-5) var(--space-6);border-bottom:1px solid var(--border);}
+    .order-card__head h3{font-family:var(--font-display);font-size:var(--text-base);color:var(--gold);text-transform:uppercase;letter-spacing:.06em;margin:0 0 var(--space-1);}
+    .order-card__body{padding:var(--space-6);}
+    .order-info-row{display:flex;justify-content:space-between;align-items:center;padding:var(--space-3) 0;border-bottom:1px solid var(--border-light);font-size:var(--text-sm);}
+    .order-info-row:last-child{border-bottom:none;}
+    .order-info-row span:first-child{color:var(--text-muted);}
+    .order-info-row span:last-child{color:rgba(255,255,255,.85);font-weight:600;}
+    .timeline{margin-top:var(--space-6);}
+    .timeline-step{display:flex;gap:var(--space-4);margin-bottom:var(--space-4);align-items:flex-start;}
+    .timeline-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.75rem;flex-shrink:0;margin-top:2px;}
+    .timeline-dot.done{background:rgba(34,197,94,.15);border:2px solid #22c55e;color:#22c55e;}
+    .timeline-dot.active{background:rgba(201,168,76,.15);border:2px solid var(--gold);color:var(--gold);}
+    .timeline-dot.pending{background:var(--bg-card2);border:2px solid var(--border);color:var(--text-muted);}
+    .timeline-content h4{font-size:var(--text-sm);font-weight:600;color:rgba(255,255,255,.85);margin:0 0 2px;}
+    .timeline-content p{font-size:var(--text-xs);color:var(--text-muted);margin:0;}
+  </style>
+  <link rel="manifest" href="/manifest.json"/>
+  <meta name="theme-color" content="#C9A84C"/>
+  <meta name="mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <meta name="apple-mobile-web-app-title" content="iStore Pro"/>
+  <link rel="apple-touch-icon" href="/assets/images/icons/icon-192.svg"/>
+  <link rel="canonical" href="https://istore-pro-frontend.onrender.com/suivi.html"/>
+</head>
+<body>
+<header class="header">
+  <div class="container header__inner">
+    <a href="index.html" class="header__logo"><img src="assets/images/logo-header.svg" alt="iStore Pro" style="height:38px;width:auto;display:block;"/></a>
+    <nav class="header__nav" id="mainNav">
+      <a href="index.html" class="nav-link">Accueil</a>
+      <a href="catalogue.html" class="nav-link">Catalogue</a>
+      <a href="faq.html" class="nav-link">FAQ</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </nav>
+    <div class="header__actions" style="display:flex;gap:var(--space-3);align-items:center;">
+      <a href="favoris.html" title="Mes favoris" id="wishlistBtn" style="font-size:1.2rem;line-height:1;color:var(--text-muted);transition:color .2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-muted)'">🤍</a><a href="connexion.html" class="btn btn--outline" id="authBtn">Connexion</a></div>
+    <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+  </div>
+</header>
+
+<div class="page-hero" style="padding:var(--space-10) 0;"><div class="container"><h1>Suivi de <span>commande</span></h1><p>Entrez votre numéro de commande pour voir son statut</p></div></div>
+
+<main class="container">
+  <div class="suivi-wrap">
+
+    <div class="suivi-form">
+      <h2>Suivre ma commande</h2>
+      <p>Votre numéro de commande figure dans l'email de confirmation reçu après votre achat (ex : <strong style="color:var(--gold)">IP-20250001</strong>).</p>
+      <div id="suiviAlert" class="alert" style="display:none;margin-bottom:var(--space-4);"></div>
+      <div class="form-group">
+        <label>Numéro de commande</label>
+        <input type="text" id="orderRef" class="form-input" placeholder="IP-20250001" style="text-transform:uppercase;"/>
+      </div>
+      <div class="form-group">
+        <label>Adresse email associée</label>
+        <input type="email" id="orderEmail" class="form-input" placeholder="votre@email.com"/>
+      </div>
+      <button class="btn btn--primary btn--full" id="trackBtn">Rechercher ma commande</button>
+    </div>
+
+    <!-- Résultat -->
+    <div id="orderResult" style="display:none;"></div>
+
+  </div>
+</main>
+
+<footer class="footer footer--slim">
+  <div class="footer__bottom"><p>© 2025 iStore Pro. Tous droits réservés. &nbsp;·&nbsp;
+      <a href="mentions-legales.html" style="color:inherit">Mentions légales</a> &nbsp;·&nbsp;
+      <a href="politique-confidentialite.html" style="color:inherit">Confidentialité</a> &nbsp;·&nbsp;
+      <a href="cgu.html" style="color:inherit">CGU</a> &nbsp;·&nbsp;
+      <a href="cgv.html" style="color:inherit">CGV</a> &nbsp;·&nbsp;
+      <a href="contact.html" style="color:inherit">Contact</a>
+    </p></div>
+</footer>
+
+<script src="assets/js/utils.js"></script>
+<script src="assets/js/api.js"></script>
+<script src="assets/js/auth.js"></script>
+<script>
+const STATUTS = {
+  'EN_ATTENTE'   : { label:'En attente de confirmation', icon:'⏳', color:'var(--gold)' },
+  'CONFIRMEE'    : { label:'Confirmée',                  icon:'✅', color:'#22c55e' },
+  'EN_PREPARATION': { label:'En préparation',            icon:'📦', color:'var(--gold)' },
+  'EXPEDIEE'     : { label:'Expédiée',                   icon:'🚚', color:'#3b82f6' },
+  'LIVREE'       : { label:'Livrée',                     icon:'🏠', color:'#22c55e' },
+  'ANNULEE'      : { label:'Annulée',                    icon:'❌', color:'var(--error)' },
+};
+
+const STEPS = ['EN_ATTENTE','CONFIRMEE','EN_PREPARATION','EXPEDIEE','LIVREE'];
+
+function renderOrder(order) {
+  const s = STATUTS[order.statut] || { label: order.statut, icon:'❓', color:'var(--text-muted)' };
+  const currentStep = STEPS.indexOf(order.statut);
+  const date = new Date(order.createdAt).toLocaleDateString('fr-FR', {day:'2-digit',month:'long',year:'numeric'});
+
+  const timeline = STEPS.map((step, i) => {
+    const info = STATUTS[step];
+    const cls  = i < currentStep ? 'done' : i === currentStep ? 'active' : 'pending';
+    return `<div class="timeline-step">
+      <div class="timeline-dot ${cls}">${cls === 'done' ? '✓' : info.icon}</div>
+      <div class="timeline-content">
+        <h4 style="color:${cls === 'pending' ? 'var(--text-muted)' : 'rgba(255,255,255,.85)'}">${info.label}</h4>
+        <p>${cls === 'active' ? 'Statut actuel' : cls === 'done' ? 'Étape complétée' : 'En attente'}</p>
+      </div>
+    </div>`;
+  }).join('');
+
+  const productName = order.product
+    ? `${order.product.name || ''} ${order.product.storage || ''}`.trim()
+    : 'Produit';
+
+  document.getElementById('orderResult').innerHTML = `
+    <div class="order-card">
+      <div class="order-card__head">
+        <h3>${order.numeroCommande || 'Commande'}</h3>
+        <span style="font-size:var(--text-sm);color:${s.color};font-weight:700;">${s.icon} ${s.label}</span>
+      </div>
+      <div class="order-card__body">
+        <div class="order-info-row"><span>Produit</span><span>${productName}</span></div>
+        <div class="order-info-row"><span>Montant</span><span style="color:var(--gold);">${(order.prixTotal||0).toFixed(2)} €</span></div>
+        <div class="order-info-row"><span>Type</span><span>${order.typePaiement === 'credit' ? '💳 Crédit' : '💰 Comptant'}</span></div>
+        <div class="order-info-row"><span>Date</span><span>${date}</span></div>
+        <div class="order-info-row"><span>Livraison</span><span>${order.adresseLivraison?.city || ''}, ${order.adresseLivraison?.country || ''}</span></div>
+        <div class="timeline" style="margin-top:var(--space-6);">
+          <p style="font-size:var(--text-xs);color:var(--text-muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:var(--space-4);">Progression</p>
+          ${timeline}
+        </div>
+        <p style="margin-top:var(--space-6);font-size:var(--text-xs);color:var(--text-muted);">
+          Des questions ? <a href="contact.html" style="color:var(--gold);">Contactez-nous</a>
+        </p>
+      </div>
+    </div>`;
+  document.getElementById('orderResult').style.display = 'block';
+}
+
+document.getElementById('trackBtn').addEventListener('click', async () => {
+  const ref     = document.getElementById('orderRef').value.trim().toUpperCase();
+  const email   = document.getElementById('orderEmail').value.trim();
+  const alertEl = document.getElementById('suiviAlert');
+
+  if (!ref || !email) { showAlert(alertEl,'error','Veuillez remplir les deux champs.'); return; }
+
+  const btn = document.getElementById('trackBtn');
+  btn.disabled = true; btn.textContent = 'Recherche…';
+
+  try {
+    const order = await API.get(`/orders/track?ref=${encodeURIComponent(ref)}&email=${encodeURIComponent(email)}`, false);
+    alertEl.style.display = 'none';
+    renderOrder(order);
+  } catch(e) {
+    showAlert(alertEl, 'error', e.message || 'Commande introuvable. Vérifiez le numéro et l\'email saisi.');
+    document.getElementById('orderResult').style.display = 'none';
+  } finally {
+    btn.disabled = false; btn.textContent = 'Rechercher ma commande';
+  }
+});
+
+// Pré-remplir depuis l'URL
+const params = new URLSearchParams(window.location.search);
+if (params.get('ref')) document.getElementById('orderRef').value = params.get('ref');
+</script>
+  <script src="assets/js/cookies.js"></script>
+  <script src="assets/js/ui-utils.js"></script>
+  <script src="assets/js/wishlist.js"></script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg"/>
+  <link rel="shortcut icon" href="../favicon.svg"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Avis clients — Admin iStore Pro</title>
+  <link rel="stylesheet" href="../assets/css/global.css"/>
+  <link rel="stylesheet" href="../assets/css/admin.css"/>
+  <link rel="stylesheet" href="../assets/css/responsive-fixes.css"/>
+  <script src="../assets/js/admin.guard.js"></script>
+  <style>
+    .review-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-md);padding:var(--space-5) var(--space-6);margin-bottom:var(--space-4);}
+    .review-card__head{display:flex;justify-content:space-between;align-items:flex-start;gap:var(--space-4);margin-bottom:var(--space-3);}
+    .review-card__meta{font-size:var(--text-xs);color:var(--text-muted);}
+    .review-card__meta strong{color:rgba(255,255,255,.8);}
+    .stars{color:var(--gold);font-size:1rem;letter-spacing:2px;}
+    .review-card__title{font-weight:700;color:rgba(255,255,255,.9);margin:var(--space-2) 0 var(--space-1);}
+    .review-card__body{font-size:var(--text-sm);color:rgba(255,255,255,.6);line-height:1.7;margin-bottom:var(--space-4);}
+    .review-card__actions{display:flex;gap:var(--space-3);flex-wrap:wrap;}
+    .badge-pending {background:rgba(251,191,36,.15);color:#fbbf24;border:1px solid rgba(251,191,36,.3);border-radius:var(--radius-full);padding:.2em .7em;font-size:var(--text-xs);font-weight:700;}
+    .badge-approved{background:rgba(34,197,94,.15);color:#22c55e;border:1px solid rgba(34,197,94,.3);border-radius:var(--radius-full);padding:.2em .7em;font-size:var(--text-xs);font-weight:700;}
+    .badge-rejected{background:rgba(239,68,68,.15);color:#ef4444;border:1px solid rgba(239,68,68,.3);border-radius:var(--radius-full);padding:.2em .7em;font-size:var(--text-xs);font-weight:700;}
+    .filter-bar{display:flex;gap:var(--space-3);margin-bottom:var(--space-6);flex-wrap:wrap;}
+    .filter-btn{font-family:var(--font-display);font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.06em;padding:var(--space-2) var(--space-5);border-radius:var(--radius-full);border:1px solid var(--border);background:none;color:var(--text-muted);cursor:pointer;transition:all var(--transition);}
+    .filter-btn.active,.filter-btn:hover{color:var(--gold);border-color:var(--gold);background:rgba(201,168,76,.05);}
+    .empty-state{text-align:center;padding:var(--space-16) var(--space-6);color:var(--text-muted);}
+    .empty-state .icon{font-size:3rem;margin-bottom:var(--space-4);}
+  </style>
+</head>
+<body class="admin-layout">
+
+<aside class="admin-sidebar">
+  <div class="admin-sidebar__brand"><span style="color:var(--gold);font-size:1.4rem;">&#63743;</span><strong>iStore Pro</strong><span style="font-size:var(--text-xs);color:var(--text-muted);">Admin</span></div>
+  <nav class="admin-sidebar__nav">
+    <div class="admin-nav-section">Principal</div>
+    <a href="index.html"    class="admin-nav-link"><span class="nav-icon">📊</span> Dashboard</a>
+    <a href="produits.html" class="admin-nav-link"><span class="nav-icon">📱</span> Produits</a>
+    <a href="clients.html"  class="admin-nav-link"><span class="nav-icon">👥</span> Clients</a>
+    <div class="admin-nav-section">Commandes</div>
+    <a href="commandes.html" class="admin-nav-link"><span class="nav-icon">📦</span> Commandes</a>
+    <div class="admin-nav-section">Crédit</div>
+    <a href="dossiers.html"  class="admin-nav-link"><span class="nav-icon">📂</span> Dossiers</a>
+    <a href="paiements.html" class="admin-nav-link"><span class="nav-icon">💳</span> Paiements</a>
+    <a href="quittances.html" class="admin-nav-link"><span class="nav-icon">🧾</span> Quittances</a>
+    <div class="admin-nav-section">Contenu</div>
+    <a href="avis.html" class="admin-nav-link active"><span class="nav-icon">⭐</span> Avis clients</a>
+    <div class="admin-nav-section">Compte</div>
+    <a href="../index.html"   class="admin-nav-link"><span class="nav-icon">🌐</span> Voir le site</a>
+    <a href="#" onclick="adminLogout()" class="admin-nav-link"><span class="nav-icon">🚪</span> Déconnexion</a>
+  </nav>
+</aside>
+
+<main class="admin-main">
+  <div class="admin-topbar">
+    <h1 class="admin-page-title">⭐ Avis clients</h1>
+    <div id="pendingBadge" style="display:none;">
+      <span class="badge-pending" id="pendingCount">0 en attente</span>
+    </div>
+  </div>
+
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="loadReviews('pending')"  id="btnPending">⏳ En attente</button>
+    <button class="filter-btn"        onclick="loadReviews('approved')" id="btnApproved">✅ Approuvés</button>
+    <button class="filter-btn"        onclick="loadReviews('rejected')" id="btnRejected">❌ Rejetés</button>
+    <button class="filter-btn"        onclick="loadReviews('all')"      id="btnAll">📋 Tous</button>
+  </div>
+
+  <div id="reviewsContainer"><div class="loading-spinner">Chargement…</div></div>
+</main>
+
+<script src="../assets/js/utils.js"></script>
+<script src="../assets/js/api.js"></script>
+<script>
+let currentFilter = 'pending';
+
+function setActiveFilter(f) {
+  ['pending','approved','rejected','all'].forEach(k => {
+    document.getElementById(`btn${k.charAt(0).toUpperCase()+k.slice(1)}`).classList.remove('active');
+  });
+  document.getElementById(`btn${f.charAt(0).toUpperCase()+f.slice(1)}`).classList.add('active');
+  currentFilter = f;
+}
+
+function stars(n) { return '★'.repeat(n) + '☆'.repeat(5-n); }
+
+function badge(status) {
+  if (status === 'pending')  return '<span class="badge-pending">⏳ En attente</span>';
+  if (status === 'approved') return '<span class="badge-approved">✅ Approuvé</span>';
+  if (status === 'rejected') return '<span class="badge-rejected">❌ Rejeté</span>';
+  return '';
+}
+
+function renderReviews(reviews) {
+  const c = document.getElementById('reviewsContainer');
+  if (!reviews.length) {
+    c.innerHTML = `<div class="empty-state"><div class="icon">💬</div><p>Aucun avis dans cette catégorie.</p></div>`;
+    return;
+  }
+  c.innerHTML = reviews.map(r => {
+    const date    = new Date(r.createdAt).toLocaleDateString('fr-FR', {day:'2-digit',month:'long',year:'numeric'});
+    const client  = r.client ? `${r.client.firstname} ${r.client.lastname}` : 'Anonyme';
+    const product = r.product ? `${r.product.name} ${r.product.storage || ''}` : 'Général';
+    const actions = r.status === 'pending' ? `
+      <button class="btn btn--sm" style="background:rgba(34,197,94,.15);color:#22c55e;border:1px solid rgba(34,197,94,.3);"
+        onclick="doAction('${r._id}','approve')">✅ Approuver</button>
+      <button class="btn btn--sm" style="background:rgba(239,68,68,.1);color:#ef4444;border:1px solid rgba(239,68,68,.3);"
+        onclick="doAction('${r._id}','reject')">❌ Rejeter</button>` :
+      r.status === 'approved' ? `
+      <button class="btn btn--sm btn--ghost" onclick="doAction('${r._id}','reject')">↩ Retirer</button>` :
+      `<button class="btn btn--sm btn--ghost" onclick="doAction('${r._id}','approve')">↩ Approuver</button>`;
+
+    return `<div class="review-card" id="rev-${r._id}">
+      <div class="review-card__head">
+        <div>
+          <div class="stars">${stars(r.rating)}</div>
+          <div class="review-card__title">${r.title || '(Sans titre)'}</div>
+          <div class="review-card__meta"><strong>${client}</strong> · ${product} · ${date}</div>
+        </div>
+        <div>${badge(r.status)}</div>
+      </div>
+      <p class="review-card__body">${r.body}</p>
+      <div class="review-card__actions">
+        ${actions}
+        <button class="btn btn--sm btn--ghost" onclick="deleteReview('${r._id}')" style="margin-left:auto;">🗑 Supprimer</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+async function loadReviews(filter) {
+  setActiveFilter(filter);
+  document.getElementById('reviewsContainer').innerHTML = '<div class="loading-spinner">Chargement…</div>';
+  try {
+    const data = await API.get(`/reviews/admin?status=${filter}&limit=50`);
+    renderReviews(data.reviews || []);
+  } catch(e) {
+    document.getElementById('reviewsContainer').innerHTML = `<div class="empty-state"><p style="color:var(--error);">${e.message}</p></div>`;
+  }
+}
+
+async function doAction(id, action) {
+  try {
+    await API.patch(`/reviews/${id}/${action}`, {});
+    document.getElementById(`rev-${id}`)?.remove();
+    // Refresh pending count
+    loadPendingCount();
+  } catch(e) { alert(e.message); }
+}
+
+async function deleteReview(id) {
+  if (!confirm('Supprimer cet avis définitivement ?')) return;
+  try {
+    await API.delete(`/reviews/${id}`);
+    document.getElementById(`rev-${id}`)?.remove();
+    loadPendingCount();
+  } catch(e) { alert(e.message); }
+}
+
+async function loadPendingCount() {
+  try {
+    const data = await API.get('/reviews/admin?status=pending&limit=1');
+    const n = data.total || 0;
+    document.getElementById('pendingCount').textContent = `${n} en attente`;
+    document.getElementById('pendingBadge').style.display = n > 0 ? 'block' : 'none';
+  } catch {}
+}
+
+function adminLogout() {
+  localStorage.removeItem('token'); localStorage.removeItem('user');
+  window.location.href = '../connexion.html';
+}
+
+// api.js fournit patch/delete/request — aucune redéfinition nécessaire
+
+loadReviews('pending');
+loadPendingCount();
+</script>
+</body>
+</html>

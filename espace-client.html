@@ -1,0 +1,1408 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+  <meta name="robots" content="noindex,nofollow"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mon espace — iStore Pro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="stylesheet" href="assets/css/global.css"/>
+  <link rel="stylesheet" href="assets/css/components.css"/>
+  <link rel="stylesheet" href="assets/css/responsive-fixes.css"/>
+  <link rel="manifest" href="/manifest.json"/>
+  <meta name="theme-color" content="#C9A84C"/>
+  <script src="assets/js/page-loader.js"></script>
+  <style>
+  /* ══════════════════════════════════════════════════
+     ESPACE CLIENT — Design premium dark luxury
+  ══════════════════════════════════════════════════ */
+
+  body { background: #0a0a0a; }
+
+  /* Layout principal */
+  .ec-layout {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    min-height: calc(100vh - 72px);
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  /* ── SIDEBAR ─────────────────────────────────────── */
+  .ec-sidebar {
+    background: linear-gradient(180deg, #111 0%, #0d0d0d 100%);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 72px;
+    height: calc(100vh - 72px);
+    overflow-y: auto;
+  }
+
+  /* Profil sidebar */
+  .ec-profile {
+    padding: var(--space-8) var(--space-6) var(--space-6);
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(135deg, rgba(201,168,76,.04), transparent);
+  }
+
+  .ec-avatar-wrap {
+    position: relative;
+    display: inline-block;
+    margin-bottom: var(--space-4);
+  }
+
+  .ec-avatar {
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    border: 3px solid var(--gold);
+    background: linear-gradient(135deg, #1a1a1a, #222);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--gold);
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color .3s, transform .2s;
+    box-shadow: 0 0 0 6px rgba(201,168,76,.08);
+  }
+  .ec-avatar:hover { transform: scale(1.03); border-color: var(--gold-bright); }
+  .ec-avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+  .ec-avatar-upload {
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 28px; height: 28px;
+    background: var(--gold);
+    border-radius: 50%;
+    border: 2px solid #0a0a0a;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    font-size: .8rem;
+    transition: transform .2s;
+  }
+  .ec-avatar-upload:hover { transform: scale(1.15); }
+
+  .ec-user-name {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    margin-bottom: var(--space-2);
+  }
+
+  .ec-user-email {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    margin-bottom: var(--space-4);
+  }
+
+  /* Badge "Compte vérifié" */
+  .ec-verified-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-1) var(--space-4);
+    border-radius: var(--radius-full);
+    font-size: var(--text-xs);
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .07em;
+    transition: all .4s;
+  }
+  .ec-verified-badge.verified {
+    background: rgba(34,197,94,.12);
+    border: 1px solid rgba(34,197,94,.35);
+    color: #22c55e;
+    box-shadow: 0 0 16px rgba(34,197,94,.15);
+  }
+  .ec-verified-badge.partial {
+    background: rgba(251,191,36,.08);
+    border: 1px solid rgba(251,191,36,.3);
+    color: #fbbf24;
+  }
+  .ec-verified-badge.unverified {
+    background: rgba(239,68,68,.08);
+    border: 1px solid rgba(239,68,68,.25);
+    color: #ef4444;
+  }
+
+  /* Micro-badges email/tel */
+  .ec-verif-pills {
+    display: flex;
+    gap: var(--space-2);
+    justify-content: center;
+    margin-top: var(--space-3);
+  }
+  .ec-pill {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: var(--radius-full);
+    letter-spacing: .06em;
+    text-transform: uppercase;
+  }
+  .ec-pill.ok  { background: rgba(34,197,94,.1);  color:#22c55e; border:1px solid rgba(34,197,94,.25); }
+  .ec-pill.nok { background: rgba(239,68,68,.08); color:#ef4444; border:1px solid rgba(239,68,68,.2); cursor:pointer; }
+  .ec-pill.nok:hover { background: rgba(239,68,68,.18); }
+
+  /* Sidebar stats */
+  .ec-sidebar-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .ec-stat-cell {
+    background: #111;
+    padding: var(--space-4);
+    text-align: center;
+  }
+  .ec-stat-cell .val {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--gold);
+    display: block;
+  }
+  .ec-stat-cell .lbl {
+    font-size: 10px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: .07em;
+  }
+
+  /* Navigation sidebar */
+  .ec-nav { padding: var(--space-4) 0; flex: 1; }
+  .ec-nav-section {
+    font-size: 9px;
+    font-weight: 700;
+    color: rgba(255,255,255,.2);
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    padding: var(--space-4) var(--space-6) var(--space-2);
+  }
+  .ec-nav-btn {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    width: 100%;
+    padding: var(--space-3) var(--space-6);
+    background: none;
+    border: none;
+    border-left: 3px solid transparent;
+    color: rgba(255,255,255,.55);
+    font-size: var(--text-sm);
+    font-family: var(--font);
+    cursor: pointer;
+    transition: all .2s;
+    text-align: left;
+  }
+  .ec-nav-btn:hover { background: rgba(255,255,255,.03); color: rgba(255,255,255,.85); border-left-color: var(--border); }
+  .ec-nav-btn.active { background: rgba(201,168,76,.07); color: var(--gold); border-left-color: var(--gold); font-weight: 600; }
+  .ec-nav-btn .ico { font-size: 1rem; width: 20px; text-align: center; flex-shrink: 0; }
+  .ec-nav-btn .badge { margin-left: auto; background: var(--gold); color: #000; font-size: 10px; font-weight: 800; padding: 1px 6px; border-radius: var(--radius-full); }
+
+  .ec-sidebar-footer {
+    padding: var(--space-5) var(--space-6);
+    border-top: 1px solid var(--border);
+  }
+  .ec-sidebar-footer a, .ec-sidebar-footer button {
+    display: flex; align-items: center; gap: var(--space-2);
+    font-size: var(--text-xs); color: var(--text-muted);
+    background: none; border: none; cursor: pointer;
+    padding: var(--space-2) 0; width: 100%; text-align: left;
+    transition: color .2s;
+  }
+  .ec-sidebar-footer a:hover, .ec-sidebar-footer button:hover { color: var(--gold); }
+
+  /* ── CONTENU PRINCIPAL ───────────────────────────── */
+  .ec-content {
+    background: #0f0f0f;
+    padding: var(--space-8) var(--space-10);
+    min-height: calc(100vh - 72px);
+  }
+
+  .ec-panel { display: none; animation: panelIn .25s ease; }
+  .ec-panel.active { display: block; }
+  @keyframes panelIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+
+  .ec-panel-title {
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: #fff;
+    margin-bottom: var(--space-2);
+  }
+  .ec-panel-title span { color: var(--gold); }
+  .ec-panel-sub { font-size: var(--text-sm); color: var(--text-muted); margin-bottom: var(--space-8); }
+
+  /* Cards stats */
+  .ec-stats-row {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: var(--space-5);
+    margin-bottom: var(--space-10);
+  }
+  .ec-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    position: relative;
+    overflow: hidden;
+    transition: border-color .3s, transform .2s;
+  }
+  .ec-card:hover { border-color: rgba(201,168,76,.4); transform: translateY(-2px); }
+  .ec-card::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 80px; height: 80px;
+    background: radial-gradient(circle at top right, rgba(201,168,76,.08), transparent 70%);
+  }
+  .ec-card .card-icon { font-size: 1.6rem; margin-bottom: var(--space-3); }
+  .ec-card .card-val {
+    font-family: var(--font-display);
+    font-size: var(--text-3xl);
+    font-weight: 800;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: var(--space-1);
+  }
+  .ec-card .card-lbl { font-size: var(--text-xs); color: var(--text-muted); text-transform: uppercase; letter-spacing: .08em; }
+  .ec-card .card-sub { font-size: var(--text-xs); color: rgba(255,255,255,.35); margin-top: var(--space-2); }
+
+  /* Tableau commandes */
+  .ec-table { width: 100%; border-collapse: collapse; }
+  .ec-table thead th {
+    font-family: var(--font-display);
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--text-muted);
+    padding: var(--space-3) var(--space-4);
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+    background: var(--bg-card2);
+  }
+  .ec-table tbody tr {
+    border-bottom: 1px solid var(--border-light);
+    transition: background .15s;
+  }
+  .ec-table tbody tr:hover { background: rgba(201,168,76,.03); }
+  .ec-table tbody td { padding: var(--space-4); font-size: var(--text-sm); color: rgba(255,255,255,.75); }
+
+  /* Status badges */
+  .st-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: var(--radius-full);
+    text-transform: uppercase;
+    letter-spacing: .05em;
+  }
+  .st-wait  { background:rgba(251,191,36,.1);  color:#fbbf24; border:1px solid rgba(251,191,36,.25); }
+  .st-ok    { background:rgba(34,197,94,.1);   color:#22c55e; border:1px solid rgba(34,197,94,.25); }
+  .st-ship  { background:rgba(59,130,246,.1);  color:#60a5fa; border:1px solid rgba(59,130,246,.25); }
+  .st-done  { background:rgba(34,197,94,.15);  color:#4ade80; border:1px solid rgba(34,197,94,.35); }
+  .st-err   { background:rgba(239,68,68,.1);   color:#f87171; border:1px solid rgba(239,68,68,.25); }
+
+  /* Formulaires dans le contenu */
+  .ec-form-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-7);
+    margin-bottom: var(--space-6);
+  }
+  .ec-form-card h3 {
+    font-family: var(--font-display);
+    font-size: var(--text-base);
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    margin-bottom: var(--space-5);
+    padding-bottom: var(--space-3);
+    border-bottom: 1px solid var(--border);
+  }
+  .ec-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-5); }
+  .ec-form-grid.single { grid-template-columns: 1fr; }
+
+  /* Code OTP 6 chiffres */
+  .otp-wrap { display: flex; gap: var(--space-3); justify-content: center; margin: var(--space-5) 0; }
+  .otp-input {
+    width: 48px; height: 56px;
+    background: var(--bg-card2);
+    border: 2px solid var(--border);
+    border-radius: var(--radius-md);
+    text-align: center;
+    font-size: var(--text-xl);
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--gold);
+    transition: border-color .2s;
+  }
+  .otp-input:focus { outline: none; border-color: var(--gold); background: rgba(201,168,76,.05); }
+
+  /* Progress bar vérification */
+  .ec-verif-progress {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    margin-bottom: var(--space-8);
+  }
+  .ec-verif-steps { display: flex; gap: 0; }
+  .ec-verif-step {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+  .ec-verif-step::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    width: 100%;
+    height: 2px;
+    background: var(--border);
+    z-index: 0;
+  }
+  .ec-verif-step:last-child::before { display: none; }
+  .ec-verif-step .step-dot {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: .9rem;
+    position: relative; z-index: 1;
+    border: 2px solid var(--border);
+    background: var(--bg-card2);
+    transition: all .4s;
+  }
+  .ec-verif-step.done .step-dot { background: rgba(34,197,94,.15); border-color: #22c55e; color: #22c55e; }
+  .ec-verif-step.active .step-dot { background: rgba(201,168,76,.15); border-color: var(--gold); color: var(--gold); box-shadow: 0 0 12px rgba(201,168,76,.3); }
+  .ec-verif-step .step-lbl { font-size: 11px; color: var(--text-muted); text-align: center; margin-top: var(--space-2); text-transform: uppercase; letter-spacing: .07em; }
+  .ec-verif-step.done .step-lbl { color: #22c55e; }
+  .ec-verif-step.active .step-lbl { color: var(--gold); }
+
+  /* Avis étoiles */
+  .stars-input span {
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--border);
+    transition: color .15s, transform .15s;
+  }
+  .stars-input span:hover, .stars-input span.lit { color: var(--gold); transform: scale(1.2); }
+
+  /* Empty state */
+  .ec-empty {
+    text-align: center;
+    padding: var(--space-16) var(--space-6);
+    color: var(--text-muted);
+  }
+  .ec-empty .ec-empty-icon { font-size: 3.5rem; margin-bottom: var(--space-4); opacity: .5; }
+  .ec-empty p { font-size: var(--text-sm); margin-bottom: var(--space-6); }
+
+  /* Recent activity */
+  .ec-activity { display: flex; flex-direction: column; gap: var(--space-3); }
+  .ec-activity-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    padding: var(--space-4);
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    transition: border-color .2s;
+  }
+  .ec-activity-item:hover { border-color: var(--border); }
+  .ec-activity-item .act-icon {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+  .ec-activity-item .act-text { flex: 1; }
+  .ec-activity-item .act-title { font-size: var(--text-sm); color: rgba(255,255,255,.85); font-weight: 600; }
+  .ec-activity-item .act-sub   { font-size: var(--text-xs); color: var(--text-muted); }
+  .ec-activity-item .act-val   { font-family: var(--font-display); font-size: var(--text-base); color: var(--gold); font-weight: 700; }
+
+  /* Responsive */
+  @media(max-width:1024px){
+    .ec-layout { grid-template-columns: 240px 1fr; }
+    .ec-stats-row { grid-template-columns: 1fr 1fr; }
+    .ec-content { padding: var(--space-6); }
+  }
+  @media(max-width:768px){
+    .ec-layout { grid-template-columns: 1fr; }
+    .ec-sidebar { position: static; height: auto; flex-direction: row; flex-wrap: wrap; }
+    .ec-profile { flex: 1; min-width: 200px; }
+    .ec-nav { display: flex; flex-wrap: wrap; padding: var(--space-2) var(--space-3); }
+    .ec-nav-btn { width: auto; padding: var(--space-2) var(--space-4); border-left: none; border-bottom: 2px solid transparent; }
+    .ec-nav-btn.active { border-bottom-color: var(--gold); border-left: none; }
+    .ec-content { padding: var(--space-5) var(--space-4); }
+    .ec-stats-row { grid-template-columns: 1fr 1fr; gap: var(--space-3); }
+    .ec-form-grid { grid-template-columns: 1fr; }
+    .ec-verif-steps { flex-direction: column; gap: var(--space-3); }
+    .ec-verif-step::before { display: none; }
+  }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <div class="container header__inner">
+    <a href="index.html" class="header__logo">
+      <img src="assets/images/logo-header.svg" alt="iStore Pro" style="height:38px;width:auto;display:block;"/>
+    </a>
+    <nav class="header__nav" id="mainNav">
+      <a href="index.html"       class="nav-link">Accueil</a>
+      <a href="catalogue.html"   class="nav-link">Catalogue</a>
+      <a href="comparateur.html" class="nav-link">Comparer</a>
+      <a href="faq.html"         class="nav-link">FAQ</a>
+    </nav>
+    <div class="header__actions" style="display:flex;gap:var(--space-3);align-items:center;">
+      <a href="favoris.html" title="Mes favoris" id="wishlistBtn" style="font-size:1.2rem;line-height:1;color:var(--text-muted);transition:color .2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-muted)'">🤍</a>
+      <button class="btn btn--outline btn--sm" onclick="Auth.logout()">Déconnexion</button>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </button>
+  </div>
+</header>
+
+<div class="ec-layout">
+
+  <!-- ══════════ SIDEBAR ══════════ -->
+  <aside class="ec-sidebar">
+
+    <!-- Profil -->
+    <div class="ec-profile">
+      <div class="ec-avatar-wrap">
+        <div class="ec-avatar" id="ecAvatar" onclick="showPanel('profil')" title="Modifier la photo">
+          <span id="ecAvatarInitials">?</span>
+          <img id="ecAvatarImg" src="" alt="" style="display:none;"/>
+        </div>
+        <label class="ec-avatar-upload" for="photoFileInput" title="Changer la photo">📷</label>
+        <input type="file" id="photoFileInput" accept="image/jpeg,image/png,image/webp" style="display:none;" onchange="uploadPhoto(this)"/>
+      </div>
+      <div class="ec-user-name" id="ecUserName">Chargement…</div>
+      <div class="ec-user-email" id="ecUserEmail">—</div>
+      <div class="ec-verified-badge unverified" id="ecVerifiedBadge">
+        <span id="ecVerifiedIcon">●</span>
+        <span id="ecVerifiedLabel">Chargement…</span>
+      </div>
+      <div class="ec-verif-pills">
+        <span class="ec-pill nok" id="pillEmail" onclick="showPanel('verif')" title="Vérifier email">📧 Email</span>
+        <span class="ec-pill nok" id="pillPhone" onclick="showPanel('verif')" title="Vérifier téléphone">📱 Tél.</span>
+      </div>
+    </div>
+
+    <!-- Stats rapides -->
+    <div class="ec-sidebar-stats">
+      <div class="ec-stat-cell">
+        <span class="val" id="sidebarNbCommandes">—</span>
+        <span class="lbl">Commandes</span>
+      </div>
+      <div class="ec-stat-cell">
+        <span class="val" id="sidebarNbDossiers">—</span>
+        <span class="lbl">Dossiers</span>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="ec-nav">
+      <div class="ec-nav-section">Principal</div>
+      <button class="ec-nav-btn active" onclick="showPanel('dashboard')">
+        <span class="ico">📊</span> Tableau de bord
+      </button>
+      <button class="ec-nav-btn" onclick="showPanel('commandes')">
+        <span class="ico">📦</span> Mes commandes
+      </button>
+      <button class="ec-nav-btn" onclick="showPanel('dossiers')">
+        <span class="ico">📂</span> Mes dossiers crédit
+      </button>
+      <button class="ec-nav-btn" onclick="showPanel('paiements')">
+        <span class="ico">💳</span> Paiements crédit
+      </button>
+      <button class="ec-nav-btn" onclick="showPanel('quittances')">
+        <span class="ico">🧾</span> Mes quittances
+      </button>
+
+      <div class="ec-nav-section">Compte</div>
+      <button class="ec-nav-btn" onclick="showPanel('verif')">
+        <span class="ico">🔐</span> Vérification
+        <span class="badge" id="navVerifBadge" style="display:none;">!</span>
+      </button>
+      <button class="ec-nav-btn" onclick="showPanel('profil')">
+        <span class="ico">👤</span> Mon profil
+      </button>
+      <button class="ec-nav-btn" onclick="showPanel('avis')">
+        <span class="ico">⭐</span> Laisser un avis
+      </button>
+
+      <div class="ec-nav-section">Actions</div>
+      <button class="ec-nav-btn" onclick="window.location.href='catalogue.html'">
+        <span class="ico">🛍️</span> Nouveau achat
+      </button>
+    </nav>
+
+    <div class="ec-sidebar-footer">
+      <a href="mentions-legales.html">📄 Mentions légales</a>
+      <a href="politique-confidentialite.html">🔒 Confidentialité</a>
+      <a href="suppression-compte.html">🗑 Supprimer mon compte</a>
+      <button onclick="Auth.logout()" style="color:rgba(239,68,68,.6);">🚪 Déconnexion</button>
+    </div>
+  </aside>
+
+  <!-- ══════════ CONTENU ══════════ -->
+  <div class="ec-content">
+
+    <!-- ── DASHBOARD ── -->
+    <div class="ec-panel active" id="panelDashboard">
+      <h1 class="ec-panel-title">Bonjour, <span id="ecFirstname">—</span> 👋</h1>
+      <p class="ec-panel-sub">Bienvenue dans votre espace personnel iStore Pro</p>
+
+      <div class="ec-stats-row">
+        <div class="ec-card">
+          <div class="card-icon">📦</div>
+          <div class="card-val" id="dashNbCommandes">—</div>
+          <div class="card-lbl">Commandes</div>
+        </div>
+        <div class="ec-card">
+          <div class="card-icon">📂</div>
+          <div class="card-val" id="dashNbDossiers">—</div>
+          <div class="card-lbl">Dossiers crédit</div>
+        </div>
+        <div class="ec-card">
+          <div class="card-icon">💰</div>
+          <div class="card-val" id="dashTotalDepense">—</div>
+          <div class="card-lbl">Dépensé TTC</div>
+        </div>
+        <div class="ec-card">
+          <div class="card-icon">🧾</div>
+          <div class="card-val" id="dashNbQuittances">—</div>
+          <div class="card-lbl">Quittances</div>
+        </div>
+      </div>
+
+      <!-- Activité récente -->
+      <h2 style="font-family:var(--font-display);font-size:var(--text-xl);text-transform:uppercase;letter-spacing:.06em;color:#fff;margin-bottom:var(--space-5);">
+        Activité <span style="color:var(--gold);">récente</span>
+      </h2>
+      <div id="dashActivity" class="ec-activity">
+        <div class="loading-spinner">Chargement…</div>
+      </div>
+
+      <!-- Alerte vérification si incomplet -->
+      <div id="dashVerifAlert" style="display:none;margin-top:var(--space-8);background:rgba(251,191,36,.07);border:1px solid rgba(251,191,36,.25);border-radius:var(--radius-lg);padding:var(--space-5) var(--space-6);">
+        <p style="font-size:var(--text-sm);color:#fbbf24;margin-bottom:var(--space-3);">
+          🔐 <strong>Votre compte n'est pas entièrement vérifié.</strong> Vérifiez votre email et téléphone pour accéder à toutes les fonctionnalités.
+        </p>
+        <button class="btn btn--sm" style="background:rgba(251,191,36,.15);color:#fbbf24;border:1px solid rgba(251,191,36,.3);" onclick="showPanel('verif')">Vérifier maintenant →</button>
+      </div>
+    </div>
+
+    <!-- ── COMMANDES ── -->
+    <div class="ec-panel" id="panelCommandes">
+      <h1 class="ec-panel-title">Mes <span>commandes</span></h1>
+      <p class="ec-panel-sub">Historique et suivi de vos achats</p>
+      <div id="commandesList"><div class="loading-spinner">Chargement…</div></div>
+    </div>
+
+    <!-- ── DOSSIERS ── -->
+    <div class="ec-panel" id="panelDossiers">
+      <h1 class="ec-panel-title">Dossiers <span>crédit</span></h1>
+      <p class="ec-panel-sub">Vos financements en cours et soldés</p>
+      <div id="dossiersList"><div class="loading-spinner">Chargement…</div></div>
+    </div>
+
+    <!-- ── PAIEMENTS ── -->
+    <div class="ec-panel" id="panelPaiements">
+      <h1 class="ec-panel-title">Paiements <span>crédit</span></h1>
+      <p class="ec-panel-sub">Déclarez vos mensualités et suivez votre échéancier</p>
+      <div id="paiementsList"><div class="loading-spinner">Chargement…</div></div>
+    </div>
+
+    <!-- ── QUITTANCES ── -->
+    <div class="ec-panel" id="panelQuittances">
+      <h1 class="ec-panel-title">Mes <span>quittances</span></h1>
+      <p class="ec-panel-sub">Téléchargez vos justificatifs de paiement PDF</p>
+      <div id="quittancesList"><div class="loading-spinner">Chargement…</div></div>
+    </div>
+
+    <!-- ── VÉRIFICATION ── -->
+    <div class="ec-panel" id="panelVerif">
+      <h1 class="ec-panel-title">Vérification <span>du compte</span></h1>
+      <p class="ec-panel-sub">Confirmez votre email et votre numéro pour sécuriser votre compte</p>
+
+      <!-- Barre de progression -->
+      <div class="ec-verif-progress">
+        <div class="ec-verif-steps" id="verifSteps">
+          <div class="ec-verif-step" id="step-email">
+            <div class="step-dot">📧</div>
+            <div class="step-lbl">Email</div>
+          </div>
+          <div class="ec-verif-step" id="step-phone">
+            <div class="step-dot">📱</div>
+            <div class="step-lbl">Téléphone</div>
+          </div>
+          <div class="ec-verif-step" id="step-done">
+            <div class="step-dot">🏆</div>
+            <div class="step-lbl">Vérifié</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="ec-form-card" id="verifEmailCard">
+        <h3>📧 Vérification email</h3>
+        <div id="verifEmailOk" style="display:none;">
+          <p style="color:#22c55e;font-size:var(--text-sm);">✅ Votre adresse email est vérifiée.</p>
+        </div>
+        <div id="verifEmailForm">
+          <p style="font-size:var(--text-sm);color:var(--text-secondary);margin-bottom:var(--space-5);">
+            Un lien de confirmation a été envoyé à votre adresse lors de l'inscription. Si vous ne l'avez pas reçu, renvoyez-en un.
+          </p>
+          <div id="verifEmailAlert" class="alert" style="display:none;margin-bottom:var(--space-4);"></div>
+          <div style="display:flex;gap:var(--space-3);align-items:center;">
+            <input type="email" id="verifEmailInput" class="form-input" placeholder="votre@email.com" style="flex:1;"/>
+            <button class="btn btn--outline" onclick="resendVerifyEmail()">Renvoyer le lien</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Téléphone -->
+      <div class="ec-form-card" id="verifPhoneCard">
+        <h3>📱 Vérification téléphone</h3>
+        <div id="verifPhoneOk" style="display:none;">
+          <p style="color:#22c55e;font-size:var(--text-sm);">✅ Votre numéro de téléphone est vérifié.</p>
+        </div>
+        <div id="verifPhoneStep1">
+          <p style="font-size:var(--text-sm);color:var(--text-secondary);margin-bottom:var(--space-5);">
+            Recevez un code à 6 chiffres par SMS (ou email si SMS non disponible).
+          </p>
+          <div id="verifPhoneAlert" class="alert" style="display:none;margin-bottom:var(--space-4);"></div>
+          <div style="display:flex;gap:var(--space-3);align-items:center;margin-bottom:var(--space-4);">
+            <input type="tel" id="verifPhoneInput" class="form-input" placeholder="+33 6 00 00 00 00" style="flex:1;"/>
+            <button class="btn btn--primary" id="sendCodeBtn" onclick="sendPhoneCode()">Envoyer le code</button>
+          </div>
+        </div>
+        <div id="verifPhoneStep2" style="display:none;">
+          <p style="font-size:var(--text-sm);color:var(--text-secondary);margin-bottom:var(--space-4);text-align:center;">
+            Saisissez le code à 6 chiffres reçu sur <strong id="phoneSent" style="color:#fff;"></strong>
+          </p>
+          <div id="verifCodeAlert" class="alert" style="display:none;margin-bottom:var(--space-4);"></div>
+          <div class="otp-wrap" id="otpWrap">
+            <input class="otp-input" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]"/>
+            <input class="otp-input" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]"/>
+            <input class="otp-input" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]"/>
+            <input class="otp-input" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]"/>
+            <input class="otp-input" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]"/>
+            <input class="otp-input" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]"/>
+          </div>
+          <div style="display:flex;gap:var(--space-3);justify-content:center;margin-top:var(--space-4);">
+            <button class="btn btn--primary" onclick="verifyPhoneCode()">✓ Vérifier le code</button>
+            <button class="btn btn--ghost" onclick="resetPhoneStep()">← Changer le numéro</button>
+          </div>
+          <p style="text-align:center;margin-top:var(--space-4);font-size:var(--text-xs);color:var(--text-muted);">
+            Pas reçu ? <span style="color:var(--gold);cursor:pointer;" onclick="sendPhoneCode()">Renvoyer un code</span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PROFIL ── -->
+    <div class="ec-panel" id="panelProfil">
+      <h1 class="ec-panel-title">Mon <span>profil</span></h1>
+      <p class="ec-panel-sub">Gérez vos informations personnelles et votre mot de passe</p>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-6);">
+
+        <div class="ec-form-card">
+          <h3>👤 Informations personnelles</h3>
+          <div id="profilAlert" class="alert" style="display:none;margin-bottom:var(--space-4);"></div>
+          <div class="ec-form-grid">
+            <div class="form-group"><label>Prénom</label><input type="text" id="profilFirstname" class="form-input" placeholder="Prénom"/></div>
+            <div class="form-group"><label>Nom</label><input type="text" id="profilLastname" class="form-input" placeholder="Nom"/></div>
+          </div>
+          <div class="form-group"><label>Téléphone</label><input type="tel" id="profilPhone" class="form-input" placeholder="+33 6 00 00 00 00"/></div>
+          <div class="form-group"><label>Adresse</label><input type="text" id="profilAddress" class="form-input" placeholder="Votre adresse complète"/></div>
+          <button class="btn btn--primary" onclick="saveProfile()">Enregistrer</button>
+        </div>
+
+        <div class="ec-form-card">
+          <h3>🔑 Changer le mot de passe</h3>
+          <div id="pwdAlert" class="alert" style="display:none;margin-bottom:var(--space-4);"></div>
+          <div class="form-group"><label>Mot de passe actuel</label><input type="password" id="currentPwd" class="form-input" placeholder="••••••••"/></div>
+          <div class="form-group"><label>Nouveau mot de passe</label><input type="password" id="newPwd" class="form-input" placeholder="Min. 8 caractères"/></div>
+          <div class="form-group"><label>Confirmer</label><input type="password" id="confirmPwd" class="form-input" placeholder="••••••••"/></div>
+          <button class="btn btn--primary" onclick="changePassword()">Changer</button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── AVIS ── -->
+    <div class="ec-panel" id="panelAvis">
+      <h1 class="ec-panel-title">Laisser un <span>avis</span></h1>
+      <p class="ec-panel-sub">Votre avis sera publié après validation par notre équipe</p>
+
+      <div class="ec-form-card" style="max-width:600px;">
+        <h3>⭐ Votre expérience</h3>
+        <div id="avisAlert" class="alert" style="display:none;margin-bottom:var(--space-4);"></div>
+
+        <div class="form-group">
+          <label>Note *</label>
+          <div class="stars-input" id="starRating" style="display:flex;gap:var(--space-2);margin-top:var(--space-2);">
+            <span data-star="1" onclick="setRating(1)">★</span>
+            <span data-star="2" onclick="setRating(2)">★</span>
+            <span data-star="3" onclick="setRating(3)">★</span>
+            <span data-star="4" onclick="setRating(4)">★</span>
+            <span data-star="5" onclick="setRating(5)">★</span>
+          </div>
+          <input type="hidden" id="avisRating" value="0"/>
+        </div>
+
+        <div class="form-group"><label>Titre</label><input type="text" id="avisTitle" class="form-input" placeholder="Résumez votre expérience" maxlength="100"/></div>
+        <div class="form-group"><label>Commentaire *</label><textarea id="avisBody" class="form-input" rows="5" placeholder="Décrivez votre expérience détaillée…" maxlength="1000" style="resize:vertical;"></textarea></div>
+        <div class="form-group">
+          <label>Commande concernée (optionnel)</label>
+          <select id="avisOrder" class="form-input"><option value="">— Sélectionner —</option></select>
+        </div>
+        <button class="btn btn--primary btn--full" onclick="submitAvis()">📤 Envoyer mon avis</button>
+      </div>
+    </div>
+
+  </div><!-- /ec-content -->
+</div><!-- /ec-layout -->
+
+<!-- MODAL : Déclarer un paiement crédit -->
+<div class="modal-overlay" id="payModal" style="display:none">
+  <div class="modal" style="max-width:480px;">
+    <div class="modal__header">
+      <h3>💳 Déclarer un paiement</h3>
+      <button class="modal__close" onclick="closeModal('payModal')">✕</button>
+    </div>
+    <div class="modal__body">
+      <div id="payModalAlert" class="alert" style="display:none;margin-bottom:var(--space-4);"></div>
+      <p style="font-size:var(--text-sm);color:var(--text-secondary);margin-bottom:var(--space-5);">
+        Dossier : <strong id="payModalDossierRef" style="color:var(--gold);">—</strong><br/>
+        Mensualité : <strong id="payModalMensualite" style="color:#fff;">—</strong>
+      </p>
+      <div class="form-group">
+        <label>Montant payé (€) *</label>
+        <input type="number" id="payModalMontant" class="form-input" step="0.01" min="1" placeholder="Ex: 150.00"/>
+      </div>
+      <div class="form-group">
+        <label>Moyen de paiement</label>
+        <select id="payModalMethode" class="form-input">
+          <option value="mobile_money">Mobile Money</option>
+          <option value="virement">Virement bancaire</option>
+          <option value="especes">Espèces</option>
+          <option value="stripe">Carte bancaire</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Référence / note (optionnel)</label>
+        <input type="text" id="payModalRef" class="form-input" placeholder="Ex: Réf Orange Money 123456"/>
+      </div>
+      <button class="btn btn--primary btn--full" onclick="declarerPaiement()">Déclarer le paiement</button>
+    </div>
+  </div>
+</div>
+
+<script src="assets/js/utils.js"></script>
+<script src="assets/js/api.js"></script>
+<script src="assets/js/auth.js"></script>
+<script src="assets/js/ui-utils.js"></script>
+<script src="assets/js/wishlist.js"></script>
+<script src="assets/js/password-strength.js"></script>
+<script src="assets/js/cookies.js"></script>
+<script>
+// ════════════════════════════════════════════════════════════════
+// ESPACE CLIENT — JavaScript complet
+// ════════════════════════════════════════════════════════════════
+
+// ── Auth guard ────────────────────────────────────────────────
+if (!Auth.isLoggedIn()) window.location.href = 'connexion.html?redirect=espace-client.html';
+
+// ── Données globales ──────────────────────────────────────────
+let _user     = null;
+let _orders   = [];
+let _dossiers = [];
+
+// ── Panel navigation ──────────────────────────────────────────
+function showPanel(name) {
+  document.querySelectorAll('.ec-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.ec-nav-btn').forEach(b => b.classList.remove('active'));
+
+  const panel = document.getElementById(`panel${name.charAt(0).toUpperCase()+name.slice(1)}`);
+  if (panel) panel.classList.add('active');
+
+  const btn = Array.from(document.querySelectorAll('.ec-nav-btn')).find(b => b.getAttribute('onclick')?.includes(`'${name}'`));
+  if (btn) btn.classList.add('active');
+
+  // Lazy load panels
+  if (name === 'commandes')  loadCommandes();
+  if (name === 'dossiers')   loadDossiers();
+  if (name === 'paiements')  loadPaiements();
+  if (name === 'quittances') loadQuittances();
+  if (name === 'profil')     loadProfil();
+  if (name === 'avis')       { loadAvisOrders(); }
+  if (name === 'verif')      updateVerifUI();
+}
+
+// ── Mise à jour UI vérification ───────────────────────────────
+function updateVerifUI() {
+  if (!_user) return;
+  const emailOk = _user.isEmailVerified === true;
+  const phoneOk = _user.isPhoneVerified === true;
+  const fullyOk = emailOk && phoneOk;
+
+  // Badge principal
+  const badge = document.getElementById('ecVerifiedBadge');
+  const lbl   = document.getElementById('ecVerifiedLabel');
+  const ico   = document.getElementById('ecVerifiedIcon');
+
+  if (fullyOk) {
+    badge.className = 'ec-verified-badge verified';
+    lbl.textContent = 'Compte vérifié';
+    ico.textContent = '✓';
+  } else if (emailOk || phoneOk) {
+    badge.className = 'ec-verified-badge partial';
+    lbl.textContent = 'Partiellement vérifié';
+    ico.textContent = '◑';
+  } else {
+    badge.className = 'ec-verified-badge unverified';
+    lbl.textContent = 'Non vérifié';
+    ico.textContent = '●';
+  }
+
+  // Pills
+  const pEmail = document.getElementById('pillEmail');
+  const pPhone = document.getElementById('pillPhone');
+  if (pEmail) { pEmail.className = `ec-pill ${emailOk?'ok':'nok'}`; pEmail.textContent = emailOk ? '✓ Email' : '✗ Email'; }
+  if (pPhone) { pPhone.className = `ec-pill ${phoneOk?'ok':'nok'}`; pPhone.textContent = phoneOk ? '✓ Tél.'  : '✗ Tél.'; }
+
+  // Badge navigation
+  const navBadge = document.getElementById('navVerifBadge');
+  if (navBadge) navBadge.style.display = fullyOk ? 'none' : 'inline';
+
+  // Dashboard alert
+  const dashAlert = document.getElementById('dashVerifAlert');
+  if (dashAlert) dashAlert.style.display = fullyOk ? 'none' : 'block';
+
+  // Steps vérification
+  const stepEmail = document.getElementById('step-email');
+  const stepPhone = document.getElementById('step-phone');
+  const stepDone  = document.getElementById('step-done');
+  if (stepEmail) stepEmail.className = `ec-verif-step ${emailOk?'done':(!phoneOk?'active':'')}`;
+  if (stepPhone) stepPhone.className = `ec-verif-step ${phoneOk?'done':(emailOk?'active':'')}`;
+  if (stepDone)  stepDone.className  = `ec-verif-step ${fullyOk?'done':''}`;
+
+  // Formulaires verif
+  const emailOkEl = document.getElementById('verifEmailOk');
+  const emailForm = document.getElementById('verifEmailForm');
+  if (emailOkEl) emailOkEl.style.display = emailOk ? 'block' : 'none';
+  if (emailForm) emailForm.style.display  = emailOk ? 'none'  : 'block';
+  if (emailOk && document.getElementById('verifEmailCard')) document.getElementById('verifEmailCard').style.borderColor = 'rgba(34,197,94,.35)';
+
+  const phoneOkEl = document.getElementById('verifPhoneOk');
+  if (phoneOkEl) phoneOkEl.style.display = phoneOk ? 'block' : 'none';
+  if (phoneOk) {
+    const s1 = document.getElementById('verifPhoneStep1');
+    const s2 = document.getElementById('verifPhoneStep2');
+    if (s1) s1.style.display = 'none';
+    if (s2) s2.style.display = 'none';
+    if (document.getElementById('verifPhoneCard')) document.getElementById('verifPhoneCard').style.borderColor = 'rgba(34,197,94,.35)';
+  }
+}
+
+// ── Renvoyer email de vérification ───────────────────────────
+async function resendVerifyEmail() {
+  const email   = document.getElementById('verifEmailInput')?.value || _user?.email || '';
+  const alertEl = document.getElementById('verifEmailAlert');
+  try {
+    await API.post('/auth/resend-verify', { email }, false);
+    showAlert(alertEl, 'success', 'Lien de vérification envoyé. Vérifiez votre boîte email et vos spams.');
+  } catch(e) { showAlert(alertEl, 'error', e.message); }
+}
+
+// ── Envoyer code SMS ──────────────────────────────────────────
+async function sendPhoneCode() {
+  const phone   = document.getElementById('verifPhoneInput').value.trim();
+  const alertEl = document.getElementById('verifPhoneAlert');
+  if (!phone) { showAlert(alertEl,'error','Veuillez saisir votre numéro.'); return; }
+
+  const btn = document.getElementById('sendCodeBtn');
+  btn.disabled = true; btn.textContent = 'Envoi…';
+  try {
+    await API.post('/auth/send-phone-code', { phone });
+    document.getElementById('phoneSent').textContent = phone;
+    document.getElementById('verifPhoneStep1').style.display = 'none';
+    document.getElementById('verifPhoneStep2').style.display = 'block';
+    initOTP();
+    showAlert(document.getElementById('verifCodeAlert'),'success','Code envoyé ! Saisissez-le ci-dessous.');
+  } catch(e) {
+    showAlert(alertEl,'error', e.message || 'Erreur lors de l\'envoi.');
+    btn.disabled = false; btn.textContent = 'Envoyer le code';
+  }
+}
+
+function resetPhoneStep() {
+  document.getElementById('verifPhoneStep1').style.display = 'block';
+  document.getElementById('verifPhoneStep2').style.display = 'none';
+  document.getElementById('verifPhoneAlert').style.display = 'none';
+  document.getElementById('sendCodeBtn').disabled = false;
+  document.getElementById('sendCodeBtn').textContent = 'Envoyer le code';
+}
+
+// OTP input navigation
+function initOTP() {
+  const inputs = document.querySelectorAll('.otp-input');
+  inputs.forEach((inp, i) => {
+    inp.value = '';
+    inp.addEventListener('input', () => {
+      if (inp.value.length === 1 && i < inputs.length - 1) inputs[i+1].focus();
+    });
+    inp.addEventListener('keydown', e => {
+      if (e.key === 'Backspace' && !inp.value && i > 0) inputs[i-1].focus();
+    });
+    inp.addEventListener('paste', e => {
+      e.preventDefault();
+      const paste = (e.clipboardData || window.clipboardData).getData('text').replace(/\D/g,'').slice(0,6);
+      paste.split('').forEach((ch, j) => { if (inputs[j]) inputs[j].value = ch; });
+      if (inputs[Math.min(paste.length, inputs.length-1)]) inputs[Math.min(paste.length, inputs.length-1)].focus();
+    });
+  });
+  inputs[0]?.focus();
+}
+
+async function verifyPhoneCode() {
+  const code = Array.from(document.querySelectorAll('.otp-input')).map(i => i.value).join('');
+  const alertEl = document.getElementById('verifCodeAlert');
+  if (code.length !== 6) { showAlert(alertEl,'error','Veuillez saisir les 6 chiffres.'); return; }
+  try {
+    await API.post('/auth/verify-phone', { code });
+    _user.isPhoneVerified = true;
+    updateVerifUI();
+    updateSidebarProfile();
+    showAlert(alertEl,'success','✅ Téléphone vérifié avec succès !');
+    document.getElementById('verifPhoneStep2').style.display = 'none';
+    document.getElementById('verifPhoneOk').style.display   = 'block';
+  } catch(e) {
+    showAlert(alertEl,'error', e.message || 'Code incorrect ou expiré.');
+    document.querySelectorAll('.otp-input').forEach(i => { i.value=''; i.style.borderColor='#ef4444'; });
+    setTimeout(()=> document.querySelectorAll('.otp-input').forEach(i => i.style.borderColor=''), 1500);
+  }
+}
+
+// ── Photo de profil ───────────────────────────────────────────
+async function uploadPhoto(input) {
+  if (!input.files[0]) return;
+  const formData = new FormData();
+  formData.append('photo', input.files[0]);
+  try {
+    const BASE = (window.location.hostname==='localhost'||window.location.hostname==='127.0.0.1')
+      ? 'http://localhost:5000' : 'https://istore-pro-backend.onrender.com';
+    const r = await fetch(`${BASE}/api/auth/upload-photo`, {
+      method : 'POST',
+      headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` },
+      body   : formData
+    });
+    const data = await r.json();
+    if (!r.ok) throw new Error(data.message);
+    _user.profilePhoto = data.profilePhoto;
+    renderAvatar();
+    showToastEC('📷 Photo mise à jour !');
+  } catch(e) { showToastEC('❌ ' + (e.message || 'Erreur upload'), 'error'); }
+}
+
+function renderAvatar() {
+  const initEl = document.getElementById('ecAvatarInitials');
+  const imgEl  = document.getElementById('ecAvatarImg');
+  if (_user?.profilePhoto) {
+    // URL Cloudinary complète — pas besoin de préfixe backend
+    imgEl.src = _user.profilePhoto;
+    imgEl.style.display = 'block';
+    if (initEl) initEl.style.display = 'none';
+  } else {
+    if (imgEl) imgEl.style.display = 'none';
+    if (initEl) {
+      initEl.style.display = 'block';
+      const initials = ((_user?.firstname||'?')[0] + (_user?.lastname||'?')[0]).toUpperCase();
+      initEl.textContent = initials;
+    }
+  }
+}
+
+// ── Toast notification ────────────────────────────────────────
+function showToastEC(msg, type='success') {
+  let t = document.getElementById('ecToast');
+  if (!t) {
+    t = document.createElement('div');
+    t.id = 'ecToast';
+    t.style.cssText = `position:fixed;bottom:24px;right:24px;z-index:9999;background:#1a1a1a;border-radius:10px;padding:12px 20px;font-size:13px;color:#fff;box-shadow:0 4px 20px rgba(0,0,0,.5);opacity:0;transform:translateY(10px);transition:all .25s;pointer-events:none;`;
+    document.body.appendChild(t);
+  }
+  t.textContent = msg;
+  t.style.borderLeft = type === 'error' ? '3px solid #ef4444' : '3px solid var(--gold)';
+  t.style.opacity = '1'; t.style.transform = 'translateY(0)';
+  clearTimeout(t._tid);
+  t._tid = setTimeout(()=>{ t.style.opacity='0'; t.style.transform='translateY(10px)'; }, 3000);
+}
+
+// ── Charger & afficher le profil sidebar ─────────────────────
+function updateSidebarProfile() {
+  if (!_user) return;
+  document.getElementById('ecUserName').textContent  = `${_user.firstname} ${_user.lastname}`;
+  document.getElementById('ecUserEmail').textContent = _user.email;
+  document.getElementById('ecFirstname').textContent = _user.firstname;
+  if (document.getElementById('verifEmailInput')) document.getElementById('verifEmailInput').value = _user.email;
+  renderAvatar();
+  updateVerifUI();
+}
+
+// ── Dashboard ─────────────────────────────────────────────────
+async function loadDashboard() {
+  try {
+    _user = await API.get('/auth/me');
+    updateSidebarProfile();
+
+    // Commandes
+    try {
+      const res = await API.get('/orders/mes-commandes');
+      _orders = res.orders || res || [];
+      const nb = _orders.length;
+      const total = _orders.reduce((s,o)=> s + (o.prixTotal||0), 0);
+      document.getElementById('dashNbCommandes').textContent = nb;
+      document.getElementById('dashTotalDepense').textContent = formatPrice(total);
+      document.getElementById('sidebarNbCommandes').textContent = nb;
+
+      // Activité récente
+      const actEl = document.getElementById('dashActivity');
+      if (!_orders.length) {
+        actEl.innerHTML = `<div class="ec-empty"><div class="ec-empty-icon">📦</div><p>Aucune commande pour l'instant.</p><a href="catalogue.html" class="btn btn--primary">Découvrir le catalogue</a></div>`;
+      } else {
+        const ST = {EN_ATTENTE:'st-wait',CONFIRMEE:'st-ok',EN_PREPARATION:'st-ok',EXPEDIEE:'st-ship',LIVREE:'st-done',ANNULEE:'st-err'};
+        const SL = {EN_ATTENTE:'En attente',CONFIRMEE:'Confirmée',EN_PREPARATION:'En préparation',EXPEDIEE:'Expédiée',LIVREE:'Livrée',ANNULEE:'Annulée'};
+        actEl.innerHTML = _orders.slice(0,5).map(o => {
+          const d = new Date(o.createdAt).toLocaleDateString('fr-FR',{day:'2-digit',month:'short',year:'numeric'});
+          const icon = o.statut==='LIVREE'?'🏠':o.statut==='EXPEDIEE'?'🚚':o.statut==='ANNULEE'?'❌':'📦';
+          return `<div class="ec-activity-item">
+            <div class="act-icon" style="background:rgba(201,168,76,.08);">${icon}</div>
+            <div class="act-text">
+              <div class="act-title">${o.product?.name||'Produit'} ${o.product?.storage||''}</div>
+              <div class="act-sub">${o.numeroCommande||'—'} · ${d}</div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;">
+              <span class="st-badge ${ST[o.statut]||'st-wait'}">${SL[o.statut]||o.statut}</span>
+              <span class="act-val">${formatPrice(o.prixTotal||0)}</span>
+            </div>
+          </div>`;
+        }).join('');
+      }
+    } catch {}
+
+    // Dossiers
+    try {
+      const res2 = await API.get('/dossiers/mes-dossiers');
+      _dossiers = res2.dossiers || res2 || [];
+      document.getElementById('dashNbDossiers').textContent = _dossiers.length;
+      document.getElementById('sidebarNbDossiers').textContent = _dossiers.length;
+    } catch { document.getElementById('dashNbDossiers').textContent = '0'; document.getElementById('sidebarNbDossiers').textContent = '0'; }
+
+    // Quittances count
+    try {
+      const res3 = await API.get('/receipts/mine');
+      const q = res3.receipts || res3 || [];
+      document.getElementById('dashNbQuittances').textContent = q.length;
+    } catch { document.getElementById('dashNbQuittances').textContent = '0'; }
+
+  } catch(e) {
+    console.error('loadDashboard:', e.message);
+  }
+}
+
+// ── Commandes ─────────────────────────────────────────────────
+async function loadCommandes() {
+  const el = document.getElementById('commandesList');
+  if (!el || el.dataset.loaded) return;
+  try {
+    const res = await API.get('/orders/mes-commandes');
+    _orders = res.orders || res || [];
+    if (!_orders.length) {
+      el.innerHTML = `<div class="ec-empty"><div class="ec-empty-icon">📦</div><p>Vous n'avez pas encore passé de commande.</p><a href="catalogue.html" class="btn btn--primary">Voir le catalogue</a></div>`;
+    } else {
+      const ST = {EN_ATTENTE:'st-wait',CONFIRMEE:'st-ok',EN_PREPARATION:'st-ok',EXPEDIEE:'st-ship',LIVREE:'st-done',ANNULEE:'st-err'};
+      const SL = {EN_ATTENTE:'En attente',CONFIRMEE:'Confirmée',EN_PREPARATION:'En préparation',EXPEDIEE:'Expédiée',LIVREE:'Livrée',ANNULEE:'Annulée'};
+      el.innerHTML = `<div style="overflow-x:auto;"><table class="ec-table">
+        <thead><tr><th>N° Commande</th><th>Produit</th><th>Date</th><th>Montant</th><th>Type</th><th>Statut</th><th>Suivi</th></tr></thead>
+        <tbody>${_orders.map(o => {
+          const d = new Date(o.createdAt).toLocaleDateString('fr-FR',{day:'2-digit',month:'short',year:'numeric'});
+          return `<tr>
+            <td style="font-family:monospace;color:var(--gold);font-weight:700;">${o.numeroCommande||'—'}</td>
+            <td>${o.product?.name||'—'} <span style="color:var(--text-muted);">${o.product?.storage||''}</span></td>
+            <td style="color:var(--text-muted);">${d}</td>
+            <td style="color:var(--gold);font-weight:700;">${formatPrice(o.prixTotal||0)}</td>
+            <td>${o.typePaiement==='credit'?'💳 Crédit':'💰 Comptant'}</td>
+            <td><span class="st-badge ${ST[o.statut]||'st-wait'}">${SL[o.statut]||o.statut}</span></td>
+            <td><a href="suivi.html?ref=${o.numeroCommande}" style="color:var(--gold);font-size:var(--text-xs);">Suivre →</a></td>
+          </tr>`;
+        }).join('')}</tbody>
+      </table></div>`;
+    }
+    el.dataset.loaded = '1';
+  } catch(e) { el.innerHTML = `<p style="color:var(--error);">${e.message}</p>`; }
+}
+
+// ── Dossiers crédit ───────────────────────────────────────────
+async function loadDossiers() {
+  const el = document.getElementById('dossiersList');
+  if (!el || el.dataset.loaded) return;
+  try {
+    const res = await API.get('/dossiers/mes-dossiers');
+    _dossiers = res.dossiers || res || [];
+    if (!_dossiers.length) {
+      el.innerHTML = `<div class="ec-empty"><div class="ec-empty-icon">📂</div><p>Aucun dossier de crédit.</p><a href="simulation.html" class="btn btn--outline">Simuler un crédit</a></div>`;
+    } else {
+      el.innerHTML = _dossiers.map(d => {
+        const pct = Math.round(((d.montantPaye||0)/d.coutTotalCredit)*100);
+        return `<div class="ec-form-card" style="margin-bottom:var(--space-5);">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:var(--space-4);">
+            <div>
+              <h3 style="margin-bottom:var(--space-1);">${d.product?.name||'Produit'} ${d.product?.storage||''}</h3>
+              <span style="font-size:var(--text-xs);color:var(--text-muted);">${d.dureesMois} mois · Taux ${(d.tauxInteret*100).toFixed(1)}%</span>
+            </div>
+            <span class="st-badge ${d.status==='SOLDE'?'st-done':'st-ok'}">${d.status==='SOLDE'?'✓ Soldé':'En cours'}</span>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-4);margin-bottom:var(--space-5);">
+            <div><div style="font-size:var(--text-xs);color:var(--text-muted);">Total</div><div style="font-family:var(--font-display);color:#fff;font-weight:700;">${formatPrice(d.coutTotalCredit)}</div></div>
+            <div><div style="font-size:var(--text-xs);color:var(--text-muted);">Payé</div><div style="font-family:var(--font-display);color:#22c55e;font-weight:700;">${formatPrice(d.montantPaye||0)}</div></div>
+            <div><div style="font-size:var(--text-xs);color:var(--text-muted);">Restant</div><div style="font-family:var(--font-display);color:var(--gold);font-weight:700;">${formatPrice(d.montantRestant||0)}</div></div>
+          </div>
+          <div style="background:var(--bg-card2);border-radius:var(--radius-full);height:8px;overflow:hidden;margin-bottom:var(--space-3);">
+            <div style="height:100%;width:${pct}%;background:linear-gradient(90deg,var(--gold),#22c55e);border-radius:var(--radius-full);transition:width 1s ease;"></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:var(--text-xs);color:var(--text-muted);">
+            <span>${pct}% remboursé</span>
+            <span>Mensualité : ${formatPrice(d.mensualite)}</span>
+          </div>
+          ${d.status!=='SOLDE'?`<button class="btn btn--outline btn--sm" style="margin-top:var(--space-4);" onclick="openPayModal('${d._id}','${d.product?.name||''}',${d.mensualite})">💳 Déclarer un paiement</button>`:''}
+        </div>`;
+      }).join('');
+    }
+    el.dataset.loaded = '1';
+  } catch(e) { el.innerHTML = `<p style="color:var(--error);">${e.message}</p>`; }
+}
+
+// ── Paiements crédit ──────────────────────────────────────────
+async function loadPaiements() {
+  const el = document.getElementById('paiementsList');
+  if (!el || el.dataset.loaded) return;
+  try {
+    const res = await API.get('/payments/mine');
+    const pays = res.payments || res || [];
+    if (!pays.length) {
+      el.innerHTML = `<div class="ec-empty"><div class="ec-empty-icon">💳</div><p>Aucun paiement crédit enregistré.</p></div>`;
+    } else {
+      el.innerHTML = `<div style="overflow-x:auto;"><table class="ec-table">
+        <thead><tr><th>Date</th><th>Dossier</th><th>Montant</th><th>Méthode</th><th>Statut</th><th>Quittance</th></tr></thead>
+        <tbody>${pays.map(p => {
+          const d = new Date(p.createdAt).toLocaleDateString('fr-FR',{day:'2-digit',month:'short',year:'numeric'});
+          return `<tr>
+            <td>${d}</td>
+            <td style="color:var(--text-muted);font-size:var(--text-xs);">${p.dossier?.product?.name||'—'}</td>
+            <td style="color:var(--gold);font-weight:700;">${formatPrice(p.montant)}</td>
+            <td>${p.methodePaiement||'—'}</td>
+            <td><span class="st-badge ${p.statut==='VALIDE'?'st-done':'st-wait'}">${p.statut==='VALIDE'?'✓ Validé':'En attente'}</span></td>
+            <td>${p.receipt?`<a href="${p.receipt}" target="_blank" style="color:var(--gold);font-size:var(--text-xs);">📄 PDF</a>`:'—'}</td>
+          </tr>`;
+        }).join('')}</tbody>
+      </table></div>`;
+    }
+    el.dataset.loaded = '1';
+  } catch(e) { el.innerHTML = `<p style="color:var(--error);">${e.message}</p>`; }
+}
+
+// ── Quittances ────────────────────────────────────────────────
+async function loadQuittances() {
+  const el = document.getElementById('quittancesList');
+  if (!el || el.dataset.loaded) return;
+  try {
+    const res = await API.get('/receipts/mine');
+    const items = res.receipts || res || [];
+    if (!items.length) {
+      el.innerHTML = `<div class="ec-empty"><div class="ec-empty-icon">🧾</div><p>Aucune quittance disponible.</p></div>`;
+    } else {
+      el.innerHTML = `<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:var(--space-4);">
+        ${items.map(q => {
+          const d = new Date(q.createdAt).toLocaleDateString('fr-FR',{day:'2-digit',month:'long',year:'numeric'});
+          return `<div class="ec-card">
+            <div class="card-icon">🧾</div>
+            <div class="card-val">${formatPrice(q.montant||0)}</div>
+            <div class="card-lbl">${q.numeroQuittance||q._id}</div>
+            <div class="card-sub">${d}</div>
+            <a href="${q.urlPdf||'#'}" target="_blank" class="btn btn--outline btn--sm" style="margin-top:var(--space-4);display:block;text-align:center;">📄 Télécharger PDF</a>
+          </div>`;
+        }).join('')}
+      </div>`;
+    }
+    el.dataset.loaded = '1';
+  } catch(e) { el.innerHTML = `<p style="color:var(--error);">${e.message}</p>`; }
+}
+
+// ── Profil ────────────────────────────────────────────────────
+async function loadProfil() {
+  if (!_user) _user = await API.get('/auth/me');
+  document.getElementById('profilFirstname').value = _user.firstname || '';
+  document.getElementById('profilLastname').value  = _user.lastname  || '';
+  document.getElementById('profilPhone').value     = _user.phone     || '';
+  document.getElementById('profilAddress').value   = _user.address   || '';
+}
+
+async function saveProfile() {
+  const alertEl = document.getElementById('profilAlert');
+  const body = {
+    firstname: document.getElementById('profilFirstname').value.trim(),
+    lastname : document.getElementById('profilLastname').value.trim(),
+    phone    : document.getElementById('profilPhone').value.trim(),
+    address  : document.getElementById('profilAddress').value.trim(),
+  };
+  if (!body.firstname || !body.lastname) { showAlert(alertEl,'error','Prénom et nom obligatoires.'); return; }
+  try {
+    const res = await API.put('/auth/profile', body);
+    Object.assign(_user, res.user);
+    updateSidebarProfile();
+    showAlert(alertEl,'success','✅ Profil mis à jour.');
+  } catch(e) { showAlert(alertEl,'error',e.message); }
+}
+
+async function changePassword() {
+  const alertEl = document.getElementById('pwdAlert');
+  const curr = document.getElementById('currentPwd').value;
+  const nw   = document.getElementById('newPwd').value;
+  const conf = document.getElementById('confirmPwd').value;
+  if (!curr||!nw||!conf) { showAlert(alertEl,'error','Tous les champs sont requis.'); return; }
+  if (nw.length < 8)      { showAlert(alertEl,'error','Minimum 8 caractères.'); return; }
+  if (nw !== conf)         { showAlert(alertEl,'error','Les mots de passe ne correspondent pas.'); return; }
+  try {
+    await API.post('/auth/change-password', { currentPassword:curr, newPassword:nw });
+    showAlert(alertEl,'success','✅ Mot de passe modifié.');
+    document.getElementById('currentPwd').value = '';
+    document.getElementById('newPwd').value     = '';
+    document.getElementById('confirmPwd').value = '';
+  } catch(e) { showAlert(alertEl,'error',e.message); }
+}
+
+// ── Avis ─────────────────────────────────────────────────────
+let selectedRating = 0;
+function setRating(n) {
+  selectedRating = n;
+  document.getElementById('avisRating').value = n;
+  document.querySelectorAll('#starRating span').forEach((s,i) => s.classList.toggle('lit', i < n));
+}
+
+async function loadAvisOrders() {
+  const sel = document.getElementById('avisOrder');
+  if (!sel) return;
+  try {
+    const res = await API.get('/orders/mes-commandes');
+    const orders = res.orders || res || [];
+    sel.innerHTML = '<option value="">— Sélectionner —</option>' +
+      orders.filter(o=>o.statut!=='ANNULEE').map(o =>
+        `<option value="${o._id}">${o.numeroCommande} — ${o.product?.name||'Produit'} ${o.product?.storage||''}</option>`
+      ).join('');
+  } catch {}
+}
+
+async function submitAvis() {
+  const alertEl = document.getElementById('avisAlert');
+  const rating  = parseInt(document.getElementById('avisRating').value);
+  const title   = document.getElementById('avisTitle').value.trim();
+  const body    = document.getElementById('avisBody').value.trim();
+  const orderId = document.getElementById('avisOrder').value;
+  if (!rating)       { showAlert(alertEl,'error','Sélectionnez une note.'); return; }
+  if (body.length<20){ showAlert(alertEl,'error','Commentaire trop court (20 caractères min.).'); return; }
+  try {
+    await API.post('/reviews', { rating, title, body, orderId: orderId||null });
+    showAlert(alertEl,'success','✅ Avis envoyé ! Il sera publié après validation.');
+    document.getElementById('avisTitle').value = '';
+    document.getElementById('avisBody').value  = '';
+    setRating(0);
+  } catch(e) { showAlert(alertEl,'error',e.message); }
+}
+
+// ── Modal paiement crédit ────────────────────────────────────
+let _currentDossierId = null;
+function openPayModal(dossierId, productName, mensualite) {
+  _currentDossierId = dossierId;
+  document.getElementById('payModalDossierRef').textContent = productName;
+  document.getElementById('payModalMensualite').textContent = formatPrice(mensualite);
+  document.getElementById('payModalMontant').value = mensualite.toFixed(2);
+  document.getElementById('payModal').style.display = 'flex';
+}
+function closeModal(id) { document.getElementById(id).style.display='none'; }
+
+async function declarerPaiement() {
+  const alertEl  = document.getElementById('payModalAlert');
+  const montant  = parseFloat(document.getElementById('payModalMontant').value);
+  const methode  = document.getElementById('payModalMethode').value;
+  const refNote  = document.getElementById('payModalRef').value.trim();
+  if (!montant||montant<=0){ showAlert(alertEl,'error','Montant invalide.'); return; }
+  const btn = document.querySelector('#payModal .btn--primary');
+  btn.disabled=true; btn.textContent='Traitement…';
+  try {
+    await API.post('/payments', { dossierId:_currentDossierId, montant, methodePaiement:methode, referenceExterne:refNote });
+    closeModal('payModal');
+    document.getElementById('dossiersList').removeAttribute('data-loaded');
+    loadDossiers();
+    showToastEC('✅ Paiement déclaré avec succès !');
+  } catch(e) {
+    showAlert(alertEl,'error',e.message);
+    btn.disabled=false; btn.textContent='Déclarer le paiement';
+  }
+}
+
+// ── Polling statut commandes (30s) ───────────────────────────
+let _pollingInterval = null;
+function startPolling() {
+  _pollingInterval = setInterval(async () => {
+    const panel = document.getElementById('panelCommandes');
+    if (panel?.classList.contains('active')) {
+      document.getElementById('commandesList').removeAttribute('data-loaded');
+      loadCommandes();
+    }
+  }, 30000);
+}
+
+// ── Init ──────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', async () => {
+  await loadDashboard();
+  startPolling();
+});
+</script>
+</body>
+</html>

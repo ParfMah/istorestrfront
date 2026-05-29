@@ -1,0 +1,21 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs / debug
+*.log
+
+# Dossiers temporaires
+tmp/
+temp/
+
+# Si tu utilises un bundler (Vite, Webpack…)
+dist/
+.cache/
+node_modules/

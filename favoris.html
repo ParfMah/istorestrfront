@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mes favoris — iStore Pro</title>
+  <link rel="stylesheet" href="assets/css/global.css"/>
+  <link rel="stylesheet" href="assets/css/components.css"/>
+  <link rel="stylesheet" href="assets/css/responsive-fixes.css"/>
+  <script src="assets/js/page-loader.js"></script>
+  <link rel="canonical" href="https://istore-pro-frontend.onrender.com/favoris.html"/>
+</head>
+<body>
+<header class="header">
+  <div class="container header__inner">
+    <a href="index.html" class="header__logo">
+      <img src="assets/images/logo-header.svg" alt="iStore Pro" style="height:38px;width:auto;display:block;"/>
+    </a>
+    <nav class="header__nav" id="mainNav">
+      <a href="index.html"      class="nav-link">Accueil</a>
+      <a href="catalogue.html"  class="nav-link">Catalogue</a>
+      <a href="simulation.html" class="nav-link">Simuler un crédit</a>
+      <a href="comparateur.html" class="nav-link">Comparer</a>
+      <a href="faq.html"        class="nav-link">FAQ</a>
+      <a href="contact.html"    class="nav-link">Contact</a>
+    </nav>
+    <div class="header__actions" style="display:flex;gap:var(--space-3);align-items:center;">
+      <a href="favoris.html" title="Mes favoris" id="wishlistBtn" style="font-size:1.2rem;line-height:1;color:var(--text-muted);transition:color .2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-muted)'">🤍</a><a href="connexion.html" class="btn btn--outline" id="authBtn">Connexion</a></div>
+    <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </button>
+  </div>
+</header>
+
+<div class="page-hero"><div class="container">
+  <h1>❤️ Mes <span>favoris</span></h1>
+  <p>Vos iPhones sauvegardés pour plus tard</p>
+</div></div>
+
+<main class="container" style="padding:var(--space-10) var(--space-6) var(--space-20);">
+  <div id="wishlistGrid" class="product-grid">
+    <div class="loading-spinner" style="grid-column:1/-1;">Chargement…</div>
+  </div>
+  <div id="emptyWishlist" style="display:none;text-align:center;padding:var(--space-20) var(--space-6);">
+    <p style="font-size:3rem;margin-bottom:var(--space-4);">🤍</p>
+    <h2 style="font-family:var(--font-display);font-size:var(--text-xl);text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:var(--space-4);">Aucun favori pour l'instant</h2>
+    <p style="color:var(--text-secondary);margin-bottom:var(--space-6);">Cliquez sur 🤍 sur un produit pour l'ajouter à vos favoris.</p>
+    <a href="catalogue.html" class="btn btn--primary">Voir le catalogue →</a>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <span class="logo-icon">&#63743;</span>
+      <strong>iStore Pro</strong>
+      <p>Votre spécialiste iPhone depuis 2020.</p>
+    </div>
+    <div class="footer__col">
+      <div class="footer__links">
+        <h4>Navigation</h4>
+        <a href="catalogue.html">Catalogue</a>
+        <a href="simulation.html">Simulateur crédit</a>
+        <a href="comparateur.html">Comparer</a>
+        <a href="faq.html">FAQ</a>
+        <a href="suivi.html">Suivi commande</a>
+        <a href="a-propos.html">À propos</a>
+      </div>
+      <div class="footer__contact">
+        <h4>Contact</h4>
+        <p>📧 contact@istorepro.com</p>
+        <p>📞 +33 1 23 45 67 89</p>
+        <p>📍 Paris, France</p>
+      </div>
+    </div>
+    <div class="footer__col">
+      <div class="footer__links">
+        <h4>Mon compte</h4>
+        <a href="connexion.html">Connexion</a>
+        <a href="connexion.html#register">Créer un compte</a>
+        <a href="espace-client.html">Mon espace</a>
+        <a href="favoris.html">Mes favoris</a>
+      </div>
+      <div class="footer__links" style="margin-top:var(--space-6);">
+        <h4>Légal</h4>
+        <a href="mentions-legales.html">Mentions légales</a>
+        <a href="politique-confidentialite.html">Confidentialité</a>
+        <a href="cgu.html">CGU</a>
+        <a href="cgv.html">CGV</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer__bottom"><p>© 2025 iStore Pro. Tous droits réservés. &nbsp;·&nbsp;
+      <a href="mentions-legales.html" style="color:inherit">Mentions légales</a> &nbsp;·&nbsp;
+      <a href="politique-confidentialite.html" style="color:inherit">Confidentialité</a> &nbsp;·&nbsp;
+      <a href="cgu.html" style="color:inherit">CGU</a> &nbsp;·&nbsp;
+      <a href="cgv.html" style="color:inherit">CGV</a>
+    </p></div>
+</footer>
+
+<script src="assets/js/utils.js"></script>
+<script src="assets/js/api.js"></script>
+<script src="assets/js/auth.js"></script>
+<script src="assets/js/products.data.js"></script>
+<script src="assets/js/wishlist.js"></script>
+<script src="assets/js/ui-utils.js"></script>
+<script src="assets/js/cookies.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+  const ids = Wishlist.get();
+  const grid  = document.getElementById('wishlistGrid');
+  const empty = document.getElementById('emptyWishlist');
+
+  if (!ids.length) {
+    grid.style.display  = 'none';
+    empty.style.display = 'block';
+    return;
+  }
+
+  // Charger les produits (API ou fallback)
+  let products = [];
+  try {
+    products = await Promise.race([
+      API.get('/products?limit=200', false),
+      new Promise((_,r) => setTimeout(() => r(), 2500))
+    ]) || PRODUCTS_DATA;
+  } catch { products = typeof PRODUCTS_DATA !== 'undefined' ? PRODUCTS_DATA : []; }
+
+  const favs = products.filter(p => ids.includes(String(p._id || p.id)));
+  if (!favs.length) {
+    grid.style.display  = 'none';
+    empty.style.display = 'block';
+    return;
+  }
+
+  grid.innerHTML = favs.map(p => renderProductCard(p)).join('');
+  Wishlist.initButtons();
+});
+</script>
+</body>
+</html>

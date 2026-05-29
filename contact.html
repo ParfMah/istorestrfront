@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="description" content="Contactez notre équipe pour toute question sur nos produits, commandes ou garanties. Réponse sous 48h ouvrées."/>
+  <meta name="keywords"    content="contact iStore Pro, service client iPhone, SAV iPhone"/>
+  <meta name="robots"      content="index,follow"/>
+  <meta property="og:type"        content="website"/>
+  <meta property="og:site_name"   content="iStore Pro"/>
+  <meta property="og:title"       content="Contact — iStore Pro"/>
+  <meta property="og:description" content="Contactez notre équipe pour toute question sur nos produits, commandes ou garanties. Réponse sous 48h ouvrées."/>
+  <meta property="og:image"       content="https://istore-pro-frontend.onrender.com/assets/images/logo.svg"/>
+  <meta property="og:url"         content="https://istore-pro-frontend.onrender.com/contact.html"/>
+  <meta name="twitter:card"        content="summary_large_image"/>
+  <meta name="twitter:title"       content="Contact — iStore Pro"/>
+  <meta name="twitter:description" content="Contactez notre équipe pour toute question sur nos produits, commandes ou garanties. Réponse sous 48h ouvrées."/>
+  <meta name="twitter:image"       content="https://istore-pro-frontend.onrender.com/assets/images/logo.svg"/>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+  <link rel="shortcut icon" href="/favicon.svg"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<script src="assets/js/page-loader.js"></script>
+<title>Contact — iStore Pro</title>
+  <link rel="stylesheet" href="assets/css/global.css"/>
+  <link rel="stylesheet" href="assets/css/components.css"/>
+  <link rel="stylesheet" href="assets/css/responsive-fixes.css"/>
+  <link rel="manifest" href="/manifest.json"/>
+  <meta name="theme-color" content="#C9A84C"/>
+  <meta name="mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <meta name="apple-mobile-web-app-title" content="iStore Pro"/>
+  <link rel="apple-touch-icon" href="/assets/images/icons/icon-192.svg"/>
+  <link rel="canonical" href="https://istore-pro-frontend.onrender.com/contact.html"/>
+</head>
+<body>
+<header class="header">
+  <div class="container header__inner">
+    <a href="index.html" class="header__logo"><img src="assets/images/logo-header.svg" alt="iStore Pro" style="height:38px;width:auto;display:block;" /></a>
+    <nav class="header__nav" id="mainNav">
+      <a href="index.html"      class="nav-link">Accueil</a>
+      <a href="catalogue.html"  class="nav-link">Catalogue</a>
+      <a href="simulation.html" class="nav-link">Simuler un crédit</a>
+      <a href="comparateur.html" class="nav-link">Comparer</a>
+      <a href="faq.html"         class="nav-link">FAQ</a>
+      <a href="a-propos.html"   class="nav-link">À propos</a>
+      <a href="contact.html"    class="nav-link active">Contact</a>
+    </nav>
+    <div class="header__actions" style="display:flex;gap:var(--space-3);align-items:center;">
+      <a href="favoris.html" title="Mes favoris" id="wishlistBtn" style="font-size:1.2rem;line-height:1;color:var(--text-muted);transition:color .2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-muted)'">🤍</a><a href="connexion.html" class="btn btn--outline" id="authBtn">Connexion</a></div>
+    <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+  </div>
+</header>
+<div class="page-hero"><div class="container"><h1>Nous <span>contacter</span></h1><p>Une question ? On vous répond sous 24h.</p></div></div>
+<main class="container contact-layout">
+  <div class="contact-info">
+    <h2>Coordonnées</h2>
+    <div class="contact-info__item"><span>📧</span><div><strong>Email</strong><p>contact@istorepro.com</p></div></div>
+    <div class="contact-info__item"><span>📞</span><div><strong>Téléphone</strong><p>+33 1 23 45 67 89</p><p><small>Lun–Sam, 9h–18h</small></p></div></div>
+    <div class="contact-info__item"><span>📍</span><div><strong>Adresse</strong><p>12 rue de la Paix<br>75001 Paris, France</p></div></div>
+  </div>
+  <div class="contact-form-card">
+    <h2>Envoyer un message</h2>
+    <div id="contactAlert" class="alert" style="display:none"></div>
+    <div class="form-group"><label for="contactName">Nom complet *</label><input type="text" id="contactName" class="form-input" placeholder="Jean Dupont"/></div>
+    <div class="form-group"><label for="contactEmail">Email *</label><input type="email" id="contactEmail" class="form-input" placeholder="jean@exemple.com"/></div>
+    <div class="form-group">
+      <label for="contactSubject">Sujet</label>
+      <select id="contactSubject" class="select-input">
+        <option>Question sur un produit</option>
+        <option>Suivi de commande</option>
+        <option>Dossier de crédit</option>
+        <option>Réclamation</option>
+        <option>Autre</option>
+      </select>
+    </div>
+    <div class="form-group"><label for="contactMessage">Message *</label><textarea id="contactMessage" class="form-input" rows="5" placeholder="Votre message…"></textarea></div>
+    <button class="btn btn--primary btn--full" id="sendContactBtn">Envoyer le message</button>
+  </div>
+</main>
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <span class="logo-icon">&#63743;</span>
+      <strong>iStore Pro</strong>
+      <p>Votre spécialiste iPhone depuis 2020.</p>
+    </div>
+    <div class="footer__col">
+      <div class="footer__links">
+        <h4>Navigation</h4>
+        <a href="catalogue.html">Catalogue</a>
+        <a href="simulation.html">Simulateur crédit</a>
+        <a href="comparateur.html">Comparer</a>
+        <a href="faq.html">FAQ</a>
+        <a href="suivi.html">Suivi commande</a>
+        <a href="a-propos.html">À propos</a>
+      </div>
+      <div class="footer__contact">
+        <h4>Contact</h4>
+        <p>📧 contact@istorepro.com</p>
+        <p>📞 +33 1 23 45 67 89</p>
+        <p>📍 Paris, France</p>
+      </div>
+    </div>
+    <div class="footer__col">
+      <div class="footer__links">
+        <h4>Mon compte</h4>
+        <a href="connexion.html">Connexion</a>
+        <a href="connexion.html#register">Créer un compte</a>
+        <a href="espace-client.html">Mon espace</a>
+        <a href="favoris.html">Mes favoris</a>
+      </div>
+      <div class="footer__links" style="margin-top:var(--space-6);">
+        <h4>Légal</h4>
+        <a href="mentions-legales.html">Mentions légales</a>
+        <a href="politique-confidentialite.html">Confidentialité</a>
+        <a href="cgu.html">CGU</a>
+        <a href="cgv.html">CGV</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer__bottom"><p>© 2025 iStore Pro. Tous droits réservés. &nbsp;·&nbsp;
+      <a href="mentions-legales.html" style="color:inherit">Mentions légales</a> &nbsp;·&nbsp;
+      <a href="politique-confidentialite.html" style="color:inherit">Confidentialité</a> &nbsp;·&nbsp;
+      <a href="cgu.html" style="color:inherit">CGU</a> &nbsp;·&nbsp;
+      <a href="cgv.html" style="color:inherit">CGV</a>
+    </p></div>
+</footer>
+<script src="assets/js/utils.js"></script>
+<script src="assets/js/auth.js"></script>
+<script src="assets/js/api.js"></script>
+<script>
+document.getElementById('sendContactBtn').addEventListener('click', async () => {
+  const name    = document.getElementById('contactName').value.trim();
+  const email   = document.getElementById('contactEmail').value.trim();
+  const subject = document.getElementById('contactSubject').value;
+  const message = document.getElementById('contactMessage').value.trim();
+  const alertEl = document.getElementById('contactAlert');
+  if (!name || !email || !message) { showAlert(alertEl,'error','Veuillez remplir tous les champs obligatoires.'); return; }
+  try {
+    await API.post('/contact', { name, email, subject, message });
+    showAlert(alertEl,'success','Message envoyé ! Nous vous répondrons sous 24h.');
+    document.getElementById('contactName').value = '';
+    document.getElementById('contactEmail').value = '';
+    document.getElementById('contactMessage').value = '';
+  } catch(e) { showAlert(alertEl,'error','Erreur lors de l\'envoi.'); }
+});
+</script>
+  <script src="assets/js/cookies.js"></script>
+  <script src="assets/js/ui-utils.js"></script>
+  <script src="assets/js/wishlist.js"></script>
+</body>
+</html>
